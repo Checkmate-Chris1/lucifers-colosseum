@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://604rwwxdjfyr"]
+
+[ext_resource type="Script" uid="uid://kib5y56xnwd6" path="res://prefabs/oob_hitbox/oob_hitbox.gd" id="1_ndlle"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hftg5"]
+size = Vector3(25, 1, 25)
+
+[node name="OOBHitbox" type="Node3D"]
+script = ExtResource("1_ndlle")
+
+[node name="Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.163192, 0)
+
+[node name="Collider" type="CollisionShape3D" parent="Area"]
+shape = SubResource("BoxShape3D_hftg5")
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhh0cvchsg71t"]
+
+[ext_resource type="Script" uid="uid://bg4kj30duludl" path="res://entities/player/player.gd" id="1_symyc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_symyc"]
+radius = 0.15
+height = 1.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("CAMERA_CONTROLLER") groups=["player"]]
+script = ExtResource("1_symyc")
+CAMERA_CONTROLLER = NodePath("CameraController")
+
+[node name="Model" type="CSGBox3D" parent="Player"]
+size = Vector3(0.25, 1, 0.25)
+
+[node name="Collision" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_symyc")
+
+[node name="CameraController" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266, 0)
+
+[node name="Camera" type="Camera3D" parent="Player/CameraController"]
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Player/CameraController/Camera"]
+update_mode = 1

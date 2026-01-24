@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhh0cvchsg71t"]
+[gd_scene load_steps=5 format=3 uid="uid://bhh0cvchsg71t"]
 
 [ext_resource type="Script" uid="uid://bg4kj30duludl" path="res://entities/player/player.gd" id="1_symyc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_symyc"]
 radius = 0.15
 height = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_symyc"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_symyc"]
+inner_radius = 1.5
 
 [node name="Node3D" type="Node3D"]
 
@@ -25,3 +30,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266, 0)
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Player/CameraController/Camera"]
 update_mode = 1
+
+[node name="SlamArea" type="Area3D" parent="Player"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/SlamArea"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("SphereShape3D_symyc")
+
+[node name="SlamVFX" type="MeshInstance3D" parent="Player/SlamArea"]
+visible = false
+transparency = 0.87
+mesh = SubResource("TorusMesh_symyc")

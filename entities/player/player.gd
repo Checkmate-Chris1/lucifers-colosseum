@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		tween.tween_interval(.2)
 		tween.tween_callback(func(): slam_visual.visible = false)
 		#TODO: calculate damage using fall_height
-		_apply_slam_damage(fall_height)
+		_apply_slam_damage(fall_height * GameState.slam_multiplier)
 	_update_camera(delta)
 
 func _apply_slam_damage(damage: float) -> void:

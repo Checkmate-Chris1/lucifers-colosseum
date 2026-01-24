@@ -8,6 +8,11 @@ const JUMP_VELOCITY = 4.5
 @export var TILT_UPPER_LIMIT := deg_to_rad(90.0)
 @export var CAMERA_CONTROLLER: Node3D
 
+@onready var slam_area: Area3D = $SlamArea
+@onready var slam_visual: MeshInstance3D = $SlamArea/SlamVFX
+var is_ground_slamming := false
+var start_y = 0.0
+
 var mouse_input := false
 var camera_rotation := Vector3.ZERO
 var rotation_input: float
@@ -28,6 +33,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
+	if Input.is_action_just_pressed("slam") and not is_on_floor() and not is_ground_slamming:
+		is_ground_slamming = true
+		start_y = global_position.y
+		velocity.y = 2 * -JUMP_VELOCITY
+	
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -38,8 +48,27 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	# slam damage logic
+	if is_ground_slamming and is_on_floor():
+		var fall_height = start_y - global_position.y
+		fall_height = max(fall_height, 0)
+		is_ground_slamming = false
+		slam_visual.visible = true
+		var tween := get_tree().create_tween()
+		tween.tween_interval(.2)
+		tween.tween_callback(func(): slam_visual.visible = false)
+		#TODO: calculate damage using fall_height
+		_apply_slam_damage(fall_height)
 	_update_camera(delta)
 
+func _apply_slam_damage(damage: float) -> void:
+	print("Ground slam damage:", damage)
+	var collided := slam_area.get_overlapping_bodies()
+	for body in collided:
+		#TODO: change "take_damage" to appropriate method
+		if body.has_method("take_damage"):
+			body.take_damage(damage)
+	
 func _input(event: InputEvent) -> void:
 	mouse_input = event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 	if mouse_input:

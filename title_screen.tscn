@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=3 uid="uid://pr7ufmwqyuao"]
+
+[ext_resource type="FontFile" uid="uid://s0g2v013ojc7" path="res://art/fonts/altar-gothic-demo/AltarGothicDemo-Regular.otf" id="1_hafda"]
+[ext_resource type="Texture2D" uid="uid://bouapog0a728y" path="res://art/buttons/start_lc.png" id="1_ig5kc"]
+[ext_resource type="PackedScene" uid="uid://jqam3rbvna36" path="res://levels/lucifers_colosseum/lucifers_colosseum.tscn" id="2_05l2w"]
+[ext_resource type="Script" uid="uid://clmnyvix1qvos" path="res://art/buttons/rotatecamera.gd" id="3_hafda"]
+[ext_resource type="Texture2D" uid="uid://bngsc8120e43x" path="res://art/buttons/startpressed_lc.png" id="3_tpml5"]
+[ext_resource type="Texture2D" uid="uid://3af8o388gk0d" path="res://art/buttons/options_lc_unpress.png" id="4_8vmu4"]
+[ext_resource type="Texture2D" uid="uid://xsvuasffoxmr" path="res://art/buttons/options_lc.png" id="5_xfn3p"]
+[ext_resource type="Texture2D" uid="uid://crb7jkap8da0v" path="res://art/buttons/quit_lc.png" id="6_rhgbh"]
+[ext_resource type="Texture2D" uid="uid://b4wwaaxbqv5qx" path="res://art/buttons/quipressed_lc.png" id="7_skmiq"]
+
+[sub_resource type="Theme" id="Theme_tpml5"]
+
+[node name="titleScreen" type="CanvasLayer"]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="LucifersColosseum" parent="Node3D" instance=ExtResource("2_05l2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031116247, 0.029301703, -0.0012419224)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Node3D"]
+z_index = -3
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -1.0
+offset_right = 3.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Node3D/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Node3D/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5084727, 0)
+visible = false
+script = ExtResource("3_hafda")
+
+[node name="Menu" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="GameName" type="Label" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_tpml5")
+theme_override_fonts/font = ExtResource("1_hafda")
+theme_override_font_sizes/font_size = 72
+text = "Lucifer's Colosseum"
+horizontal_alignment = 1
+
+[node name="Start" type="TextureButton" parent="Menu"]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 208.0
+offset_right = 2278.0
+offset_bottom = 887.0
+scale = Vector2(0.1, 0.1)
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("1_ig5kc")
+texture_pressed = ExtResource("3_tpml5")
+texture_hover = ExtResource("3_tpml5")
+stretch_mode = 3
+
+[node name="Options" type="TextureButton" parent="Menu"]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 295.0
+offset_right = 2278.0
+offset_bottom = 978.0
+scale = Vector2(0.1, 0.1)
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("4_8vmu4")
+texture_hover = ExtResource("5_xfn3p")
+stretch_mode = 3
+
+[node name="Exit" type="TextureButton" parent="Menu"]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 382.0
+offset_right = 2278.0
+offset_bottom = 1068.0
+scale = Vector2(0.1, 0.1)
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("6_rhgbh")
+texture_hover = ExtResource("7_skmiq")
+stretch_mode = 3
+
+[connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Start" to="Node3D/SubViewportContainer/SubViewport/Camera3D" method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Options" to="Node3D/SubViewportContainer/SubViewport/Camera3D" method="_on_options_pressed"]
+[connection signal="pressed" from="Menu/Exit" to="Node3D/SubViewportContainer/SubViewport/Camera3D" method="_on_exit_pressed"]

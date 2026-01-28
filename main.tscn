@@ -14,3 +14,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="TormentedSoul" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10507059, 1.176698, -9.535203)
 player_parent = NodePath("../Node3D")
+
+[node name="TormentedSoul2" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5378461, 1.176698, -8.257675)
+player_parent = NodePath("../Node3D")
+
+[node name="TormentedSoul3" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10507059, 1.176698, -7.3855696)
+player_parent = NodePath("../Node3D")
+
+[node name="TormentedSoul4" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.628624, 1.176698, -8.257675)
+player_parent = NodePath("../Node3D")
+
+[node name="TormentedSoul5" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3346918, 1.176698, -8.257675)
+player_parent = NodePath("../Node3D")
+
+[node name="TormentedSoul6" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10507059, 1.176698, -8.257675)
+player_parent = NodePath("../Node3D")

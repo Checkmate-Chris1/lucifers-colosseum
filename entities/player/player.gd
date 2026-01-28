@@ -50,8 +50,9 @@ func _physics_process(delta: float) -> void:
 		is_ground_slamming = true
 		start_y = global_position.y
 		velocity.y = 2 * -JUMP_VELOCITY
-	
-	if Input.is_action_just_pressed("dash") and not is_dashing:
+		
+	var is_moving_horizontal := (velocity.x != 0) or (velocity.z != 0)
+	if Input.is_action_just_pressed("dash") and not is_dashing and is_moving_horizontal:
 		_dash()
 	
 	if not input_lock:
@@ -62,9 +63,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction.x * speed_multiplier
 		velocity.z = direction.z * speed_multiplier
 		
-	# SAME HERE, CHANGE IS_DASHING TO A DECELERATION_LOCK
 	elif not deceleration_lock:
-		#allows us to not decelerate while dashing
+		#allows us to not decelerate while as long as the deceleration lock is true
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
@@ -86,16 +86,26 @@ func _physics_process(delta: float) -> void:
 func _dash():
 	# TO DO: ADD FOV adjustments during the dash
 	var _camera := get_viewport().get_camera_3d()
-	print("dash")
+	var zoom_out_speed := 0.1   # Adjusts how QUICKLY fov zooms in when dashing
+	var zoom_in_speed  := 0.25  # Adjusts how QUICKLY fov zooms out when dashing
+	var fov_increase   := 10    # Adjusts how MUCH fov zooms out when dashing
+	var dash_time      := 0.25  # Adjusts how LONG the player dashes for
+	var speed_increase := 5     # Adjusts how FAST the player dashes
+	
 	is_dashing = true
 	input_lock = true
 	deceleration_lock = true
-	speed_multiplier *= 5
+	speed_multiplier *= speed_increase
 	
-	await get_tree().create_timer(0.25).timeout
-
+	var tween = get_tree().create_tween()
+	tween.tween_property(_camera, "fov", BASE_FOV + fov_increase, zoom_out_speed)
+	
+	await get_tree().create_timer(dash_time).timeout
+	
+	tween = get_tree().create_tween()
+	tween.tween_property(_camera, "fov", BASE_FOV, zoom_in_speed)
+	
 	speed_multiplier = SPEED
-	_camera.fov = move_toward(_camera.fov, BASE_FOV, -2)
 	deceleration_lock = false
 	input_lock = false
 	

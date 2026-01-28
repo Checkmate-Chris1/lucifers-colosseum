@@ -19,6 +19,7 @@ shape = SubResource("CapsuleShape3D_0xm2m")
 mesh = SubResource("CapsuleMesh_h2yge")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3368455, 0, 0, 0, 0.53843886, 0.09318602, 0, -0.123318955, 0.40687153, 0, 0.808, -0.498)

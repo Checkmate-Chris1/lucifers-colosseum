@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://pr7ufmwqyuao"]
+[gd_scene format=3 uid="uid://pr7ufmwqyuao"]
 
 [ext_resource type="FontFile" uid="uid://cttsowmyoxsyt" path="res://art/fonts/altar-gothic-demo/AltarGothicDemo-Regular.otf" id="1_hafda"]
 [ext_resource type="Script" uid="uid://b6rv4r87fi4uj" path="res://buttons/scripts/options_menu.gd" id="1_skmiq"]

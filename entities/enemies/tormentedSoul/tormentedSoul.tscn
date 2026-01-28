@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5aeg80a2dlv5"]
+
+[ext_resource type="Script" uid="uid://dih6yncrgp34v" path="res://entities/enemies/tormentedSoul/tormentedSoul.gd" id="1_nobi8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_h2yge"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nobi8"]
+
+[node name="TormentedSoul" type="CharacterBody3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_nobi8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_0xm2m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_h2yge")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3368455, 0, 0, 0, 0.53843886, 0.09318602, 0, -0.123318955, 0.40687153, 0, 0.808, -0.498)
+mesh = SubResource("BoxMesh_nobi8")

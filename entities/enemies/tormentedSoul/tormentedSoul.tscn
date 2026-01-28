@@ -8,7 +8,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_nobi8"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="TormentedSoul" type="CharacterBody3D"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_nobi8")
 

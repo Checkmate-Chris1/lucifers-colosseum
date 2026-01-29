@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://jqam3rbvna36" path="res://levels/lucifers_colosseum/lucifers_colosseum.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bhh0cvchsg71t" path="res://entities/player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://h58h742lvij0" path="res://pause_menu.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="4_1bvp3"]
 
 [node name="Main" type="Node3D"]
 

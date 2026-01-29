@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://jqam3rbvna36"]
+[gd_scene load_steps=6 format=3 uid="uid://jqam3rbvna36"]
 
 [ext_resource type="PackedScene" uid="uid://c3sd5twct7c5f" path="res://art/models/lucifersColosseum.glb" id="1_ddk8s"]
 [ext_resource type="PackedScene" uid="uid://604rwwxdjfyr" path="res://prefabs/oob_hitbox/oob_hitbox.tscn" id="2_jd8mx"]
+[ext_resource type="PackedScene" uid="uid://bpv3ny1j8yewk" path="res://art/models/entranceGate.glb" id="3_ddk8s"]
 
 [sub_resource type="Environment" id="Environment_vwxo2"]
 background_mode = 1
@@ -192,3 +193,6 @@ spot_range = 200.0
 spot_attenuation = 2.0
 spot_angle = 120.0
 spot_angle_attenuation = 1.2333336
+
+[node name="entranceGate" parent="NavigationRegion3D" instance=ExtResource("3_ddk8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11283749, -28.048834)

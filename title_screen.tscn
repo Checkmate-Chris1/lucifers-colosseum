@@ -1,18 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://pr7ufmwqyuao"]
+[gd_scene load_steps=14 format=3 uid="uid://pr7ufmwqyuao"]
 
 [ext_resource type="FontFile" uid="uid://cttsowmyoxsyt" path="res://art/fonts/altar-gothic-demo/AltarGothicDemo-Regular.otf" id="1_hafda"]
+[ext_resource type="Script" uid="uid://b6rv4r87fi4uj" path="res://buttons/scripts/options_menu.gd" id="1_skmiq"]
 [ext_resource type="PackedScene" uid="uid://jqam3rbvna36" path="res://levels/lucifers_colosseum/lucifers_colosseum.tscn" id="2_05l2w"]
 [ext_resource type="Script" uid="uid://b6cojmuuboeae" path="res://buttons/scripts/rotatecamera.gd" id="2_8vmu4"]
+[ext_resource type="Script" uid="uid://dqq61837a3jok" path="res://buttons/scripts/title_screen.gd" id="3_xfn3p"]
 [ext_resource type="Texture2D" uid="uid://cxdcx7js54alo" path="res://buttons/assets/start_lc.png" id="4_xfn3p"]
 [ext_resource type="Texture2D" uid="uid://mevjvdh25w42" path="res://buttons/assets/startpressed_lc.png" id="5_rhgbh"]
 [ext_resource type="Texture2D" uid="uid://ckawblek1o3wa" path="res://buttons/assets/options_lc.png" id="6_8vmu4"]
 [ext_resource type="Texture2D" uid="uid://p0sd561a566b" path="res://buttons/assets/options_pressed_lc.png" id="7_xfn3p"]
-[ext_resource type="Texture2D" uid="uid://bb5sxi8omdrhh" path="res://buttons/assets/quit_lc.png" id="8_rhgbh"]
-[ext_resource type="Texture2D" uid="uid://p00bxxiwq7r6" path="res://buttons/assets/quit_pressed_lc.png" id="9_skmiq"]
+[ext_resource type="Texture2D" uid="uid://clr28ekgvpeuh" path="res://buttons/assets/exit.png" id="8_8vmu4"]
+[ext_resource type="Texture2D" uid="uid://dqnu6ewaiplwl" path="res://buttons/assets/exit_pressed.png" id="9_xfn3p"]
+[ext_resource type="PackedScene" uid="uid://c7qgw42ydwd3v" path="res://options_menu.tscn" id="11_rhgbh"]
 
 [sub_resource type="Theme" id="Theme_tpml5"]
 
 [node name="titleScreen" type="CanvasLayer"]
+script = ExtResource("1_skmiq")
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -49,6 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_xfn3p")
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu"]
 layout_mode = 1
@@ -108,11 +113,31 @@ scale = Vector2(0.1, 0.1)
 size_flags_horizontal = 4
 size_flags_vertical = 2
 size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("8_rhgbh")
-texture_hover = ExtResource("9_skmiq")
+texture_normal = ExtResource("8_8vmu4")
+texture_hover = ExtResource("9_xfn3p")
+stretch_mode = 3
+
+[node name="Options" parent="." instance=ExtResource("11_rhgbh")]
+visible = false
+
+[node name="ExitOptions" type="TextureButton" parent="."]
+visible = false
+z_index = 3
+offset_left = 8.0000305
+offset_top = 574.0
+offset_right = 1805.0
+offset_bottom = 1260.0
+scale = Vector2(0.1, 0.1)
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("8_8vmu4")
+texture_hover = ExtResource("9_xfn3p")
 stretch_mode = 3
 
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Menu/Start" to="Node3D/SubViewportContainer/SubViewport/Camera3D" method="_on_start_pressed"]
-[connection signal="pressed" from="Menu/Options" to="Node3D/SubViewportContainer/SubViewport/Camera3D" method="_on_options_pressed"]
-[connection signal="pressed" from="Menu/Exit" to="Node3D/SubViewportContainer/SubViewport/Camera3D" method="_on_exit_pressed"]
+[connection signal="pressed" from="Menu/Start" to="Menu" method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Menu/Options" to="Menu" method="_on_options_pressed"]
+[connection signal="pressed" from="Menu/Exit" to="Menu" method="_on_exit_pressed"]
+[connection signal="pressed" from="ExitOptions" to="." method="_on_exit_options_pressed"]

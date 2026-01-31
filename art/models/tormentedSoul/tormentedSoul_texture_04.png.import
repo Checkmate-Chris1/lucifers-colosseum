@@ -2,35 +2,34 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cns2xocjylmj3"
-path.s3tc="res://.godot/imported/lucifersColosseum_normal.jpg-11a497f389d71a0baac2f106a0bdb7cc.s3tc.ctex"
+uid="uid://cfvurk8b3v4vw"
+path="res://.godot/imported/tormentedSoul_texture_04.png-cd467791495e9ccae2f42e060e05c32c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
-"md5": "e0a00220a97e73ae97ce7f656b15c527"
+"md5": "d66a07766bc5cdcaf8911c389a853562"
 }
 
 [deps]
 
-source_file="res://art/models/lucifersColosseum_normal.jpg"
-dest_files=["res://.godot/imported/lucifersColosseum_normal.jpg-11a497f389d71a0baac2f106a0bdb7cc.s3tc.ctex"]
+source_file="res://art/models/tormentedSoul/tormentedSoul_texture_04.png"
+dest_files=["res://.godot/imported/tormentedSoul_texture_04.png-cd467791495e9ccae2f42e060e05c32c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://art/models/lucifersColosseum_normal.jpg"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
@@ -41,4 +40,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

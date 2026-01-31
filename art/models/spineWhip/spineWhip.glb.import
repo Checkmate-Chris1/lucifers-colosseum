@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bpv3ny1j8yewk"
-path="res://.godot/imported/entranceGate.glb-a629f94b7285a6b36ff6476664d5784f.scn"
+uid="uid://bi38u8bm86oks"
+path="res://.godot/imported/spineWhip.glb-f84d746edf9cc71e4d31786b49e9eaad.scn"
 
 [deps]
 
-source_file="res://art/models/entranceGate.glb"
-dest_files=["res://.godot/imported/entranceGate.glb-a629f94b7285a6b36ff6476664d5784f.scn"]
+source_file="res://art/models/spineWhip/spineWhip.glb"
+dest_files=["res://.godot/imported/spineWhip.glb-f84d746edf9cc71e4d31786b49e9eaad.scn"]
 
 [params]
 

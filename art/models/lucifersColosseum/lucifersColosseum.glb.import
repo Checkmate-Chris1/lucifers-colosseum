@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c3sd5twct7c5f"
-path="res://.godot/imported/lucifersColosseum.glb-258f9c99f72b851c0dc2de8d5e635742.scn"
+path="res://.godot/imported/lucifersColosseum.glb-aa807f20f8a449b80a2039334619be6d.scn"
 
 [deps]
 
-source_file="res://art/models/lucifersColosseum.glb"
-dest_files=["res://.godot/imported/lucifersColosseum.glb-258f9c99f72b851c0dc2de8d5e635742.scn"]
+source_file="res://art/models/lucifersColosseum/lucifersColosseum.glb"
+dest_files=["res://.godot/imported/lucifersColosseum.glb-aa807f20f8a449b80a2039334619be6d.scn"]
 
 [params]
 

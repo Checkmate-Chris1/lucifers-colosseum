@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bpdn65gcisvg1"
-path="res://.godot/imported/tormentedSoul.glb-3a249e2361bd178f483fb3bd6a9fe456.scn"
+path="res://.godot/imported/tormentedSoul.glb-849331f024e6cda00e427a140e123872.scn"
 
 [deps]
 
-source_file="res://art/models/tormentedSoul.glb"
-dest_files=["res://.godot/imported/tormentedSoul.glb-3a249e2361bd178f483fb3bd6a9fe456.scn"]
+source_file="res://art/models/tormentedSoul/tormentedSoul.glb"
+dest_files=["res://.godot/imported/tormentedSoul.glb-849331f024e6cda00e427a140e123872.scn"]
 
 [params]
 

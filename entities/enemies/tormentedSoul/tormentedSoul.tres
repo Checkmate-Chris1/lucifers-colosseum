@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cv3ffo0ncg72"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cv3ffo0ncg72"]
 
 [ext_resource type="Shader" uid="uid://calssdoggu6g" path="res://entities/enemies/tormentedSoul/tormentedSoul.gdshader" id="1_sgxpg"]
 

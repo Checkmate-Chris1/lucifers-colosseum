@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bofxssc6is70s"
-path.s3tc="res://.godot/imported/lucifersColosseum_rock_02_color.jpg-b07c00923fa767462a22d9708463e266.s3tc.ctex"
+uid="uid://dbq7bqylpskwr"
+path.s3tc="res://.godot/imported/lucifersColosseum_rock_02_roughness.png-a0ba266acaa21bf03a16f6bc290c5207.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c636a69eaf3c16d66d3c8ceba2a741a6"
+"md5": "379ae4f92f3e0600084b7bbf7d2a5b1c"
 }
 
 [deps]
 
-source_file="res://art/models/lucifersColosseum_rock_02_color.jpg"
-dest_files=["res://.godot/imported/lucifersColosseum_rock_02_color.jpg-b07c00923fa767462a22d9708463e266.s3tc.ctex"]
+source_file="res://art/models/lucifersColosseum/lucifersColosseum_rock_02_roughness.png"
+dest_files=["res://.godot/imported/lucifersColosseum_rock_02_roughness.png-a0ba266acaa21bf03a16f6bc290c5207.s3tc.ctex"]
 
 [params]
 

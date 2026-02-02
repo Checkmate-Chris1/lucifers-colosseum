@@ -4,6 +4,12 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+const BASE_FOV = 75.0
+const DASH_CD = 1
+
+var input_dir : Vector2
+var direction : Vector3
+
 @export var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
 @export var TILT_UPPER_LIMIT := deg_to_rad(90.0)
 @export var CAMERA_CONTROLLER: Node3D
@@ -12,6 +18,12 @@ const JUMP_VELOCITY = 4.5
 @onready var slam_visual: MeshInstance3D = $SlamArea/SlamVFX
 var is_ground_slamming := false
 var start_y = 0.0
+
+var input_lock := false #use this variable when the player shouldnt have control of their character
+var deceleration_lock := false #use this to temporarily stop the character from decelerating
+
+var speed_multiplier := SPEED
+var is_dashing := false
 
 var mouse_input := false
 var camera_rotation := Vector3.ZERO

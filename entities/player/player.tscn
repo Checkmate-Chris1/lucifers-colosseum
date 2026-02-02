@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhh0cvchsg71t"]
+[gd_scene format=3 uid="uid://bhh0cvchsg71t"]
 
 [ext_resource type="Script" uid="uid://bg4kj30duludl" path="res://entities/player/player.gd" id="1_symyc"]
 
@@ -11,33 +11,33 @@ height = 1.0
 [sub_resource type="TorusMesh" id="TorusMesh_symyc"]
 inner_radius = 1.5
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=1970085815]
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("CAMERA_CONTROLLER") groups=["player"]]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=73700003 node_paths=PackedStringArray("CAMERA_CONTROLLER") groups=["player"]]
 script = ExtResource("1_symyc")
 CAMERA_CONTROLLER = NodePath("CameraController")
 
-[node name="Model" type="CSGBox3D" parent="Player"]
+[node name="Model" type="CSGBox3D" parent="Player" unique_id=130522429]
 size = Vector3(0.25, 1, 0.25)
 
-[node name="Collision" type="CollisionShape3D" parent="Player"]
+[node name="Collision" type="CollisionShape3D" parent="Player" unique_id=1133809991]
 shape = SubResource("CapsuleShape3D_symyc")
 
-[node name="CameraController" type="Node3D" parent="Player"]
+[node name="CameraController" type="Node3D" parent="Player" unique_id=2076979620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266, 0)
 
-[node name="Camera" type="Camera3D" parent="Player/CameraController"]
+[node name="Camera" type="Camera3D" parent="Player/CameraController" unique_id=2074842044]
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="Player/CameraController/Camera"]
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Player/CameraController/Camera" unique_id=42880988]
 update_mode = 1
 
-[node name="SlamArea" type="Area3D" parent="Player"]
+[node name="SlamArea" type="Area3D" parent="Player" unique_id=85789380]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/SlamArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/SlamArea" unique_id=380077815]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("SphereShape3D_symyc")
 
-[node name="SlamVFX" type="MeshInstance3D" parent="Player/SlamArea"]
+[node name="SlamVFX" type="MeshInstance3D" parent="Player/SlamArea" unique_id=1930925190]
 visible = false
 transparency = 0.87
 mesh = SubResource("TorusMesh_symyc")

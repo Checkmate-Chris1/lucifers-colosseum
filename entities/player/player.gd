@@ -4,6 +4,9 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+var input_dir : Vector2
+var direction : Vector3
+
 @export var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
 @export var TILT_UPPER_LIMIT := deg_to_rad(90.0)
 @export var CAMERA_CONTROLLER: Node3D
@@ -12,6 +15,12 @@ const JUMP_VELOCITY = 4.5
 @onready var slam_visual: MeshInstance3D = $SlamArea/SlamVFX
 var is_ground_slamming := false
 var start_y = 0.0
+
+var input_lock := false #use this variable when the player shouldnt have control of their character
+var deceleration_lock := false #use this to temporarily stop the character from decelerating
+
+var speed_multiplier := SPEED
+var is_dashing := false
 
 var mouse_input := false
 var camera_rotation := Vector3.ZERO
@@ -37,13 +46,21 @@ func _physics_process(delta: float) -> void:
 		is_ground_slamming = true
 		start_y = global_position.y
 		velocity.y = 2 * -JUMP_VELOCITY
+		
+	var is_moving_horizontal := (velocity.x != 0) or (velocity.z != 0)
+	if Input.is_action_just_pressed("dash") and not is_dashing and is_moving_horizontal:
+		_dash()
 	
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if not input_lock:
+		input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+		direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
+		velocity.x = direction.x * speed_multiplier
+		velocity.z = direction.z * speed_multiplier
+		
+	elif not deceleration_lock:
+		#allows us to not decelerate while as long as the deceleration lock is true
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
@@ -61,6 +78,35 @@ func _physics_process(delta: float) -> void:
 		_apply_slam_damage(fall_height * GameState.slam_multiplier)
 	_update_camera(delta)
 
+func _dash():
+	# TO DO: ADD FOV adjustments during the dash
+	var _camera := get_viewport().get_camera_3d()
+	var zoom_out_speed := 0.1   # Adjusts how QUICKLY fov zooms in when dashing
+	var zoom_in_speed  := 0.25  # Adjusts how QUICKLY fov zooms out when dashing
+	var fov_increase   := 10    # Adjusts how MUCH fov zooms out when dashing
+	var dash_time      := 0.25  # Adjusts how LONG the player dashes for
+	var speed_increase := 5     # Adjusts how FAST the player dashes
+	
+	is_dashing = true
+	input_lock = true
+	deceleration_lock = true
+	speed_multiplier *= speed_increase
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(_camera, "fov", GameState.player_fov + fov_increase, zoom_out_speed)
+	
+	await get_tree().create_timer(dash_time).timeout
+	
+	tween = get_tree().create_tween()
+	tween.tween_property(_camera, "fov", GameState.player_fov, zoom_in_speed)
+	
+	speed_multiplier = SPEED
+	deceleration_lock = false
+	input_lock = false
+	
+	await get_tree().create_timer(GameState.dash_cd).timeout
+	is_dashing = false
+	
 func _apply_slam_damage(damage: float) -> void:
 	print("Ground slam damage:", damage)
 	var collided := slam_area.get_overlapping_bodies()

@@ -3,14 +3,14 @@ extends CanvasLayer
 func _ready() -> void:
 	visible = false
 	$Options.visible = false
-	$ExitOptions.visible = false
+	$ExitOptions2.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		if $Options.visible:
 			$Options.visible = false
-			$ExitOptions.visible = false
+			$ExitOptions2.visible = false
 			visible = true
 		elif visible:
 			hide_menu()
@@ -30,13 +30,13 @@ func _on_resume_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	visible = false
+	$ExitOptions2.visible = true
 	$Options.visible = true
-	$ExitOptions.visible = true
 	
-func _on_exit_options_pressed() -> void:
-	$Options.visible = false
-	$ExitOptions.visible = false
-	visible = true
-
 func _on_exit_pressed() -> void:
 	get_tree().change_scene_to_file("res://title_screen.tscn")
+
+func _on_exit_options_2_pressed() -> void:
+	$Options.visible = false
+	$ExitOptions2.visible = false
+	visible = true

@@ -4,9 +4,6 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-const BASE_FOV = 75.0
-const DASH_CD = 1
-
 var input_dir : Vector2
 var direction : Vector3
 
@@ -96,18 +93,18 @@ func _dash():
 	speed_multiplier *= speed_increase
 	
 	var tween = get_tree().create_tween()
-	tween.tween_property(_camera, "fov", BASE_FOV + fov_increase, zoom_out_speed)
+	tween.tween_property(_camera, "fov", GameState.player_fov + fov_increase, zoom_out_speed)
 	
 	await get_tree().create_timer(dash_time).timeout
 	
 	tween = get_tree().create_tween()
-	tween.tween_property(_camera, "fov", BASE_FOV, zoom_in_speed)
+	tween.tween_property(_camera, "fov", GameState.player_fov, zoom_in_speed)
 	
 	speed_multiplier = SPEED
 	deceleration_lock = false
 	input_lock = false
 	
-	await get_tree().create_timer(DASH_CD).timeout
+	await get_tree().create_timer(GameState.dash_cd).timeout
 	is_dashing = false
 	
 func _apply_slam_damage(damage: float) -> void:

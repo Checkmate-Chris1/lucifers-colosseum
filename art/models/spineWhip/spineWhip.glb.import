@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c3sd5twct7c5f"
-path="res://.godot/imported/lucifersColosseum.glb-258f9c99f72b851c0dc2de8d5e635742.scn"
+uid="uid://bi38u8bm86oks"
+path="res://.godot/imported/spineWhip.glb-f84d746edf9cc71e4d31786b49e9eaad.scn"
 
 [deps]
 
-source_file="res://art/models/lucifersColosseum.glb"
-dest_files=["res://.godot/imported/lucifersColosseum.glb-258f9c99f72b851c0dc2de8d5e635742.scn"]
+source_file="res://art/models/spineWhip/spineWhip.glb"
+dest_files=["res://.godot/imported/spineWhip.glb-f84d746edf9cc71e4d31786b49e9eaad.scn"]
 
 [params]
 

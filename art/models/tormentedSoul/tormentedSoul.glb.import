@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bpv3ny1j8yewk"
-path="res://.godot/imported/entranceGate.glb-a629f94b7285a6b36ff6476664d5784f.scn"
+uid="uid://bpdn65gcisvg1"
+path="res://.godot/imported/tormentedSoul.glb-849331f024e6cda00e427a140e123872.scn"
 
 [deps]
 
-source_file="res://art/models/entranceGate.glb"
-dest_files=["res://.godot/imported/entranceGate.glb-a629f94b7285a6b36ff6476664d5784f.scn"]
+source_file="res://art/models/tormentedSoul/tormentedSoul.glb"
+dest_files=["res://.godot/imported/tormentedSoul.glb-849331f024e6cda00e427a140e123872.scn"]
 
 [params]
 
@@ -37,6 +37,14 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"Body": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://entities/enemies/tormentedSoul/tormentedSoul.tres",
+"use_external/path": "uid://cv3ffo0ncg72"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

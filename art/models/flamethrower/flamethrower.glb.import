@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bpdn65gcisvg1"
-path="res://.godot/imported/tormentedSoul.glb-3a249e2361bd178f483fb3bd6a9fe456.scn"
+uid="uid://dxogymsrb4wfr"
+path="res://.godot/imported/flamethrower.glb-f4e68e3deccdc488724eac3f2c1b6421.scn"
 
 [deps]
 
-source_file="res://art/models/tormentedSoul.glb"
-dest_files=["res://.godot/imported/tormentedSoul.glb-3a249e2361bd178f483fb3bd6a9fe456.scn"]
+source_file="res://art/models/flamethrower/flamethrower.glb"
+dest_files=["res://.godot/imported/flamethrower.glb-f4e68e3deccdc488724eac3f2c1b6421.scn"]
 
 [params]
 
@@ -37,14 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"materials": {
-"Body": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://entities/enemies/tormentedSoul/tormentedSoul.tres",
-"use_external/path": "uid://cv3ffo0ncg72"
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

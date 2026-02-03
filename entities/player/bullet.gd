@@ -6,8 +6,10 @@ extends CharacterBody3D
 func _ready() -> void:
 	pass # Replace with function body.
 
+func set_direction(dir: Vector3) -> void:
+	print('setting direction? ' + str(dir))
+
 func _physics_process(delta: float) -> void:
-	# I don't really understand how these lines work - Ayaan
 	var velocity = -global_transform.basis.z * speed
 	var collision = move_and_collide(velocity * delta)
 	if collision:

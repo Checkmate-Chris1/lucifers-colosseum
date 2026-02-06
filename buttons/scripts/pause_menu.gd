@@ -19,10 +19,12 @@ func _input(event: InputEvent) -> void:
 
 func show_menu() -> void:
 	visible = true
+	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE 
 
 func hide_menu() -> void:
 	visible = false
+	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_resume_pressed() -> void:
@@ -34,6 +36,7 @@ func _on_options_pressed() -> void:
 	$Options.visible = true
 	
 func _on_exit_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://title_screen.tscn")
 
 func _on_exit_options_2_pressed() -> void:

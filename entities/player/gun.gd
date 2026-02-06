@@ -17,6 +17,7 @@ var player: Node3D
 var fire_timer := Timer.new()
 var reload_timer := Timer.new()
 var ready_to_shoot := true
+var reloading := false
 var ammo := max_ammo
 
 
@@ -37,13 +38,13 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("fire_weapon"):
-		fire()
-	elif Input.is_action_just_pressed("reload_weapon"):
+	if Input.is_action_just_pressed("reload_weapon"):
 		reload()
+	elif Input.is_action_pressed("fire_weapon"):
+		fire()
 
 func fire() -> void:
-	if not ready_to_shoot:
+	if not ready_to_shoot or reloading:
 		return
 	if ammo <= 0:
 		# this should be replaced with some in-game notification
@@ -61,7 +62,7 @@ func fire() -> void:
 	fire_timer.start()
 
 func reload() -> void:
-	ready_to_shoot = false
+	reloading = true
 	reload_timer.start()
 
 func shoot_bullet() -> void:
@@ -93,4 +94,4 @@ func _on_fire_timer_end() -> void:
 
 func _on_reload_timer_end() -> void:
 	ammo = max_ammo
-	ready_to_shoot = true
+	reloading = false

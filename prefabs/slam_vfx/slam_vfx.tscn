@@ -7,6 +7,41 @@
 [sub_resource type="TorusMesh" id="TorusMesh_symyc"]
 inner_radius = 1.5
 
+[sub_resource type="Curve" id="Curve_lyarf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_hn028"]
+curve = SubResource("Curve_lyarf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lyarf"]
+emission_shape_scale = Vector3(1, 1, 0.2)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.2
+emission_ring_radius = 1.5
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+alpha_curve = SubResource("CurveTexture_hn028")
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyarf"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.17802903, 0.1134577, 0.11839303, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hn028"]
+material = SubResource("StandardMaterial3D_lyarf")
+radius = 0.05
+height = 0.1
+radial_segments = 8
+rings = 4
+
 [node name="SlamArea" type="Area3D" unique_id=792410280]
 script = ExtResource("1_lyarf")
 
@@ -16,5 +51,20 @@ shape = SubResource("SphereShape3D_symyc")
 
 [node name="SlamVFX" type="MeshInstance3D" parent="." unique_id=1900063603]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00023555756, 0.0024602413, -0.0006598234)
+visible = false
 transparency = 0.5
 mesh = SubResource("TorusMesh_symyc")
+
+[node name="Particles" type="GPUParticles3D" parent="." unique_id=1360069182]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.1428613, 2.3034168e-08)
+emitting = false
+amount = 200
+lifetime = 3.0
+one_shot = true
+preprocess = 3.0
+process_material = SubResource("ParticleProcessMaterial_lyarf")
+draw_pass_1 = SubResource("SphereMesh_hn028")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=824686622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56903255, 0)
+size = Vector3(100, 0.28, 100)

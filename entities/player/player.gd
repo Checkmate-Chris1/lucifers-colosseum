@@ -70,7 +70,7 @@ func _physics_process(delta: float) -> void:
 		fall_height = max(fall_height, 0)
 		is_ground_slamming = false
 		var vfx = slam_vfx.instantiate()
-		vfx.position = position + Vector3(0, -0.25, 0) # Offsets to player's feet
+		vfx.position = position # Offsets to player's feet
 		add_sibling(vfx)
 		#TODO: calculate damage using fall_height
 		_apply_slam_damage(vfx, fall_height * GameState.slam_multiplier)

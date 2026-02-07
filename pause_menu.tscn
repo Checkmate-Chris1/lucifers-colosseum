@@ -11,12 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://clr28ekgvpeuh" path="res://buttons/assets/exit.png" id="9_g7dbl"]
 [ext_resource type="Texture2D" uid="uid://dqnu6ewaiplwl" path="res://buttons/assets/exit_pressed.png" id="10_lv42l"]
 
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="PauseMenu" type="CanvasLayer" unique_id=1737170344]
 process_mode = 3
-visible = false
 script = ExtResource("1_d3xb4")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ExitOptions2" type="CanvasLayer" parent="." unique_id=1078915714]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1746859847]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.60784316)
 
-[node name="Resume" type="TextureButton" parent="ColorRect"]
+[node name="Resume" type="TextureButton" parent="ColorRect" unique_id=1441334291]
 layout_mode = 0
 offset_left = 481.0
 offset_top = 181.0
@@ -34,7 +36,7 @@ scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("2_mxa3g")
 texture_hover = ExtResource("3_mxa3g")
 
-[node name="Options" type="TextureButton" parent="ColorRect"]
+[node name="Options" type="TextureButton" parent="ColorRect" unique_id=1162035278]
 layout_mode = 0
 offset_left = 481.0
 offset_top = 268.0
@@ -48,7 +50,7 @@ texture_normal = ExtResource("3_e8sti")
 texture_hover = ExtResource("4_q2yj1")
 stretch_mode = 3
 
-[node name="Quit" type="TextureButton" parent="ColorRect"]
+[node name="Quit" type="TextureButton" parent="ColorRect" unique_id=1528145354]
 layout_mode = 0
 offset_left = 481.0
 offset_top = 355.0
@@ -62,17 +64,15 @@ texture_normal = ExtResource("5_a32ks")
 texture_hover = ExtResource("6_g7dbl")
 stretch_mode = 3
 
-[node name="Options" parent="." instance=ExtResource("8_a32ks")]
-visible = false
+[node name="Options" parent="." unique_id=1708262723 instance=ExtResource("8_a32ks")]
 
-[node name="ExitOptions" type="TextureButton" parent="."]
-visible = false
+[node name="ExitOptions2" type="TextureButton" parent="Options" unique_id=1592700142]
 z_index = 3
-offset_left = 8.0000305
-offset_top = 574.0
-offset_right = 1805.0
-offset_bottom = 1260.0
-scale = Vector2(0.1, 0.1)
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 1800.0
+offset_bottom = 689.0
+scale = Vector2(0.05, 0.05)
 size_flags_horizontal = 4
 size_flags_vertical = 2
 size_flags_stretch_ratio = 0.0
@@ -83,4 +83,5 @@ stretch_mode = 3
 [connection signal="pressed" from="ColorRect/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="ColorRect/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="ColorRect/Quit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="ExitOptions" to="." method="_on_exit_options_pressed"]
+[connection signal="pressed" from="Options/ExitOptions2" to="." method="_on_exit_options_pressed"]
+[connection signal="pressed" from="Options/ExitOptions2" to="." method="_on_exit_options_2_pressed"]

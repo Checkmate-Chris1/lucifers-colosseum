@@ -10,9 +10,8 @@ var direction : Vector3
 @export var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
 @export var TILT_UPPER_LIMIT := deg_to_rad(90.0)
 @export var CAMERA_CONTROLLER: Node3D
+@export var slam_vfx: PackedScene
 
-@onready var slam_area: Area3D = $SlamArea
-@onready var slam_visual: MeshInstance3D = $SlamArea/SlamVFX
 var is_ground_slamming := false
 var start_y = 0.0
 
@@ -70,12 +69,11 @@ func _physics_process(delta: float) -> void:
 		var fall_height = start_y - global_position.y
 		fall_height = max(fall_height, 0)
 		is_ground_slamming = false
-		slam_visual.visible = true
-		var tween := get_tree().create_tween()
-		tween.tween_interval(.2)
-		tween.tween_callback(func(): slam_visual.visible = false)
+		var vfx = slam_vfx.instantiate()
+		vfx.position = position # Offsets to player's feet
+		add_sibling(vfx)
 		#TODO: calculate damage using fall_height
-		_apply_slam_damage(fall_height * GameState.slam_multiplier)
+		_apply_slam_damage(vfx, fall_height * GameState.slam_multiplier)
 	_update_camera(delta)
 
 func _dash():
@@ -107,9 +105,10 @@ func _dash():
 	await get_tree().create_timer(GameState.dash_cd).timeout
 	is_dashing = false
 	
-func _apply_slam_damage(damage: float) -> void:
+# Damages all entities within a collider's area by damage
+func _apply_slam_damage(collider: Area3D, damage: float) -> void:
 	print("Ground slam damage:", damage)
-	var collided := slam_area.get_overlapping_bodies()
+	var collided := collider.get_overlapping_bodies()
 	for body in collided:
 		#TODO: change "take_damage" to appropriate method
 		if body.has_method("take_damage"):

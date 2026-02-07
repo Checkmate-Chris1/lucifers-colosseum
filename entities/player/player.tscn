@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bhh0cvchsg71t"]
 
 [ext_resource type="Script" uid="uid://bg4kj30duludl" path="res://entities/player/player.gd" id="1_symyc"]
+[ext_resource type="Script" uid="uid://tyx2ec34d8io" path="res://entities/player/gun.gd" id="2_abrql"]
+[ext_resource type="PackedScene" uid="uid://cufvt27bov7vy" path="res://entities/player/bullet.tscn" id="3_sglur"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_symyc"]
 radius = 0.15
@@ -11,33 +13,35 @@ height = 1.0
 [sub_resource type="TorusMesh" id="TorusMesh_symyc"]
 inner_radius = 1.5
 
-[node name="Node3D" type="Node3D" unique_id=1970085815]
-
-[node name="Player" type="CharacterBody3D" parent="." unique_id=73700003 node_paths=PackedStringArray("CAMERA_CONTROLLER") groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=959658577 node_paths=PackedStringArray("CAMERA_CONTROLLER") groups=["player"]]
 script = ExtResource("1_symyc")
 CAMERA_CONTROLLER = NodePath("CameraController")
 
-[node name="Model" type="CSGBox3D" parent="Player" unique_id=130522429]
+[node name="Model" type="CSGBox3D" parent="." unique_id=1962919220]
 size = Vector3(0.25, 1, 0.25)
 
-[node name="Collision" type="CollisionShape3D" parent="Player" unique_id=1133809991]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=815254819]
 shape = SubResource("CapsuleShape3D_symyc")
 
-[node name="CameraController" type="Node3D" parent="Player" unique_id=2076979620]
+[node name="CameraController" type="Node3D" parent="." unique_id=984148149]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266, 0)
 
-[node name="Camera" type="Camera3D" parent="Player/CameraController" unique_id=2074842044]
+[node name="Camera" type="Camera3D" parent="CameraController" unique_id=513147921]
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="Player/CameraController/Camera" unique_id=42880988]
+[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Camera" unique_id=1654652711]
 update_mode = 1
 
-[node name="SlamArea" type="Area3D" parent="Player" unique_id=85789380]
+[node name="SlamArea" type="Area3D" parent="." unique_id=2062841374]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/SlamArea" unique_id=380077815]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlamArea" unique_id=822368127]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("SphereShape3D_symyc")
 
-[node name="SlamVFX" type="MeshInstance3D" parent="Player/SlamArea" unique_id=1930925190]
+[node name="SlamVFX" type="MeshInstance3D" parent="SlamArea" unique_id=23109192]
 visible = false
 transparency = 0.87
 mesh = SubResource("TorusMesh_symyc")
+
+[node name="Gun" type="Node3D" parent="." unique_id=1993128951]
+script = ExtResource("2_abrql")
+bullet_scene = ExtResource("3_sglur")

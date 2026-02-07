@@ -13,7 +13,7 @@ func _ready() -> void:
 	animation_player.play("Idle") # idle
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	velocity = Vector3.ZERO
 	nav_agent.target_position = player.global_position
 	var next_point = nav_agent.get_next_path_position()
@@ -21,3 +21,11 @@ func _physics_process(delta: float) -> void:
 	velocity = (next_point - global_position).normalized() * SPEED
 	
 	move_and_slide()
+
+func damage(health: float):
+	$HealthComponent.current_health -= health
+	print("Tortured soul took damage: " + str($HealthComponent.current_health))
+
+func heal(health: float):
+	$HealthComponent.current_health += health
+	print("Tortured soul healed: " + str($HealthComponent.current_health))

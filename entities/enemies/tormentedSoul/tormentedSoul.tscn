@@ -1,22 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5aeg80a2dlv5"]
+[gd_scene format=3 uid="uid://c5aeg80a2dlv5"]
 
 [ext_resource type="Script" uid="uid://dih6yncrgp34v" path="res://entities/enemies/tormentedSoul/tormentedSoul.gd" id="1_nobi8"]
-[ext_resource type="PackedScene" uid="uid://bpdn65gcisvg1" path="res://art/models/tormentedSoul.glb" id="2_wcugd"]
+[ext_resource type="PackedScene" uid="uid://bpdn65gcisvg1" path="res://art/models/tormentedSoul/tormentedSoul.glb" id="2_wcugd"]
+[ext_resource type="Script" uid="uid://ss7y45t2xaj5" path="res://entities/player/health_component.gd" id="3_ikfqx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
 height = 1.5008545
 
-[node name="TormentedSoul" type="CharacterBody3D" node_paths=PackedStringArray("glb_import")]
+[node name="TormentedSoul" type="CharacterBody3D" unique_id=1160489927 node_paths=PackedStringArray("glb_import")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_nobi8")
 glb_import = NodePath("tormentedSoul")
 
-[node name="tormentedSoul" parent="." instance=ExtResource("2_wcugd")]
+[node name="tormentedSoul" parent="." unique_id=2100466426 instance=ExtResource("2_wcugd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2631723e-09, -0.37615314, 0.16616201)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1529124182]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24512684, 0)
 shape = SubResource("CapsuleShape3D_0xm2m")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1890351466]
 avoidance_enabled = true
+
+[node name="HealthComponent" type="Node3D" parent="." unique_id=448480604]
+script = ExtResource("3_ikfqx")

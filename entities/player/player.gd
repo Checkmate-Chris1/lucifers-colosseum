@@ -115,8 +115,7 @@ func _apply_slam_damage(collider: Area3D, damage: float) -> void:
 	print("Ground slam damage:", damage)
 	var collided := collider.get_overlapping_bodies()
 	for body in collided:
-		# TODO: change "take_damage" to appropriate method
-		if body.has_method("take_damage"):
+		if body.has_method("damage"):
 			body.take_damage(damage)
 	
 func _input(event: InputEvent) -> void:

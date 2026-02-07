@@ -33,14 +33,14 @@ collision_bounce = 0.2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyarf"]
 transparency = 1
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.17802903, 0.1134577, 0.11839303, 1)
+albedo_color = Color(0.20030862, 0.09737093, 0.11808785, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_hn028"]
 material = SubResource("StandardMaterial3D_lyarf")
 radius = 0.05
 height = 0.1
-radial_segments = 8
-rings = 4
+radial_segments = 4
+rings = 1
 
 [node name="SlamArea" type="Area3D" unique_id=792410280]
 script = ExtResource("1_lyarf")

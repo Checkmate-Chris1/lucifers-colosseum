@@ -1,20 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://gj71rcdkmeub"]
+[gd_scene format=3 uid="uid://gj71rcdkmeub"]
 
 [ext_resource type="PackedScene" uid="uid://jqam3rbvna36" path="res://levels/lucifers_colosseum/lucifers_colosseum.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bhh0cvchsg71t" path="res://entities/player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://h58h742lvij0" path="res://pause_menu.tscn" id="4_1bvp3"]
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=139922012]
 
-[node name="LucifersColosseum" parent="." instance=ExtResource("1_ig7tw")]
+[node name="LucifersColosseum" parent="." unique_id=1083452376 instance=ExtResource("1_ig7tw")]
 
-[node name="Node3D" parent="." groups=["player"] instance=ExtResource("2_0xm2m")]
+[node name="Node3D" parent="." unique_id=2001822429 groups=["player"] instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="TormentedSoul" parent="." instance=ExtResource("3_h2yge")]
+[node name="TormentedSoul" parent="." unique_id=1510682997 instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10507059, 1.176698, -9.535203)
 player_parent = NodePath("../Node3D")
 
-[node name="PauseMenu" parent="." instance=ExtResource("4_1bvp3")]
+[node name="PauseMenu" parent="." unique_id=141766413 instance=ExtResource("4_1bvp3")]
 layer = 4

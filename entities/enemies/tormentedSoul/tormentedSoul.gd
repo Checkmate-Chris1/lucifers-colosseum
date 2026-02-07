@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const SPEED = 2.0
-var player = null
+var player: Node = null
 
 @onready var nav_agent = $NavigationAgent3D
 @export var glb_import: Node3D
@@ -9,8 +9,7 @@ var player = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var player_root = get_node(player_parent)
-	player = player_root.get_node("Player")
+	player = get_node(player_parent)
 	
 	# Animations
 	var animation_player: AnimationPlayer = glb_import.get_node("AnimationPlayer")

@@ -1,21 +1,18 @@
 [gd_scene format=3 uid="uid://bhh0cvchsg71t"]
 
 [ext_resource type="Script" uid="uid://bg4kj30duludl" path="res://entities/player/player.gd" id="1_symyc"]
-[ext_resource type="Script" uid="uid://tyx2ec34d8io" path="res://entities/player/gun.gd" id="2_abrql"]
+[ext_resource type="Script" path="res://entities/player/gun.gd" id="2_abrql"]
+[ext_resource type="PackedScene" uid="uid://cm4wb62784fqg" path="res://prefabs/slam_vfx/slam_vfx.tscn" id="2_bls4j"]
 [ext_resource type="PackedScene" uid="uid://cufvt27bov7vy" path="res://entities/player/bullet.tscn" id="3_sglur"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_symyc"]
 radius = 0.15
 height = 1.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_symyc"]
-
-[sub_resource type="TorusMesh" id="TorusMesh_symyc"]
-inner_radius = 1.5
-
 [node name="Player" type="CharacterBody3D" unique_id=959658577 node_paths=PackedStringArray("CAMERA_CONTROLLER") groups=["player"]]
 script = ExtResource("1_symyc")
 CAMERA_CONTROLLER = NodePath("CameraController")
+slam_vfx = ExtResource("2_bls4j")
 
 [node name="Model" type="CSGBox3D" parent="." unique_id=1962919220]
 size = Vector3(0.25, 1, 0.25)
@@ -30,17 +27,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266, 0)
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Camera" unique_id=1654652711]
 update_mode = 1
-
-[node name="SlamArea" type="Area3D" parent="." unique_id=2062841374]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SlamArea" unique_id=822368127]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("SphereShape3D_symyc")
-
-[node name="SlamVFX" type="MeshInstance3D" parent="SlamArea" unique_id=23109192]
-visible = false
-transparency = 0.87
-mesh = SubResource("TorusMesh_symyc")
 
 [node name="Gun" type="Node3D" parent="." unique_id=1993128951]
 script = ExtResource("2_abrql")

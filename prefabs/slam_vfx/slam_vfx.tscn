@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cm4wb62784fqg"]
+
+[ext_resource type="Script" uid="uid://0xalbvx7ju2f" path="res://prefabs/slam_vfx/slam_vfx.gd" id="1_lyarf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_symyc"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_symyc"]
+inner_radius = 1.5
+
+[node name="SlamArea" type="Area3D" unique_id=792410280]
+script = ExtResource("1_lyarf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1520694519]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("SphereShape3D_symyc")
+
+[node name="SlamVFX" type="MeshInstance3D" parent="." unique_id=1900063603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00023555756, 0.0024602413, -0.0006598234)
+transparency = 0.5
+mesh = SubResource("TorusMesh_symyc")

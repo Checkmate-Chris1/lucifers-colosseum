@@ -4,17 +4,44 @@
 [ext_resource type="PackedScene" uid="uid://bhh0cvchsg71t" path="res://entities/player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://h58h742lvij0" path="res://pause_menu.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://ccrn5g6e0jexs" path="res://entities/enemy_spawner/enemy_spawner.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node3D" unique_id=139922012]
 
-[node name="LucifersColosseum" parent="." unique_id=1083452376 instance=ExtResource("1_ig7tw")]
+[node name="LucifersColosseum" parent="." unique_id=2142896154 instance=ExtResource("1_ig7tw")]
 
 [node name="Player" parent="." unique_id=2001822429 instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="TormentedSoul" parent="." unique_id=1510682997 instance=ExtResource("3_h2yge")]
+[node name="TormentedSoul" parent="." unique_id=1835965304 instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10507059, 1.176698, -9.535203)
-player_parent = NodePath("../Player")
 
 [node name="PauseMenu" parent="." unique_id=141766413 instance=ExtResource("4_1bvp3")]
 layer = 4
+
+[node name="WaveSystem" type="Node3D" parent="." unique_id=1101916319]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14762199, 0.8552635, -0.17344666)
+
+[node name="EnemySpawner" parent="WaveSystem" unique_id=1424002360 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.468906, 0.13358378, 23.479307)
+
+[node name="EnemySpawner2" parent="WaveSystem" unique_id=1413619877 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.97553, 0.13358378, 0.18015784)
+
+[node name="EnemySpawner3" parent="WaveSystem" unique_id=269851007 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.832043, 0.13358378, -23.516367)
+
+[node name="EnemySpawner4" parent="WaveSystem" unique_id=918050408 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1340723, 0.13358378, -33.253494)
+
+[node name="EnemySpawner5" parent="WaveSystem" unique_id=417756822 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.684221, 0.13358378, -23.62848)
+
+[node name="EnemySpawner6" parent="WaveSystem" unique_id=13987070 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.00645, 0.13358378, 0.17725861)
+
+[node name="EnemySpawner7" parent="WaveSystem" unique_id=748693329 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.577965, 0.13358378, 23.738314)
+
+[node name="EnemySpawner8" parent="WaveSystem" unique_id=663286243 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16408268, 0.13358378, 33.998848)

@@ -15,8 +15,8 @@ var direction : Vector3
 var is_ground_slamming := false
 var start_y = 0.0
 
-var input_lock := false #use this variable when the player shouldnt have control of their character
-var deceleration_lock := false #use this to temporarily stop the character from decelerating
+var input_lock := false # use this variable when the player shouldnt have control of their character
+var deceleration_lock := false # use this to temporarily stop the character from decelerating
 
 var speed_multiplier := SPEED
 var is_dashing := false
@@ -26,9 +26,13 @@ var camera_rotation := Vector3.ZERO
 var rotation_input: float
 var tilt_input: float
 
+var walking_audio_player: AudioStreamPlayer
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Events.respawn.connect(_respawn)
+	walking_audio_player = $AudioStreamPlayer
+	walking_audio_player.finished.connect(on_walking_sound_finished)
 
 func _physics_process(delta: float) -> void:
 	# DEBUG: Quit
@@ -45,7 +49,12 @@ func _physics_process(delta: float) -> void:
 		is_ground_slamming = true
 		start_y = global_position.y
 		velocity.y = 2 * -JUMP_VELOCITY
-		
+	
+	if Input.is_action_just_pressed("test_play_walking_sound"):
+		walking_audio_player.play()
+	if Input.is_action_just_pressed("start_walking"):
+		walking_audio_player.play()
+	
 	var is_moving_horizontal := (velocity.x != 0) or (velocity.z != 0)
 	if Input.is_action_just_pressed("dash") and not is_dashing and is_moving_horizontal:
 		_dash()
@@ -119,6 +128,7 @@ func _input(event: InputEvent) -> void:
 	if mouse_input:
 		rotation_input = -event.relative.x
 		tilt_input = -event.relative.y
+	
 		
 func _update_camera(delta: float) -> void:
 	camera_rotation.x += tilt_input * delta * GameState.mouse_sensitivity
@@ -136,3 +146,7 @@ func _update_camera(delta: float) -> void:
 
 func _respawn() -> void:
 	get_tree().reload_current_scene()
+
+func on_walking_sound_finished():
+	if Input.is_action_pressed("start_walking"):
+		walking_audio_player.play()

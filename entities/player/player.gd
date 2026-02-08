@@ -50,9 +50,8 @@ func _physics_process(delta: float) -> void:
 		start_y = global_position.y
 		velocity.y = 2 * -JUMP_VELOCITY
 	
-	if Input.is_action_just_pressed("test_play_walking_sound"):
-		walking_audio_player.play()
-	if Input.is_action_just_pressed("start_walking"):
+	if (Input.is_action_just_pressed("move_forward") or Input.is_action_just_pressed("move_left") or 
+		Input.is_action_just_pressed("move_backward") or Input.is_action_just_pressed("move_right")):
 		walking_audio_player.play()
 	
 	var is_moving_horizontal := (velocity.x != 0) or (velocity.z != 0)

@@ -112,11 +112,11 @@ func _dash():
 	
 # Damages all entities within a collider's area by damage
 func _apply_slam_damage(collider: Area3D, damage: float) -> void:
-	print("Ground slam damage:", damage)
+	await (get_tree().physics_frame)
 	var collided := collider.get_overlapping_bodies()
 	for body in collided:
-		if body.has_method("damage"):
-			body.take_damage(damage)
+		if body.is_in_group("entity"):
+			body.find_child("HealthComponent").current_health -= damage
 	
 func _input(event: InputEvent) -> void:
 	mouse_input = event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED

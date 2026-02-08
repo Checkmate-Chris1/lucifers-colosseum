@@ -1,6 +1,12 @@
 extends CharacterBody3D
 
-const SPEED = 2.0
+
+var player: Node = null
+
+@export var SPEED: float = 2.0
+@export var ATTACK_DAMAGE: float = 15.0 ## The base attack damage
+@export var ATTACK_DELAY: float = 2.0 ## The delay between attacks in seconds
+var attack_ready := true ## If another attack is ready
 
 @onready var nav_agent = $NavigationAgent3D
 @export var glb_import: Node3D
@@ -21,11 +27,16 @@ func _physics_process(delta: float) -> void:
 	velocity = (next_point - global_position).normalized() * SPEED
 	
 	move_and_slide()
-
-func damage(health: float):
-	$HealthComponent.current_health -= health
-	print("Tortured soul took damage: " + str($HealthComponent.current_health))
-
-func heal(health: float):
-	$HealthComponent.current_health += health
-	print("Tortured soul healed: " + str($HealthComponent.current_health))
+	
+func _process(delta: float) -> void:
+	# Attempt to attack
+	if attack_ready:
+		attack()
+	
+func attack():
+	var entities = $AttackArea.get_overlapping_bodies()
+	for entity in entities:
+		if entity.is_in_group("player"):
+			entity.find_child("HealthComponent").current_health -= ATTACK_DAMAGE
+			attack_ready = false
+			get_tree().create_timer(ATTACK_DELAY).timeout.connect(func(): attack_ready = true)

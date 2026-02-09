@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://bg6eql8hktwp5"]
 
-[ext_resource type="Script" uid="uid://hn18ymmgjqwq" path="res://levels/common/wave_system/TEMP.gd" id="1_qv822"]
 [ext_resource type="PackedScene" uid="uid://ccrn5g6e0jexs" path="res://levels/common/enemy_spawner/enemy_spawner.tscn" id="1_vdgd7"]
-[ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="2_dojko"]
 
 [node name="WaveSystem" type="Node3D" unique_id=2122809065]
-script = ExtResource("1_qv822")
-ENEMY = ExtResource("2_dojko")
 
 [node name="EnemySpawner" parent="." unique_id=1413619877 instance=ExtResource("1_vdgd7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.468906, 0.13358378, 23.479307)

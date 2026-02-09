@@ -14,6 +14,6 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		var collider = collision.get_collider()
 		if collider.is_in_group("entity"):
-			collider.find_child("HealthComponent").current_health -= damage
+			collider.damage(damage)
 		# bullet is deleted on collision
 		queue_free()

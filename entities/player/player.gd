@@ -1,5 +1,7 @@
-extends CharacterBody3D
+extends Entity
 
+
+class_name Player
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -31,6 +33,7 @@ var tilt_input: float
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Events.respawn.connect(_respawn)
+	died.connect(Events.game_over.emit) # Relays player death as game over
 
 func _physics_process(delta: float) -> void:
 	# DEBUG: Quit
@@ -115,8 +118,8 @@ func _apply_slam_damage(collider: Area3D, damage: float) -> void:
 	await (get_tree().physics_frame)
 	var collided := collider.get_overlapping_bodies()
 	for body in collided:
-		if body.is_in_group("entity"):
-			body.find_child("HealthComponent").current_health -= damage
+		if body is Entity:
+			body.damage(damage)
 	
 func _input(event: InputEvent) -> void:
 	mouse_input = event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED

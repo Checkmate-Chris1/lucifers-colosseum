@@ -7,3 +7,6 @@ signal respawn ## Respawn the player back to the starting position
 signal start_game ## Starts/restarts the main game
 signal toggle_pause ## Triggered by pause UI
 signal game_over ## Signal when the game is over by death
+
+func _init() -> void:
+	game_over.connect(func(): print("Game ended"))

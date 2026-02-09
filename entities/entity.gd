@@ -1,17 +1,20 @@
-extends Node
+extends CharacterBody3D
+
 
 class_name Entity
 
+signal died
+
 @export var HEALTH: float = 100.0
-@export var SPEED: float = 2.0
-@export var ATTACK_DAMAGE: float = 15.0 ## The base attack damage
-@export var ATTACK_DELAY: float = 2.0 ## The delay between attacks in seconds
+var current_health: float = HEALTH:
+	set(value):
+		current_health = clamp(value, 0, HEALTH)
+		if current_health <= 0:
+			died.emit()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func damage(health: float):
+	current_health -= health
+	print(name, " just got damaged: ", current_health)
+	
+func heal(health: float):
+	current_health += health

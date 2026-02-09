@@ -1,8 +1,6 @@
 extends CharacterBody3D
 
 
-var player: Node = null
-
 @export var SPEED: float = 2.0
 @export var ATTACK_DAMAGE: float = 15.0 ## The base attack damage
 @export var ATTACK_DELAY: float = 2.0 ## The delay between attacks in seconds

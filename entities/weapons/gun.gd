@@ -13,11 +13,16 @@ enum WeaponType {PROJECTILE, RAYCAST}
 @export var range := 99 # larger than the diameter of the arena
 
 # set gun stats here
+# max ammos
 @export var max_proj_ammo := 10
 @export var max_raycast_ammo := 10
 
 var proj_ammo := max_proj_ammo
 var raycast_ammo := max_raycast_ammo
+
+# gun models
+@export var railgun_scene: PackedScene
+var railgun_model: Node3D
 
 var player: Node3D
 var fire_timer := Timer.new()
@@ -31,6 +36,11 @@ var reloading := false
 func _ready() -> void:
 	player = get_parent()
 	
+	if railgun_scene:
+		railgun_model = railgun_scene.instantiate()
+		add_child(railgun_model)
+		set_weapon_visibility()
+	
 	add_child(fire_timer)
 	fire_timer.wait_time = fire_delay
 	fire_timer.one_shot = true
@@ -43,13 +53,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("switch_proj"):
-		weapon_type = WeaponType.PROJECTILE
-		print("Switched to PROJECTILE mode")
-		reloading = false
+		switch_weapons(WeaponType.PROJECTILE)
 	elif Input.is_action_just_pressed("switch_ray"):
-		weapon_type = WeaponType.RAYCAST
-		print("Switched to RAYCAST mode")
-		reloading = false
+		switch_weapons(WeaponType.RAYCAST)
 	elif Input.is_action_just_pressed("reload_weapon"):
 		reload()
 	elif Input.is_action_pressed("fire_weapon"):
@@ -75,6 +81,20 @@ func fire() -> void:
 	
 	ready_to_shoot = false
 	fire_timer.start()
+
+func switch_weapons(weapon: WeaponType) -> void:
+	if weapon == WeaponType.PROJECTILE:
+		weapon_type = WeaponType.PROJECTILE
+		print("Switched to PROJECTILE mode")
+	elif weapon == WeaponType.RAYCAST:
+		weapon_type = WeaponType.RAYCAST
+		print("Switched to RAYCAST mode")
+	reloading = false
+	set_weapon_visibility()
+
+func set_weapon_visibility() -> void:
+	if railgun_model:
+		railgun_model.visible = (weapon_type == WeaponType.RAYCAST)
 
 func reload() -> void:
 	reloading = true

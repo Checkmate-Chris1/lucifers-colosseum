@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dobb620b3esy1"]
+
+[ext_resource type="PackedScene" uid="uid://cmcmjmy2j3ybo" path="res://art/models/railgun/railgun.glb" id="1_8fkru"]
+
+[node name="Railgun" type="Node3D"]
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+
+[node name="railgun" parent="." instance=ExtResource("1_8fkru")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.40266347, 0.14601701, -0.5476433)

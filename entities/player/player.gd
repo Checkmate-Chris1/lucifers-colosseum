@@ -50,8 +50,7 @@ func _physics_process(delta: float) -> void:
 		start_y = global_position.y
 		velocity.y = 2 * -JUMP_VELOCITY
 	
-	if (Input.is_action_just_pressed("move_forward") or Input.is_action_just_pressed("move_left") or 
-		Input.is_action_just_pressed("move_backward") or Input.is_action_just_pressed("move_right")):
+	if is_walking() and not walking_audio_player.playing:
 		walking_audio_player.play()
 	
 	var is_moving_horizontal := (velocity.x != 0) or (velocity.z != 0)
@@ -146,6 +145,11 @@ func _update_camera(delta: float) -> void:
 func _respawn() -> void:
 	get_tree().reload_current_scene()
 
+func is_walking():
+	return ((Input.is_action_pressed("move_forward") or Input.is_action_pressed("move_backward") or 
+			Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")) and 
+			is_on_floor())
+
 func on_walking_sound_finished():
-	if Input.is_action_pressed("start_walking"):
+	if is_walking():
 		walking_audio_player.play()

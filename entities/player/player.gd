@@ -59,13 +59,13 @@ func _physics_process(delta: float) -> void:
 	if not input_lock:
 		input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 		direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-
+	
 	if direction:
 		velocity.x = direction.x * speed_multiplier
 		velocity.z = direction.z * speed_multiplier
 		
 	elif not deceleration_lock:
-		#allows us to not decelerate while as long as the deceleration lock is true
+		# allows us to not decelerate while as long as the deceleration lock is true
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
@@ -78,12 +78,12 @@ func _physics_process(delta: float) -> void:
 		var vfx = slam_vfx.instantiate()
 		vfx.position = position # Offsets to player's feet
 		add_sibling(vfx)
-		#TODO: calculate damage using fall_height
+		# TODO: calculate damage using fall_height
 		_apply_slam_damage(vfx, fall_height * GameState.slam_multiplier)
 	_update_camera(delta)
 
 func _dash():
-	# TO DO: ADD FOV adjustments during the dash
+	# TODO: ADD FOV adjustments during the dash
 	var _camera := get_viewport().get_camera_3d()
 	var zoom_out_speed := 0.1   # Adjusts how QUICKLY fov zooms in when dashing
 	var zoom_in_speed  := 0.25  # Adjusts how QUICKLY fov zooms out when dashing
@@ -116,7 +116,7 @@ func _apply_slam_damage(collider: Area3D, damage: float) -> void:
 	print("Ground slam damage:", damage)
 	var collided := collider.get_overlapping_bodies()
 	for body in collided:
-		#TODO: change "take_damage" to appropriate method
+		# TODO: change "take_damage" to appropriate method
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
 	
@@ -145,8 +145,7 @@ func _respawn() -> void:
 	get_tree().reload_current_scene()
 
 func is_walking():
-	return ((Input.is_action_pressed("move_forward") or Input.is_action_pressed("move_backward") or 
-			Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")) and 
-			is_on_floor() and speed_multiplier == SPEED)
+	return ((velocity.x != 0 or velocity.z != 0) and is_on_floor() and 
+			speed_multiplier == SPEED)
 			# the last statement is to check if the player is not dashing
 			# is_dashing is not a reliable variable for this

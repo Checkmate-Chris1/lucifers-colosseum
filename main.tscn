@@ -7,14 +7,13 @@
 
 [node name="Main" type="Node3D" unique_id=139922012]
 
-[node name="LucifersColosseum" parent="." unique_id=1083452376 instance=ExtResource("1_ig7tw")]
+[node name="LucifersColosseum" parent="." unique_id=2142896154 instance=ExtResource("1_ig7tw")]
 
 [node name="Player" parent="." unique_id=2001822429 instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="TormentedSoul" parent="." unique_id=1510682997 instance=ExtResource("3_h2yge")]
+[node name="TormentedSoul" parent="." unique_id=1835965304 instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10507059, 1.176698, -9.535203)
-player_parent = NodePath("../Player")
 
 [node name="PauseMenu" parent="." unique_id=141766413 instance=ExtResource("4_1bvp3")]
 layer = 4

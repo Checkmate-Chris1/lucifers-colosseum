@@ -15,8 +15,8 @@ var direction : Vector3
 var is_ground_slamming := false
 var start_y = 0.0
 
-var input_lock := false #use this variable when the player shouldnt have control of their character
-var deceleration_lock := false #use this to temporarily stop the character from decelerating
+var input_lock := false # use this variable when the player shouldnt have control of their character
+var deceleration_lock := false # use this to temporarily stop the character from decelerating
 
 var speed_multiplier := SPEED
 var is_dashing := false
@@ -25,6 +25,8 @@ var mouse_input := false
 var camera_rotation := Vector3.ZERO
 var rotation_input: float
 var tilt_input: float
+
+@onready var walking_audio_player: AudioStreamPlayer = $WalkingSFX
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -45,7 +47,10 @@ func _physics_process(delta: float) -> void:
 		is_ground_slamming = true
 		start_y = global_position.y
 		velocity.y = 2 * -JUMP_VELOCITY
-		
+	
+	if is_walking() and not walking_audio_player.playing:
+		walking_audio_player.play()
+	
 	var is_moving_horizontal := (velocity.x != 0) or (velocity.z != 0)
 	if Input.is_action_just_pressed("dash") and not is_dashing and is_moving_horizontal:
 		_dash()
@@ -53,13 +58,13 @@ func _physics_process(delta: float) -> void:
 	if not input_lock:
 		input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 		direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-
+	
 	if direction:
 		velocity.x = direction.x * speed_multiplier
 		velocity.z = direction.z * speed_multiplier
 		
 	elif not deceleration_lock:
-		#allows us to not decelerate while as long as the deceleration lock is true
+		# allows us to not decelerate while as long as the deceleration lock is true
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
@@ -72,12 +77,12 @@ func _physics_process(delta: float) -> void:
 		var vfx = slam_vfx.instantiate()
 		vfx.position = position # Offsets to player's feet
 		add_sibling(vfx)
-		#TODO: calculate damage using fall_height
+		# TODO: calculate damage using fall_height
 		_apply_slam_damage(vfx, fall_height * GameState.slam_multiplier)
 	_update_camera(delta)
 
 func _dash():
-	# TO DO: ADD FOV adjustments during the dash
+	# TODO: ADD FOV adjustments during the dash
 	var _camera := get_viewport().get_camera_3d()
 	var zoom_out_speed := 0.1   # Adjusts how QUICKLY fov zooms in when dashing
 	var zoom_in_speed  := 0.25  # Adjusts how QUICKLY fov zooms out when dashing
@@ -110,7 +115,7 @@ func _apply_slam_damage(collider: Area3D, damage: float) -> void:
 	print("Ground slam damage:", damage)
 	var collided := collider.get_overlapping_bodies()
 	for body in collided:
-		#TODO: change "take_damage" to appropriate method
+		# TODO: change "take_damage" to appropriate method
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
 	
@@ -119,6 +124,7 @@ func _input(event: InputEvent) -> void:
 	if mouse_input:
 		rotation_input = -event.relative.x
 		tilt_input = -event.relative.y
+	
 		
 func _update_camera(delta: float) -> void:
 	camera_rotation.x += tilt_input * delta * GameState.mouse_sensitivity
@@ -136,3 +142,9 @@ func _update_camera(delta: float) -> void:
 
 func _respawn() -> void:
 	get_tree().reload_current_scene()
+
+func is_walking():
+	return ((velocity.x != 0 or velocity.z != 0) and is_on_floor() and 
+			speed_multiplier == SPEED)
+			# the last statement is to check if the player is not dashing
+			# is_dashing is not a reliable variable for this

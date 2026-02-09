@@ -83,6 +83,7 @@ func shoot_ray() -> void:
 	# this returns a dictionary of info on the point that the ray collided with, including its 
 	# global position and the type of object the collision was with
 	var result = space_state.intersect_ray(query)
+	print(result["collider"])
 	
 	
 

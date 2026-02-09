@@ -34,5 +34,5 @@ update_mode = 1
 [node name="Gun" type="Node3D" parent="."]
 script = ExtResource("2_abrql")
 weapons = Array[ExtResource("4_8fjmc")]([ExtResource("5_qiwj3"), ExtResource("6_26q78")])
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=700354145]
+[node name="WalkingSFX" type="AudioStreamPlayer" parent="." unique_id=700354145]
 stream = ExtResource("5_fkugw")

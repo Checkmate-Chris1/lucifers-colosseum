@@ -26,12 +26,11 @@ var camera_rotation := Vector3.ZERO
 var rotation_input: float
 var tilt_input: float
 
-var walking_audio_player: AudioStreamPlayer
+@onready var walking_audio_player: AudioStreamPlayer = $WalkingSFX
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Events.respawn.connect(_respawn)
-	walking_audio_player = $AudioStreamPlayer
 
 func _physics_process(delta: float) -> void:
 	# DEBUG: Quit

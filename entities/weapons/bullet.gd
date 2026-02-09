@@ -17,7 +17,3 @@ func _physics_process(delta: float) -> void:
 			collider.take_damage(damage)
 		# bullet is deleted on collision
 		queue_free()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

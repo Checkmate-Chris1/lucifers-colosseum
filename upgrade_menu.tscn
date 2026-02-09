@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://colskv5gfdw7y"]
+
+[ext_resource type="Script" uid="uid://crki6mjkarivg" path="res://buttons/scripts/upgrade_menu.gd" id="1_qvtwy"]
+[ext_resource type="PackedScene" uid="uid://yii422p2boc8" path="res://upgrade_slot.tscn" id="2_skwsl"]
+
+[node name="UpgradeMenu" type="CanvasLayer" unique_id=600466742]
+script = ExtResource("1_qvtwy")
+slot_scene = ExtResource("2_skwsl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1483204558]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2136073036]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=804933776]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1111884232]
+layout_mode = 2
+text = "SELECT YOUR UPGRADE!"
+horizontal_alignment = 1
+
+[node name="SlotContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1851799528]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer" unique_id=114883944]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2

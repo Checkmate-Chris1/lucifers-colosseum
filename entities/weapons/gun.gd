@@ -10,7 +10,7 @@ enum WeaponType {PROJECTILE, RAYCAST}
 @export var fire_delay := 0.2
 @export var reload_delay := 1
 @export var max_ammo := 10
-@export var weapon_type := WeaponType.RAYCAST
+@export var weapon_type := WeaponType.PROJECTILE
 @export var range := 99 # larger than the diameter of the arena
 
 var player: Node3D
@@ -69,6 +69,7 @@ func shoot_bullet() -> void:
 	var bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(bullet)
 	bullet.global_transform = player.get_node('CameraController/Camera').global_transform
+	bullet.position += -bullet.global_transform.basis.z * 0.5  # offset forward to avoid hitting player
 
 func shoot_ray() -> void:
 	var space_state = get_world_3d().direct_space_state

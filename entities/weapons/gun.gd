@@ -9,16 +9,22 @@ enum WeaponType {PROJECTILE, RAYCAST}
 @export var bullet_scene: PackedScene
 @export var fire_delay := 0.2
 @export var reload_delay := 1
-@export var max_ammo := 10
 @export var weapon_type := WeaponType.PROJECTILE
 @export var range := 99 # larger than the diameter of the arena
+
+# set gun stats here
+@export var max_proj_ammo := 10
+@export var max_raycast_ammo := 10
+
+var proj_ammo := max_proj_ammo
+var raycast_ammo := max_raycast_ammo
 
 var player: Node3D
 var fire_timer := Timer.new()
 var reload_timer := Timer.new()
 var ready_to_shoot := true
 var reloading := false
-var ammo := max_ammo
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,10 +41,16 @@ func _ready() -> void:
 	reload_timer.one_shot = true
 	reload_timer.timeout.connect(_on_reload_timer_end)
 
-
-
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("reload_weapon"):
+	if Input.is_action_just_pressed("switch_proj"):
+		weapon_type = WeaponType.PROJECTILE
+		print("Switched to PROJECTILE mode")
+		reloading = false
+	elif Input.is_action_just_pressed("switch_ray"):
+		weapon_type = WeaponType.RAYCAST
+		print("Switched to RAYCAST mode")
+		reloading = false
+	elif Input.is_action_just_pressed("reload_weapon"):
 		reload()
 	elif Input.is_action_pressed("fire_weapon"):
 		fire()
@@ -46,18 +58,21 @@ func _process(delta: float) -> void:
 func fire() -> void:
 	if not ready_to_shoot or reloading:
 		return
-	if ammo <= 0:
-		# this should be replaced with some in-game notification
-		# or maybe this auto-triggers a reload
-		print('out of ammo')
-		return
 	
 	if weapon_type == WeaponType.PROJECTILE:
+		if proj_ammo <= 0:
+			print('out of ammo')
+			return
+		proj_ammo -= 1
 		shoot_bullet()
 	elif weapon_type == WeaponType.RAYCAST:
+		if raycast_ammo <= 0:
+			print('out of ammo')
+			return
+		raycast_ammo -= 1
 		shoot_ray()
 		
-	ammo -= 1
+	
 	ready_to_shoot = false
 	fire_timer.start()
 
@@ -86,14 +101,12 @@ func shoot_ray() -> void:
 	var result = space_state.intersect_ray(query)
 	print(result["collider"])
 	
-	
-
-
-
-
 func _on_fire_timer_end() -> void:
 	ready_to_shoot = true
 
 func _on_reload_timer_end() -> void:
-	ammo = max_ammo
+	if weapon_type == WeaponType.PROJECTILE:
+		proj_ammo = max_proj_ammo
+	if weapon_type == WeaponType.RAYCAST:
+		raycast_ammo = max_raycast_ammo
 	reloading = false

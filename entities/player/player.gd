@@ -148,7 +148,9 @@ func _respawn() -> void:
 func is_walking():
 	return ((Input.is_action_pressed("move_forward") or Input.is_action_pressed("move_backward") or 
 			Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")) and 
-			is_on_floor())
+			is_on_floor() and speed_multiplier == SPEED)
+			# the last statement is to check if the player is not dashing
+			# is_dashing is not a reliable variable for this
 
 func on_walking_sound_finished():
 	if is_walking():

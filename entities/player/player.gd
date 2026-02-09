@@ -32,7 +32,6 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Events.respawn.connect(_respawn)
 	walking_audio_player = $AudioStreamPlayer
-	walking_audio_player.finished.connect(on_walking_sound_finished)
 
 func _physics_process(delta: float) -> void:
 	# DEBUG: Quit
@@ -151,7 +150,3 @@ func is_walking():
 			is_on_floor() and speed_multiplier == SPEED)
 			# the last statement is to check if the player is not dashing
 			# is_dashing is not a reliable variable for this
-
-func on_walking_sound_finished():
-	if is_walking():
-		walking_audio_player.play()

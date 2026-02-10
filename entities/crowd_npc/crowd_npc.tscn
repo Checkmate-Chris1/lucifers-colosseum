@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dlfmkci4185ie"]
+
+[ext_resource type="Script" uid="uid://dxkar01bidm1g" path="res://entities/crowd_npc/crowd_npc.gd" id="1_n81u1"]
+
+[node name="CrowdNPC" type="Node3D" unique_id=474279312]
+script = ExtResource("1_n81u1")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=983778314]

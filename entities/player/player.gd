@@ -118,7 +118,7 @@ func _apply_slam_damage(collider: Area3D, damage: float) -> void:
 	await (get_tree().physics_frame)
 	var collided := collider.get_overlapping_bodies()
 	for body in collided:
-		if body is Entity:
+		if body is Enemy:
 			body.damage(damage)
 	
 func _input(event: InputEvent) -> void:

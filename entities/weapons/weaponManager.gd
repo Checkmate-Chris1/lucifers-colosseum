@@ -158,13 +158,13 @@ func shoot_ray() -> void:
 	var origin = cam.global_position
 	var end = origin + cam.project_ray_normal(mouse_pos) * current_weapon.range
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
-	query.collide_with_areas = true
+	query.collide_with_bodies = true
 	
 	var result = space_state.intersect_ray(query)
 	if result:
 		var collider = result.get("collider")
-		if collider and collider.has_method("take_damage"):
-			collider.take_damage(10)
+		if collider is Enemy:
+			collider.damage(current_weapon.bullet_damage)
 		print("Hit: %s" % collider)
 
 

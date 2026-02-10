@@ -14,7 +14,6 @@ var current_health: float = HEALTH:
 
 func damage(health: float):
 	current_health -= health
-	print(name, " just got damaged: ", current_health)
 	
 func heal(health: float):
 	current_health += health

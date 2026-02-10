@@ -1,6 +1,7 @@
 class_name Weapon extends Resource
 
 @export var weapon_name: String
+@export var bullet_damage: float = 10.0
 @export var ammo: int
 @export var max_ammo: int
 @export var fire_delay: float = 0.2

@@ -30,6 +30,7 @@ import/blender/enabled=false
 [global_group]
 
 player="Only attached to the player object"
+entity="Attached to all damageable entities"
 
 [input]
 

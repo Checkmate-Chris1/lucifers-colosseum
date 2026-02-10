@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_script")
 weapon_name = "Railgun"
+bullet_damage = 60.0
 ammo = 5
 max_ammo = 5
 fire_delay = 2.0

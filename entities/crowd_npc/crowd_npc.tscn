@@ -6,3 +6,4 @@
 script = ExtResource("1_n81u1")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=983778314]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)

@@ -40,3 +40,4 @@ weapons = Array[ExtResource("4_8fjmc")]([ExtResource("5_qiwj3"), ExtResource("6_
 
 [node name="WalkingSFX" type="AudioStreamPlayer" parent="." unique_id=700354145]
 stream = ExtResource("5_fkugw")
+volume_db = -20.0

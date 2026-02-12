@@ -16,12 +16,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Lucifer's Colosseum"
 run/main_scene="uid://gj71rcdkmeub"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
 
 Events="*res://globals/Events.gd"
 GameState="*res://globals/GameState.gd"
+BackgroundMusicPlayer="*uid://b5i6xgo21g4l5"
 
 [filesystem]
 

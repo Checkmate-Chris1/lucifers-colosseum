@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://21aaik3h3qle"]
+
+[ext_resource type="Script" uid="uid://dnjwpqahula3n" path="res://entities/enemies/fallenAngel/fallenAngel.gd" id="1_y23fj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
+radius = 0.8535156
+height = 1.7070313
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ikfqx"]
+size = Vector3(0.5070801, 1, 5.2845)
+
+[node name="FallenAngel" type="CharacterBody3D" unique_id=956846808 node_paths=PackedStringArray("attack_collision_box", "enemy_model") groups=["entity"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_y23fj")
+SPEED = 1.0
+ATTACK_DAMAGE = 40.0
+ATTACK_DELAY = 2.3
+attack_collision_box = NodePath("AttackArea")
+enemy_model = NodePath("Model")
+HEALTH = 800.0
+
+[node name="Model" type="CSGBox3D" parent="." unique_id=950500530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6477022, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1529124182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.642047, 0)
+shape = SubResource("CapsuleShape3D_0xm2m")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1890351466]
+avoidance_enabled = true
+
+[node name="AttackArea" type="Area3D" parent="." unique_id=458214622]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 2.3606994e-08, 3.6477022, -0.54006505)
+collision_layer = 2
+
+[node name="AttackShape" type="CollisionShape3D" parent="AttackArea" unique_id=781876274]
+transform = Transform3D(1, 0, 0, -7.1054274e-15, 1, -9.553428e-16, 7.1054274e-15, -9.553428e-16, 1, 1.7763568e-15, -0.16700011, -1.9967554)
+shape = SubResource("BoxShape3D_ikfqx")

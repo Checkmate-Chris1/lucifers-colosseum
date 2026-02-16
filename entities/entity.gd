@@ -6,7 +6,7 @@ class_name Entity
 signal died
 
 @export var HEALTH: float = 100.0
-var current_health: float = HEALTH:
+@onready var current_health: float = HEALTH:
 	set(value):
 		current_health = clamp(value, 0, HEALTH)
 		if current_health <= 0:

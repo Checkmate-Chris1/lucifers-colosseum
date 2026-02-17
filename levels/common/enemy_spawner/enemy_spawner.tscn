@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://ccrn5g6e0jexs"]
-
-[ext_resource type="Script" uid="uid://cfxoojnkwb8ug" path="res://levels/common/enemy_spawner/enemy_spawner.gd" id="1_4ieyf"]
-
-[node name="EnemySpawner" type="Marker3D" unique_id=1413619877]
-gizmo_extents = 2.0
-script = ExtResource("1_4ieyf")

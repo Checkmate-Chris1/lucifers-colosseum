@@ -9,7 +9,6 @@ script = ExtResource("1_qv822")
 enemy_weights = Dictionary[PackedScene, float]({
 ExtResource("2_dojko"): 1.0
 })
-TEMP = ExtResource("2_dojko")
 
 [node name="EnemySpawner" type="Marker3D" parent="." unique_id=564344947]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.976, 0, 0)

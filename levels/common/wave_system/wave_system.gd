@@ -7,24 +7,23 @@ extends Node3D
 
 var enemy_spawners: Array[EnemySpawner] = []
 
-# Called when the node enters the scene tree for the first time.
-@export var TEMP: PackedScene
 func _ready() -> void:
-	Events.start_game.connect(spawn_wave)
-	for child in get_children():
-		if child is EnemySpawner:
-			enemy_spawners.append(child)
-	enemy_spawners[0].spawn_enemy(TEMP)
+	_update_spawners()
+	spawn_wave(3) # Fixed enemy number for now
 
-func spawn_wave() -> void:
-	var enemy_count = 3 # Fixed enemy number for now
-	for __ in range(enemy_count):
+func spawn_wave(enemy_count: int) -> void:
+	if enemy_count == 0:
+		GameState.wave_number += 1
+	else:
 		_spawn_enemy()
+		# Spawn next enemy after `5/GameState.wave_number` seconds
+		get_tree().create_timer(1/GameState.wave_number).timeout.connect(func(): spawn_wave(enemy_count-1))
 		
 func _spawn_enemy() -> void:
 	var spawner_index = randi() % len(enemy_spawners)
 	var selected_enemy = _get_from_weighted_values(enemy_weights)
-	enemy_spawners[0].spawn_enemy(TEMP)
+	print("Spawning? " + str(is_inside_tree()))
+	enemy_spawners[spawner_index].spawn_enemy(selected_enemy)
 
 func _get_from_weighted_values(weight_dict: Dictionary):
 	var total_weight = _sum(weight_dict.values())
@@ -36,6 +35,12 @@ func _get_from_weighted_values(weight_dict: Dictionary):
 		current_weight += weight_dict[enemy_scene]
 		if current_weight >= pick:
 			return enemy_scene
+
+func _update_spawners() -> void:
+	enemy_spawners = []
+	for child in get_children():
+		if child is EnemySpawner:
+			enemy_spawners.append(child)
 
 func _sum(array: Array):
 	var sum = 0

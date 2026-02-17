@@ -9,7 +9,9 @@ var enemy_spawners: Array[EnemySpawner] = []
 
 func _ready() -> void:
 	_update_spawners()
-	spawn_wave(3) # Fixed enemy number for now
+	# Enemy count goes 3, 5, 6, 7, 8, etc.
+	spawn_wave(3)
+	get_tree().create_timer(wave_length).timeout.connect(func(): spawn_wave(3+GameState.wave_number))
 
 func spawn_wave(enemy_count: int) -> void:
 	if enemy_count == 0:

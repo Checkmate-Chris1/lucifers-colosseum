@@ -15,19 +15,18 @@ func _ready() -> void:
 func spawn_wave(enemy_count: int) -> void:
 	GameState.wave_number += 1
 	Events.wave_start.emit()
-	get_tree().create_timer(wave_length).timeout.connect(Events.wave_end.emit)
+	get_tree().create_timer(wave_length, false).timeout.connect(Events.wave_end.emit)
 	for __ in range(enemy_count):
 		_spawn_enemy()
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1, false).timeout
 		
 func _on_wave_end() -> void:
-	await get_tree().create_timer(wave_grace_period).timeout
+	await get_tree().create_timer(wave_grace_period, false).timeout
 	# Enemy count goes 3, 5, 6, 7, 8, etc.
 	spawn_wave(3+GameState.wave_number)
 		
 func _spawn_enemy() -> void:
 	var spawner_index = randi() % len(enemy_spawners)
-	print(spawner_index)
 	var selected_enemy = _get_from_weighted_values(enemy_weights)
 	enemy_spawners[spawner_index].spawn_enemy(selected_enemy)
 

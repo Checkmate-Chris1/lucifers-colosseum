@@ -18,7 +18,7 @@ func spawn_wave(enemy_count: int) -> void:
 	get_tree().create_timer(wave_length, false).timeout.connect(Events.wave_end.emit)
 	for __ in range(enemy_count):
 		_spawn_enemy()
-		await get_tree().create_timer(1, false).timeout
+		await get_tree().create_timer(5.0/enemy_count, false).timeout
 		
 func _on_wave_end() -> void:
 	await get_tree().create_timer(wave_grace_period, false).timeout

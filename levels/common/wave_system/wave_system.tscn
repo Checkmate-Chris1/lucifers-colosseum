@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://beqoeyeyebp6e" path="res://levels/common/wave_system/wave_system.gd" id="1_qv822"]
 [ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="2_dojko"]
-[ext_resource type="Script" uid="uid://cfxoojnkwb8ug" path="res://levels/common/wave_system/enemy_spawner.gd" id="2_qv822"]
+[ext_resource type="Script" path="res://levels/common/wave_system/enemy_spawner.gd" id="4_xsmqx"]
 
 [node name="WaveSystem" type="Node3D" unique_id=2122809065]
 script = ExtResource("1_qv822")
@@ -10,50 +10,50 @@ enemy_weights = Dictionary[PackedScene, float]({
 ExtResource("2_dojko"): 1.0
 })
 
-[node name="EnemySpawner" type="Marker3D" parent="." unique_id=564344947]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.976, 0, 0)
+[node name="EnemySpawner" type="Marker3D" parent="." unique_id=609764301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.976)
 gizmo_extents = 2.0
-script = ExtResource("2_qv822")
+script = ExtResource("4_xsmqx")
 metadata/_custom_type_script = "uid://cfxoojnkwb8ug"
 
-[node name="EnemySpawner2" type="Marker3D" parent="." unique_id=608518567]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 24.02466, 0, -24.02466)
+[node name="EnemySpawner2" type="Marker3D" parent="." unique_id=1104438720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.976)
 gizmo_extents = 2.0
-script = ExtResource("2_qv822")
+script = ExtResource("4_xsmqx")
 metadata/_custom_type_script = "uid://cfxoojnkwb8ug"
 
-[node name="EnemySpawner3" type="Marker3D" parent="." unique_id=389235719]
-transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, 0, 0, -33.975998)
+[node name="EnemySpawner3" type="Marker3D" parent="." unique_id=993112720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.976)
 gizmo_extents = 2.0
-script = ExtResource("2_qv822")
+script = ExtResource("4_xsmqx")
 metadata/_custom_type_script = "uid://cfxoojnkwb8ug"
 
-[node name="EnemySpawner4" type="Marker3D" parent="." unique_id=563417030]
-transform = Transform3D(-0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071067, -24.024658, 0, -24.024658)
+[node name="EnemySpawner4" type="Marker3D" parent="." unique_id=1866862626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.976)
 gizmo_extents = 2.0
-script = ExtResource("2_qv822")
+script = ExtResource("4_xsmqx")
 metadata/_custom_type_script = "uid://cfxoojnkwb8ug"
 
-[node name="EnemySpawner5" type="Marker3D" parent="." unique_id=775498865]
-transform = Transform3D(-0.9999999, 0, 0, 0, 1, 0, 0, 0, -0.9999999, -33.975998, 0, 0)
+[node name="EnemySpawner5" type="Marker3D" parent="." unique_id=207212130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.976)
 gizmo_extents = 2.0
-script = ExtResource("2_qv822")
+script = ExtResource("4_xsmqx")
 metadata/_custom_type_script = "uid://cfxoojnkwb8ug"
 
-[node name="EnemySpawner6" type="Marker3D" parent="." unique_id=1238679179]
-transform = Transform3D(-0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071067, -24.024658, 0, 24.024658)
+[node name="EnemySpawner6" type="Marker3D" parent="." unique_id=1548452148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.976)
 gizmo_extents = 2.0
-script = ExtResource("2_qv822")
+script = ExtResource("4_xsmqx")
 metadata/_custom_type_script = "uid://cfxoojnkwb8ug"
 
-[node name="EnemySpawner7" type="Marker3D" parent="." unique_id=2001798159]
-transform = Transform3D(0, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 0, 0, 0, 33.975998)
+[node name="EnemySpawner7" type="Marker3D" parent="." unique_id=1307069582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.976)
 gizmo_extents = 2.0
-script = ExtResource("2_qv822")
+script = ExtResource("4_xsmqx")
 metadata/_custom_type_script = "uid://cfxoojnkwb8ug"
 
-[node name="EnemySpawner8" type="Marker3D" parent="." unique_id=958644932]
-transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 24.024658, 0, 24.024658)
+[node name="EnemySpawner8" type="Marker3D" parent="." unique_id=1072817948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.976)
 gizmo_extents = 2.0
-script = ExtResource("2_qv822")
+script = ExtResource("4_xsmqx")
 metadata/_custom_type_script = "uid://cfxoojnkwb8ug"

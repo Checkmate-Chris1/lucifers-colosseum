@@ -1,6 +1,5 @@
 class_name MeleeWeapon extends Weapon
 
-# Melee-specific attributes
 @export var melee_range: float = 5.0
 @export var knockback_distance: float = 2.0
 @export var attack_cooldown: float = 1.5

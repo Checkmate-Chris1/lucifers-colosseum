@@ -48,13 +48,15 @@ func _process(delta: float) -> void:
 		switch_to_weapon_by_type("projectile")
 	elif Input.is_action_just_pressed("switch_ray"):
 		switch_to_weapon_by_type("raycast")
+	#TODO: aoe and melee keybinds
 	elif Input.is_action_just_pressed("scroll_weapon_up"):
 		cycle_weapon_backward()
 	elif Input.is_action_just_pressed("scroll_weapon_down"):
 		cycle_weapon_forward()
 	elif Input.is_action_just_pressed("reload_weapon"):
 		reload()
-	elif Input.is_action_pressed("fire_weapon"):
+	
+	if Input.is_action_pressed("fire_weapon"):
 		fire()
 
 func fire() -> void:
@@ -69,8 +71,14 @@ func fire() -> void:
 		shoot_bullet()
 	elif current_weapon.weapon_type == "raycast":
 		shoot_ray()
-	
-	current_weapon.ammo -= 1
+	elif current_weapon.weapon_type == "aoe":
+		shoot_aoe()
+	elif current_weapon.weapon_type == "melee":
+		shoot_melee()
+		
+	if current_weapon.weapon_type != "melee":
+		current_weapon.ammo -= 1
+	print(current_weapon.weapon_name, ' ', current_weapon.ammo,'/', current_weapon.max_ammo)
 	ready_to_shoot = false
 	fire_timer.wait_time = current_weapon.fire_delay
 	fire_timer.start()
@@ -166,6 +174,48 @@ func shoot_ray() -> void:
 		if collider is Enemy:
 			collider.damage(current_weapon.bullet_damage)
 		print("Hit: %s" % collider)
+
+
+#TODO: implement aoe
+func shoot_aoe() -> void:
+	return
+
+func shoot_melee() -> void:
+	if not current_weapon is MeleeWeapon:
+		return
+	
+	var melee_w: MeleeWeapon = current_weapon
+	var cam = player.get_node('CameraController/Camera')
+	var origin = cam.global_position
+	var direction = -cam.global_transform.basis.z
+	
+	# use sphere to find colliders in melee range
+	var space_state = get_world_3d().direct_space_state
+	var shape_query = PhysicsShapeQueryParameters3D.new()
+	var sphere = SphereShape3D.new()
+	sphere.radius = melee_w.melee_range
+	shape_query.shape = sphere
+	
+	var hit_position = origin + direction * (melee_w.melee_range * 0.5)
+	shape_query.transform.origin = hit_position
+	
+	#TODO: remove debug sphere
+	DebugDraw.draw_sphere(hit_position, melee_w.melee_range, Color(1, 0, 0, 0.3), 0.5)
+	
+	var results = space_state.intersect_shape(shape_query)
+	
+	for result in results:
+		var collider = result.collider
+		#cone math
+		var direction_to_enemy = (collider.global_position - origin).normalized()
+		var forward_dot = direction.dot(direction_to_enemy)
+		# increase 0.0 to narrow cone
+		if forward_dot > 0.0:
+			if collider is Enemy:
+				collider.damage(melee_w.bullet_damage)
+				var knockback_dir = (collider.global_position - origin).normalized()
+				collider.apply_knockback(knockback_dir, melee_w.knockback_distance)
+				print("Melee hit: %s" % collider)
 
 
 func _on_fire_timer_end() -> void:

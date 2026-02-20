@@ -17,3 +17,8 @@ func damage(health: float):
 	
 func heal(health: float):
 	current_health += health
+
+func apply_knockback(direction: Vector3, force: float) -> void:
+#	TODO: knockback does not work
+	var knockback_velocity = direction.normalized() * force
+	velocity = knockback_velocity

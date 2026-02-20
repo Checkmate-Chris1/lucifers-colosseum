@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AOEWeapon" format=3 uid="uid://cvl0o5ot4ujhy"]
+
+[ext_resource type="Script" uid="uid://bqwf7yn7ed2uv" path="res://entities/weapons/aoe_weapon.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+weapon_name = "Flamethrower"
+ammo = 1
+max_ammo = 1
+fire_delay = 5.0
+weapon_type = "aoe"

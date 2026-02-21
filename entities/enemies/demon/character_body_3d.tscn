@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bf4j1dch0yiy3"]
+
+[ext_resource type="PackedScene" uid="uid://bywgqpo72q0oe" path="res://art/models/demon/demon.tscn" id="1_seeb6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bgi78"]
+radius = 1.957
+height = 9.253
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1574532862]
+
+[node name="demon" parent="." unique_id=1098098221 instance=ExtResource("1_seeb6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=425096789]
+transform = Transform3D(1, 0, 0, 0, 0.94082165, -0.33890215, 0, 0.33890215, 0.94082165, 0, 1.8705187, 0.86574316)
+shape = SubResource("CapsuleShape3D_bgi78")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=693476401]

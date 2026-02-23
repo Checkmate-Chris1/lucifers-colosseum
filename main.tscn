@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://gj71rcdkmeub"]
 
+[ext_resource type="Script" uid="uid://cgwkugpxg01el" path="res://buttons/scripts/main.gd" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://jqam3rbvna36" path="res://levels/lucifers_colosseum/lucifers_colosseum.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bhh0cvchsg71t" path="res://entities/player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://h58h742lvij0" path="res://pause_menu.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bnxi7tiugqvn3" path="res://health_bar.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ck62axfgne6gy" path="res://stamina_bar.tscn" id="7_272bh"]
 
 [node name="Main" type="Node3D" unique_id=139922012]
+script = ExtResource("1_7mycd")
 
 [node name="LucifersColosseum" parent="." unique_id=2142896154 instance=ExtResource("1_ig7tw")]
 
@@ -17,3 +21,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10507059, 1.176698, -9.5352
 
 [node name="PauseMenu" parent="." unique_id=141766413 instance=ExtResource("4_1bvp3")]
 layer = 4
+visible = false
+
+[node name="HealthBar" parent="." unique_id=573624656 instance=ExtResource("5_lquwl")]
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 390.0
+offset_bottom = 21.0
+
+[node name="StaminaBar" parent="." unique_id=877077493 instance=ExtResource("7_272bh")]
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 310.0
+offset_bottom = 39.0

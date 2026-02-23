@@ -16,7 +16,6 @@ ATTACK_DAMAGE = 10.0
 attack_collision_box = NodePath("AttackArea")
 enemy_model = NodePath("Model")
 HEALTH = 60.0
-metadata/_custom_type_script = "uid://cp1l0iylhbctg"
 
 [node name="Model" parent="." unique_id=2100466426 instance=ExtResource("2_wcugd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2631723e-09, -0.37615314, 0.16616201)

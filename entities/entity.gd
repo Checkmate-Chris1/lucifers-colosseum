@@ -18,6 +18,7 @@ var burn_dps: float = 0.0
 
 func damage(health: float):
 	current_health -= health
+	#TODO: remove debug health counter
 	print(current_health)
 
 func apply_burn(dps: float, duration: float) -> void:

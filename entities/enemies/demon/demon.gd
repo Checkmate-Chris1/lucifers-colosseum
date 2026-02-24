@@ -11,7 +11,7 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector3.ZERO
 	nav_agent.target_position = player.global_position
 	var next_point = nav_agent.get_next_path_position()
-	look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+	look_at(player.global_position, Vector3.UP)
 	velocity = (next_point - global_position).normalized() * SPEED
 	
 	global_position.y = FLOATING_HEIGHT

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cvaihq1d3ewnl"]
+
+[ext_resource type="Script" uid="uid://cbedpiwts8dbx" path="res://buttons/scripts/testUI.gd" id="1_pdy3e"]
+[ext_resource type="PackedScene" uid="uid://colskv5gfdw7y" path="res://upgrade_menu.tscn" id="2_20msg"]
+
+[node name="Control" type="Control" unique_id=1798218603]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pdy3e")
+
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=758950666]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.775
+anchor_bottom = 16.15
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=946618684]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 646.0
+grow_vertical = 0
+
+[node name="Button_3Slots" type="Button" parent="HBoxContainer" unique_id=1808581095]
+layout_mode = 2
+text = "test3 slots
+"
+
+[node name="Button_5Slots" type="Button" parent="HBoxContainer" unique_id=1348894973]
+layout_mode = 2
+text = "test5 slots
+"
+
+[node name="UpgradeMenu" parent="." unique_id=600466742 instance=ExtResource("2_20msg")]
+
+[connection signal="pressed" from="HBoxContainer/Button_3Slots" to="." method="_on_button_3_slots_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button_5Slots" to="." method="_on_button_5_slots_pressed"]

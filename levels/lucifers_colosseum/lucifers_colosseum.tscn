@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://604rwwxdjfyr" path="res://prefabs/oob_hitbox/oob_hitbox.tscn" id="2_jd8mx"]
 [ext_resource type="PackedScene" uid="uid://bpv3ny1j8yewk" path="res://art/models/entranceGate/entranceGate.glb" id="3_ddk8s"]
 [ext_resource type="PackedScene" uid="uid://bg6eql8hktwp5" path="res://levels/common/wave_system/wave_system.tscn" id="4_jbjv4"]
+[ext_resource type="Script" uid="uid://bey5yuknwbkjc" path="res://levels/lucifers_colosseum/crowd_spawner.gd" id="6_crowd"]
 
 [sub_resource type="Environment" id="Environment_vwxo2"]
 background_mode = 1
@@ -221,3 +222,6 @@ transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.70710
 
 [node name="WaveSystem" parent="." unique_id=2122809065 instance=ExtResource("4_jbjv4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.148, 0.855, -0.173)
+
+[node name="CrowdSpawner" type="Node3D" parent="." unique_id=474279312]
+script = ExtResource("6_crowd")

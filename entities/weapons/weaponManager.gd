@@ -174,14 +174,15 @@ func shoot_ray() -> void:
 	
 	# Create temporary cylindrical bullet tracer
 	var tracer = CSGCylinder3D.new()
+	var tracer_start = weapon_models[current_weapon.weapon_name].global_position
 	get_parent().add_sibling(tracer)
-	tracer.position = origin + (end-origin)/2 - Vector3(1, 0, 0)
+	tracer.position = tracer_start + (end-tracer_start)/2
 	tracer.material = tracerMaterial
 	tracer.radius = 0.2
 	get_tree().create_tween().tween_callback(tracer.queue_free).set_delay(1)
-	tracer.look_at(origin, Vector3.FORWARD)
+	tracer.look_at(tracer_start, Vector3.FORWARD)
 	tracer.rotate_object_local(Vector3.RIGHT, PI/2)
-	tracer.height = origin.distance_to(end)
+	tracer.height = tracer_start.distance_to(end)
 	
 	var result = space_state.intersect_ray(query)
 	if result:

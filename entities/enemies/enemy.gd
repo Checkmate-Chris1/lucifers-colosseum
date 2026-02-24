@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _init() -> void:
 	died.connect(queue_free) # All enemies should be removed from the scene upon death
-
+	
 func attack():
 	if attack_ready:
 		var within_attack = attack_collision_box.get_overlapping_bodies()

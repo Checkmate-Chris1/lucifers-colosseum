@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_script")
 weapon_name = "Flamethrower"
-ammo = 1
-max_ammo = 1
-fire_delay = 5.0
+bullet_damage = 15.0
+ammo = 50
+max_ammo = 50
+fire_delay = 0.1
 weapon_type = "aoe"

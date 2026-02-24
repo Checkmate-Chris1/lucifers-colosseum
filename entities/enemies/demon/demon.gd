@@ -1,20 +1,37 @@
 extends Enemy
 
 
-@onready var nav_agent = $NavigationAgent3D
-@onready var player = get_tree().get_first_node_in_group('player')
+@export var FLOATING_HEIGHT := 2.4
+@export var KEEP_DISTANCE := 1.5
+@export var HOVER_FORCE := 6.0
+@export var DAMPING := 6.0
 
-const FLOATING_HEIGHT := 10
+@onready var player = get_tree().get_first_node_in_group("player")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	velocity = Vector3.ZERO
-	nav_agent.target_position = player.global_position
-	var next_point = nav_agent.get_next_path_position()
-	look_at(player.global_position, Vector3.UP)
-	velocity = (next_point - global_position).normalized() * SPEED
-	
-	global_position.y = FLOATING_HEIGHT
-	
-	attack()
+	if player == null:
+		queue_free()
+		return
+
+
+	var look_pos = Vector3(player.global_position.x, global_position.y, player.global_position.z)
+	look_at(look_pos, Vector3.UP)
+
+	var enemy_flat = Vector3(global_position.x, 0, global_position.z)
+	var player_flat = Vector3(player.global_position.x, 0, player.global_position.z)
+
+	var distance = enemy_flat.distance_to(player_flat)
+
+	if distance > KEEP_DISTANCE:
+		var dir = (player_flat - enemy_flat).normalized()
+		velocity.x = lerp(velocity.x, dir.x * SPEED, delta * DAMPING)
+		velocity.z = lerp(velocity.z, dir.z * SPEED, delta * DAMPING)
+	else:
+		velocity.x = lerp(velocity.x, 0.0, delta * DAMPING)
+		velocity.z = lerp(velocity.z, 0.0, delta * DAMPING)
+		attack()
+
+	var height_error = FLOATING_HEIGHT - global_position.y
+	velocity.y = height_error * HOVER_FORCE
+
 	move_and_slide()

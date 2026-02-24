@@ -179,7 +179,7 @@ func shoot_ray() -> void:
 	tracer.position = tracer_start + (end-tracer_start)/2
 	tracer.material = tracerMaterial
 	tracer.radius = 0.2
-	get_tree().create_tween().tween_callback(tracer.queue_free).set_delay(1)
+	get_tree().create_tween().tween_callback(tracer.queue_free).set_delay(0.35)
 	tracer.look_at(tracer_start, Vector3.FORWARD)
 	tracer.rotate_object_local(Vector3.RIGHT, PI/2)
 	tracer.height = tracer_start.distance_to(end)

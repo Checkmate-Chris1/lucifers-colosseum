@@ -83,5 +83,5 @@ stretch_mode = 3
 [connection signal="pressed" from="ColorRect/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="ColorRect/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="ColorRect/Quit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Options/ExitOptions2" to="." method="_on_exit_options_pressed"]
 [connection signal="pressed" from="Options/ExitOptions2" to="." method="_on_exit_options_2_pressed"]
+[connection signal="pressed" from="Options/ExitOptions2" to="." method="_on_exit_options_pressed"]

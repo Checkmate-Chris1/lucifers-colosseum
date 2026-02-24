@@ -143,7 +143,8 @@ offset_top = 479.03998
 offset_right = 1026.448
 offset_bottom = 496.03998
 max_value = 1.0
-step = 0.05
+step = 0.01
+value = 1.0
 
 [node name="MusicToggle" type="TextureButton" parent="." unique_id=1850572839]
 offset_left = 231.00002

@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var weapons: Array[Weapon] = []
+@export var tracerMaterial: StandardMaterial3D
 var current_weapon_index := 0
 var current_weapon: Weapon
 
@@ -170,6 +171,18 @@ func shoot_ray() -> void:
 	var end = origin + cam.project_ray_normal(mouse_pos) * current_weapon.range
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
 	query.collide_with_bodies = true
+	
+	# Create temporary cylindrical bullet tracer
+	var tracer = CSGCylinder3D.new()
+	var tracer_start = weapon_models[current_weapon.weapon_name].global_position
+	get_parent().add_sibling(tracer)
+	tracer.position = tracer_start + (end-tracer_start)/2
+	tracer.material = tracerMaterial
+	tracer.radius = 0.2
+	get_tree().create_tween().tween_callback(tracer.queue_free).set_delay(0.35)
+	tracer.look_at(tracer_start, Vector3.FORWARD)
+	tracer.rotate_object_local(Vector3.RIGHT, PI/2)
+	tracer.height = tracer_start.distance_to(end)
 	
 	var result = space_state.intersect_ray(query)
 	if result:

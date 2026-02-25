@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dk6u7bw72uc0i"]
+
+[ext_resource type="Script" uid="uid://cfltrd8rb6mnu" path="res://ui/death_screen.gd" id="1_y7kdk"]
+
+[node name="DeathUI" type="Control" unique_id=1939787248]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y7kdk")
+
+[node name="DeathLabel" type="Label" parent="." unique_id=459171687]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 97.0
+offset_bottom = 234.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "You died.
+A disappointment for Lucifer..."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1099869900]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -21.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="RespawnButton" type="Button" parent="HBoxContainer" unique_id=1477055071]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Respawn"
+
+[node name="QuitButton" type="Button" parent="HBoxContainer" unique_id=797592125]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Quit Game"
+
+[connection signal="pressed" from="HBoxContainer/RespawnButton" to="." method="_respawn"]
+[connection signal="pressed" from="HBoxContainer/QuitButton" to="." method="_quit_game"]

@@ -22,7 +22,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 Events="*res://globals/Events.gd"
 GameState="*res://globals/GameState.gd"
-DebugDraw="*uid://d0m3f15tilqpa"
+DebugDraw="*uid://drhqwd43ce17l"
 
 [filesystem]
 

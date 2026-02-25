@@ -32,7 +32,7 @@ func init_health(_health, _max_health):
 
 func _update_label():
 	if hp_label:
-		hp_label.text = str(health) + " / " + str(max_health)
+		hp_label.text = str(int(health)) + " / " + str(int(max_health))
 
 func _on_timer_timeout() -> void:
 	damageBar.value = health

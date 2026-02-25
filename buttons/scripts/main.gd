@@ -5,3 +5,4 @@ extends Node3D
 
 func _ready():
 	health_bar.init_health(player.current_health, player.HEALTH)
+	player.health_changed.connect(health_bar._set_health)

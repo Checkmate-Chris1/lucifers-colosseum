@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnxi7tiugqvn3"]
 
 [ext_resource type="Script" uid="uid://qojvpr4cdb15" path="res://buttons/scripts/healthbar.gd" id="1_m7ell"]
+[ext_resource type="FontFile" uid="uid://cttsowmyoxsyt" path="res://art/fonts/altar-gothic-demo/AltarGothicDemo-Regular.otf" id="2_kdjhy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdjhy"]
 bg_color = Color(0.84313726, 0.56078434, 0.12156863, 1)
@@ -43,6 +44,7 @@ offset_left = 392.0
 offset_top = -5.0
 offset_right = 432.0
 offset_bottom = 18.0
+theme_override_fonts/font = ExtResource("2_kdjhy")
 text = "dsfsf"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

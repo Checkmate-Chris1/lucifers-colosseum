@@ -1,5 +1,9 @@
 extends Node3D
 
+signal weapon_changed(weapon: Weapon)
+signal ammo_changed(current_ammo: int, max_ammo: int)
+signal reload_started(duration: float)
+
 @export var weapons: Array[Weapon] = []
 @export var tracerMaterial: StandardMaterial3D
 var current_weapon_index := 0
@@ -82,6 +86,7 @@ func fire() -> void:
 		
 	if current_weapon.weapon_type != "melee":
 		current_weapon.ammo -= 1
+		ammo_changed.emit(current_weapon.ammo, current_weapon.max_ammo)
 	print(current_weapon.weapon_name, ' ', current_weapon.ammo,'/', current_weapon.max_ammo)
 	ready_to_shoot = false
 	fire_timer.wait_time = current_weapon.fire_delay
@@ -96,11 +101,12 @@ func reload() -> void:
 	fire_timer.stop()  # optional but correct
 	reload_timer.wait_time = current_weapon.reload_delay
 	reload_timer.start()
+	reload_started.emit(current_weapon.reload_delay)
 
 func _on_reload_timer_end() -> void:
 	if current_weapon:
 		current_weapon.ammo = current_weapon.max_ammo
-	
+		ammo_changed.emit(current_weapon.ammo, current_weapon.max_ammo)
 	reloading = false
 	ready_to_shoot = true
 
@@ -124,6 +130,9 @@ func switch_to_weapon(index: int) -> void:
 	current_weapon = weapons[current_weapon_index]
 	reloading = false
 	ready_to_shoot = true
+	
+	weapon_changed.emit(current_weapon)
+	ammo_changed.emit(current_weapon.ammo, current_weapon.max_ammo)
 	
 	print("Switched to %s" % current_weapon.weapon_name)
 	

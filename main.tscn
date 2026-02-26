@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bhh0cvchsg71t" path="res://entities/player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://h58h742lvij0" path="res://pause_menu.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bgtmdx5abm42x" path="res://weapon_ui.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node3D" unique_id=139922012]
 
@@ -17,3 +18,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10507059, 1.176698, -9.5352
 
 [node name="PauseMenu" parent="." unique_id=141766413 instance=ExtResource("4_1bvp3")]
 layer = 4
+
+[node name="WeaponUI" parent="." unique_id=377507122 instance=ExtResource("5_lquwl")]

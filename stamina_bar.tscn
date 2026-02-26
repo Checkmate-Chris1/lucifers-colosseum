@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b2d81b41656kk"]
+
+[ext_resource type="Script" path="res://buttons/scripts/stamina_bar.gd" id="1_lq8vc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38pdh"]
+bg_color = Color(0, 0.6276316, 0.9720108, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srckl"]
+bg_color = Color(0.288518, 0.288518, 0.2885179, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l08y3"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="StaminaBar" type="ProgressBar" unique_id=573624656]
+z_index = 1
+offset_right = 240.0
+offset_bottom = 5.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_38pdh")
+value = 60.0
+show_percentage = false
+script = ExtResource("1_lq8vc")
+
+[node name="LossBar" type="ProgressBar" parent="." unique_id=1425141498]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_srckl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_l08y3")
+value = 89.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="." unique_id=1109875516]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

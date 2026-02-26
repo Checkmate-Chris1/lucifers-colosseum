@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bgtmdx5abm42x"]
+
+[ext_resource type="Script" uid="uid://goe5cf234fj4" path="res://buttons/scripts/weapon_ui.gd" id="1_rnt7u"]
+[ext_resource type="Texture2D" uid="uid://ulqgpctalcxb" path="res://buttons/assets/reloadring.png" id="2_j7wgc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ck0ca"]
+bg_color = Color(0.25882354, 0.11764706, 0.09803922, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="WeaponUI" type="Control" unique_id=377507122]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_rnt7u")
+
+[node name="MaskPanel" type="Panel" parent="." unique_id=1419102792]
+clip_children = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.8
+anchor_top = -0.73200005
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 68.0
+offset_top = 56.80001
+offset_right = -52.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.35, 1.35)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ck0ca")
+
+[node name="WeaponIcon" type="TextureRect" parent="MaskPanel" unique_id=2115236867]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 62.0
+offset_top = -78.0
+offset_right = 585.3335
+offset_bottom = 402.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.225, 0.225)
+stretch_mode = 5
+
+[node name="ReloadRing" type="TextureProgressBar" parent="." unique_id=1664052760]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -207.0
+offset_right = 305.0
+offset_bottom = 305.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(128, 128)
+step = 0.01
+value = 100.0
+fill_mode = 4
+texture_under = ExtResource("2_j7wgc")
+texture_progress = ExtResource("2_j7wgc")
+tint_under = Color(0.6165797, 0.59558564, 0.55221885, 1)
+
+[node name="AmmoLabel" type="Label" parent="." unique_id=1413589319]
+layout_mode = 0
+offset_left = -63.0
+offset_top = 126.0
+offset_right = -23.0
+offset_bottom = 149.0

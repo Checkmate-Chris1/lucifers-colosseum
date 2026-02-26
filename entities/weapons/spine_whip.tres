@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://bkdeyr4501poi"]
 
+[ext_resource type="Texture2D" uid="uid://dra4laymmuf0k" path="res://buttons/assets/WHIP.png" id="1_ofydp"]
 [ext_resource type="Script" path="res://entities/weapons/melee_weapon.gd" id="1_script"]
 
 [resource]
@@ -10,3 +11,4 @@ ammo = 1
 max_ammo = 1
 fire_delay = 1.5
 weapon_type = "melee"
+icon = ExtResource("1_ofydp")

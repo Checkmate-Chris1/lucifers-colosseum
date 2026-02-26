@@ -46,7 +46,7 @@ text = "Respawn"
 [node name="QuitButton" type="Button" parent="HBoxContainer" unique_id=797592125]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Quit Game"
+text = "Quit to Menu"
 
 [connection signal="pressed" from="HBoxContainer/RespawnButton" to="." method="_respawn"]
 [connection signal="pressed" from="HBoxContainer/QuitButton" to="." method="_quit_game"]

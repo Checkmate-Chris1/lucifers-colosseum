@@ -24,3 +24,5 @@ signal UPGR_flamethrower_dmg_up(percentage : int)
 signal UPGR_flamethrower_range_up(percentage : int)
 
 signal upgrade_chosen
+
+signal enemy_died

@@ -7,28 +7,43 @@ extends Node3D
 
 var enemy_spawners: Array[EnemySpawner] = []
 
+var enemy_count : int
+
 func _ready() -> void:
+	Events.enemy_died.connect(_enemy_death_process)
 	_update_spawners()
 	spawn_wave(3)
+	print('ready')
 
+func _enemy_death_process():
+	print('e_death')
+	enemy_count -= 1
+	if enemy_count == 0:
+		_on_wave_end()
+	
+	
+		
 func spawn_wave(enemy_count: int) -> void:
+	print('spawn wave')
 	GameState.wave_number += 1
 	Events.wave_start.emit()
-	get_tree().create_timer(wave_length, false).timeout.connect(_on_wave_end)
 	for __ in range(enemy_count):
 		_spawn_enemy()
 		await get_tree().create_timer(5.0/enemy_count, false).timeout
 		
 func _on_wave_end() -> void:
-	Events.wave_end.emit(false) # FIX: PERFECT WAVES ARE NOT YET POSSIBLE
+	print('wave end')
+	Events.wave_end.emit(false)
 	await get_tree().create_timer(wave_grace_period, false).timeout
 	# Enemy count goes 3, 5, 6, 7, 8, etc.
 	spawn_wave(3+GameState.wave_number)
 		
 func _spawn_enemy() -> void:
+	print('spawn_enemy')
 	var spawner_index = randi() % len(enemy_spawners)
 	var selected_enemy = _get_from_weighted_values(enemy_weights)
 	enemy_spawners[spawner_index].spawn_enemy(selected_enemy)
+	enemy_count += 1
 
 func _get_from_weighted_values(weight_dict: Dictionary):
 	var total_weight = _sum(weight_dict.values())
@@ -42,6 +57,7 @@ func _get_from_weighted_values(weight_dict: Dictionary):
 			return enemy_scene
 
 func _update_spawners() -> void:
+	print('update spawners')
 	enemy_spawners = []
 	for child in get_children():
 		if child is EnemySpawner:

@@ -16,13 +16,6 @@ const ft_dmg_boost  := [10, 15]
 const ft_size_boost := [10, 15]
 
 
-var placeholder_upgrade_pool = [
-	{"name": "Speed Pulse", "stats": "+15% Move Speed", "desc": "Zotting around fast."},
-	{"name": "Heavy Hitter", "stats": "+25% Damage", "desc": "Slow but deadly."},
-	{"name": "Shield Tech", "stats": "+1 Max Shield", "desc": "Extra layer of safety."},
-	{"name": "Quick Loader", "stats": "-20% Reload Time", "desc": "Keep the fire up."}
-]
-
 var upgrade_pool = [
 	{"name": "Health Boost",            "stats": "+123 health",             "desc": "Take more punnishment",              "event": Events.UPGR_p_max_health_up,  'value' : 0},
 	{"name": "Ground Pound Size Boost", "stats": "+123 ground pound size",  "desc": "larger poundings",                   "event": Events.UPGR_p_gp_radius_up,   'value' : 0},

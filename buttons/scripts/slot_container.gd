@@ -38,3 +38,8 @@ func stop_spin_and_reveal():
 
 	var tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(info_panel, "modulate:a", 1.0, 0.4)
+
+
+func _on_slot_pressed() -> void:
+	print('hello')
+	pass # akhil put ya stuff here boom

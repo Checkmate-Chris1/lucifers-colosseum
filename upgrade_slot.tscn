@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dxwrl4rat45ju"]
+[gd_scene format=3 uid="uid://yii422p2boc8"]
 
-[ext_resource type="Script" path="res://buttons/scripts/slot_container.gd" id="1_74flw"]
+[ext_resource type="Script" uid="uid://3reifwpluiyg" path="res://buttons/scripts/slot_container.gd" id="1_74flw"]
 [ext_resource type="Texture2D" uid="uid://yewm8uau0547" path="res://art/upgrade_cards/testcard.png" id="2_gswbp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_brtks"]
@@ -17,12 +17,15 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74flw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="UpgradeSlot" type="Control" unique_id=1454939731]
 custom_minimum_size = Vector2(210, 450)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 210.0
+offset_bottom = 450.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 script = ExtResource("1_74flw")
@@ -52,6 +55,20 @@ sprite_frames = SubResource("SpriteFrames_brtks")
 animation = &"spin_blur"
 frame_progress = 0.48136887
 
+[node name="Button" type="Button" parent="MainStack/SpinWindow" unique_id=1692751965]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_74flw")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_74flw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_74flw")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_74flw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_74flw")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_74flw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_74flw")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_74flw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_74flw")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_74flw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_74flw")
+
 [node name="InfoPanel" type="PanelContainer" parent="MainStack" unique_id=628931088]
 layout_mode = 2
 
@@ -71,3 +88,5 @@ layout_mode = 2
 bbcode_enabled = true
 fit_content = true
 horizontal_alignment = 1
+
+[connection signal="pressed" from="MainStack/SpinWindow/Button" to="." method="_on_slot_pressed"]

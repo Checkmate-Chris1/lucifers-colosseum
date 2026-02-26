@@ -15,10 +15,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause_music"):
-		stream_paused = not stream_paused
-	elif Input.is_action_just_pressed("change_music"):
-		_change_song()
+	pass
 
 
 func _change_song():

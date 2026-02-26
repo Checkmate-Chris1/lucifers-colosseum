@@ -13,6 +13,10 @@ var slam_size = 1 ## A multiplier from the default slam area diameter
 var dash_speed: float = 5.0
 const dash_cd = 1 ## Dash cooldown in seconds
 
+var master_volume := 1.0
+var music_volume := 1.0
+var sfx_volume := 1.0
+
 # Game Functions
 func reset():
 	# reset the game here

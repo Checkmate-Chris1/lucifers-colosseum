@@ -1,13 +1,14 @@
 extends CanvasLayer
 
 func _on_master_slider_value_changed(value: float) -> void:
-	pass
+	GameState.master_volume = value
+	Events.change_sound_volume.emit()
 
 func _on_sfx_slider_value_changed(value: float) -> void:
-	pass
+	GameState.sfx_volume = value
+	Events.change_sound_volume.emit()
 	
 func _on_music_slider_value_changed(value: float) -> void:
-	BackgroundMusicPlayer.volume_db = 30 * value - 30
-	if value == 0:
-		BackgroundMusicPlayer.volume_db = -80
+	GameState.music_volume = value
+	Events.change_sound_volume.emit()
 	

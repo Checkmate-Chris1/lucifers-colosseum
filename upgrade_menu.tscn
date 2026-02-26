@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://colskv5gfdw7y"]
+[gd_scene format=3 uid="uid://bd22m50kq6152"]
 
 [ext_resource type="Script" uid="uid://crki6mjkarivg" path="res://buttons/scripts/upgrade_menu.gd" id="1_qvtwy"]
-[ext_resource type="PackedScene" uid="uid://yii422p2boc8" path="res://upgrade_slot.tscn" id="2_skwsl"]
+[ext_resource type="PackedScene" uid="uid://dxwrl4rat45ju" path="res://upgrade_slot.tscn" id="2_skwsl"]
 
 [node name="UpgradeMenu" type="CanvasLayer" unique_id=600466742]
 script = ExtResource("1_qvtwy")

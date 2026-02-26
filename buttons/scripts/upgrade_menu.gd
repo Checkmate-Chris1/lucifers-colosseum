@@ -24,16 +24,16 @@ var placeholder_upgrade_pool = [
 ]
 
 var upgrade_pool = [
-	{"name": "Health Boost",            "stats": "+%d%% health",             "desc": "Take more punnishment",              "event": Events.UPGR_p_max_health_up,  'value' : 0},
-	{"name": "Ground Pound Size Boost", "stats": "+%d%% ground pound size",  "desc": "larger poundings",                   "event": Events.UPGR_p_gp_radius_up,   'value' : 0},
-	{"name": "Ground Pound DMG Boost",  "stats": "+%d%% ground pound dmg",   "desc": "harder poundings",                   "event": Events.UPGR_p_gp_dmg_up,      'value' : 0},
-	{"name": "Speed Boost",             "stats": "+%d%% speed",              "desc": "Zotting around fast",                "event": Events.UPGR_p_speed_up,       'value' : 0},
-	{"name": "Railgun DMG Boost",       "stats": "+%d%% railgun dmg",        "desc": "Railgun Thermal Core Improved",      "event": Events.UPGR_railgun_dmg_up,    'value' : 0},
-	{"name": "Railgun Range Boost",     "stats": "+%d%% railgun range",      "desc": "Railgun System Effeciency Improved", "event": Events.UPGR_p_railgun_size_up, 'value' : 0},
-	{"name": "Spine Whip DMG Boost",    "stats": "+%d%% spine whip dmg",     "desc": "Sharpened Vertebrae",                "event": Events.UPGR_spine_whip_dmg_up,  'value' : 0},
-	{"name": "Spine Whip Range Boost",  "stats": "+%d%% spine whip range",   "desc": "More Vertebrae",                     "event": Events.UPGR_spine_whip_range_up, 'value' : 0},
-	{"name": "Flamethrower DMG Boost",  "stats": "+%d%% flamethrower dmg",   "desc": "Hotter flames",                      "event": Events.UPGR_flamethrower_dmg_up, 'value' : 0},
-	{"name": "Flamethrower Range Boost","stats": "+%d%% flamethrower range", "desc": "larger flames",                      "event": Events.UPGR_flamethrower_range_up, 'value' : 0}
+	{"name": "Health Boost",            "stats": "+123 health",             "desc": "Take more punnishment",              "event": Events.UPGR_p_max_health_up,  'value' : 0},
+	{"name": "Ground Pound Size Boost", "stats": "+123 ground pound size",  "desc": "larger poundings",                   "event": Events.UPGR_p_gp_radius_up,   'value' : 0},
+	{"name": "Ground Pound DMG Boost",  "stats": "+123 ground pound dmg",   "desc": "harder poundings",                   "event": Events.UPGR_p_gp_dmg_up,      'value' : 0},
+	{"name": "Speed Boost",             "stats": "+123 speed",              "desc": "Zotting around fast",                "event": Events.UPGR_p_speed_up,       'value' : 0},
+	{"name": "Railgun DMG Boost",       "stats": "+123 railgun dmg",        "desc": "Railgun Thermal Core Improved",      "event": Events.UPGR_railgun_dmg_up,    'value' : 0},
+	{"name": "Railgun Range Boost",     "stats": "+123 railgun range",      "desc": "Railgun System Effeciency Improved", "event": Events.UPGR_railgun_range_up, 'value' : 0},
+	{"name": "Spine Whip DMG Boost",    "stats": "+123 spine whip dmg",     "desc": "Sharpened Vertebrae",                "event": Events.UPGR_spine_whip_dmg_up,  'value' : 0},
+	{"name": "Spine Whip Range Boost",  "stats": "+123 spine whip range",   "desc": "More Vertebrae",                     "event": Events.UPGR_spine_whip_range_up, 'value' : 0},
+	{"name": "Flamethrower DMG Boost",  "stats": "+123 flamethrower dmg",   "desc": "Hotter flames",                      "event": Events.UPGR_flamethrower_dmg_up, 'value' : 0},
+	{"name": "Flamethrower Range Boost","stats": "+123 flamethrower range", "desc": "larger flames",                      "event": Events.UPGR_flamethrower_range_up, 'value' : 0}
 	
 
 	
@@ -79,6 +79,6 @@ func _get_upgr_value(card : Dictionary):
 		'Flamethrower Range Boost':
 			card['value'] = randi_range(ft_size_boost[0], ft_size_boost[1])
 			
-	card['stats'] = card['stats'] % card['value']
+	card['stats'] = "+" + str(card['value']) + '% ' + card['stats'].substr(5,-1)
 	return card
 	

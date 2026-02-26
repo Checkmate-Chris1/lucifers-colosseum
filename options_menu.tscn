@@ -88,6 +88,7 @@ offset_right = 1026.448
 offset_bottom = 278.03998
 max_value = 1.0
 step = 0.05
+value = 1.0
 
 [node name="SFX" type="Sprite2D" parent="." unique_id=1099616538]
 position = Vector2(129.00002, 416.99997)
@@ -121,6 +122,7 @@ offset_right = 1026.448
 offset_bottom = 386.04004
 max_value = 1.0
 step = 0.05
+value = 1.0
 
 [node name="Music" type="Sprite2D" parent="." unique_id=1532212331]
 position = Vector2(129.00002, 527.00006)
@@ -143,7 +145,8 @@ offset_top = 479.03998
 offset_right = 1026.448
 offset_bottom = 496.03998
 max_value = 1.0
-step = 0.05
+step = 0.01
+value = 1.0
 
 [node name="MusicToggle" type="TextureButton" parent="." unique_id=1850572839]
 offset_left = 231.00002
@@ -155,6 +158,10 @@ toggle_mode = true
 texture_normal = ExtResource("2_ogda5")
 texture_pressed = ExtResource("3_6bffs")
 
+[connection signal="pressed" from="MasterToggle" to="." method="_on_master_toggle_pressed"]
+[connection signal="toggled" from="MasterToggle" to="." method="_on_master_toggle_toggled"]
 [connection signal="value_changed" from="MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="toggled" from="SFXToggle" to="." method="_on_sfx_toggle_toggled"]
 [connection signal="value_changed" from="SfxSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="toggled" from="MusicToggle" to="." method="_on_music_toggle_toggled"]

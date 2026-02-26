@@ -10,6 +10,7 @@ class_name Weapon extends Resource
 @export var model: PackedScene
 @export var bullet_scene: PackedScene
 @export var range: float = 99.0
+@export var icon: Texture2D
 
 func _init(p_name: String = "", p_type: String = "", p_max_ammo: int = 10) -> void:
 	weapon_name = p_name

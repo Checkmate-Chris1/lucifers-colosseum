@@ -8,19 +8,19 @@ extends Node3D
 var enemy_spawners: Array[EnemySpawner] = []
 
 func _ready() -> void:
-	Events.wave_end.connect(_on_wave_end)
 	_update_spawners()
 	spawn_wave(3)
 
 func spawn_wave(enemy_count: int) -> void:
 	GameState.wave_number += 1
 	Events.wave_start.emit()
-	get_tree().create_timer(wave_length, false).timeout.connect(Events.wave_end.emit)
+	get_tree().create_timer(wave_length, false).timeout.connect(_on_wave_end)
 	for __ in range(enemy_count):
 		_spawn_enemy()
 		await get_tree().create_timer(5.0/enemy_count, false).timeout
 		
 func _on_wave_end() -> void:
+	Events.wave_end.emit(false) # FIX: PERFECT WAVES ARE NOT YET POSSIBLE
 	await get_tree().create_timer(wave_grace_period, false).timeout
 	# Enemy count goes 3, 5, 6, 7, 8, etc.
 	spawn_wave(3+GameState.wave_number)

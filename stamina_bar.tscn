@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://b2d81b41656kk"]
+[gd_scene format=3 uid="uid://ck62axfgne6gy"]
 
-[ext_resource type="Script" path="res://buttons/scripts/stamina_bar.gd" id="1_lq8vc"]
+[ext_resource type="Script" uid="uid://dv1c10dp0kgq" path="res://buttons/scripts/stamina_bar.gd" id="1_lq8vc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38pdh"]
 bg_color = Color(0, 0.6276316, 0.9720108, 1)

@@ -10,6 +10,7 @@ func _on_game_over():
 	visible = true
 
 func _respawn():
+	get_tree().paused = false
 	Events.respawn.emit()
 	
 func _quit_game():

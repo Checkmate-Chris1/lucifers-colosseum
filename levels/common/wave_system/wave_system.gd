@@ -44,7 +44,7 @@ func _get_from_weighted_values(weight_dict: Dictionary):
 func _update_spawners() -> void:
 	enemy_spawners = []
 	for child in get_children():
-		if child is EnemySpawner or child is Marker3D:
+		if child is EnemySpawner:
 			enemy_spawners.append(child)
 
 func _sum(array: Array):

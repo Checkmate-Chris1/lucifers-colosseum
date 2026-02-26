@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://yii422p2boc8"]
+[gd_scene format=3 uid="uid://dxwrl4rat45ju"]
 
-[ext_resource type="Script" uid="uid://3reifwpluiyg" path="res://buttons/scripts/slot_container.gd" id="1_74flw"]
+[ext_resource type="Script" path="res://buttons/scripts/slot_container.gd" id="1_74flw"]
 [ext_resource type="Texture2D" uid="uid://yewm8uau0547" path="res://art/upgrade_cards/testcard.png" id="2_gswbp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_brtks"]

@@ -9,3 +9,16 @@ signal wave_start ## Triggered after wave grace period
 signal wave_end ## Triggered when all enemies die or wave timer ends, whichever comes first
 signal toggle_pause ## Triggered by pause UI
 signal game_over ## Signal when the game is over by death
+
+
+# CARD UPGRADE EVENTS
+signal UPGR_p_max_health_up(percentage : int)
+signal UPGR_p_gp_radius_up(percentage : int)
+signal UPGR_p_gp_dmg_up(percentage : int)
+signal UPGR_p_speed_up(percentage : int)
+signal UPGR_railgun_dmg_up(percentage : int)
+signal UPGR_railgun_range_up(percentage : int)
+signal UPGR_spine_whip_dmg_up(percentage : int)
+signal UPGR_spine_whip_range_up(percentage : int)
+signal UPGR_flamethrower_dmg_up(percentage : int)
+signal UPGR_flamethrower_range_up(percentage : int)

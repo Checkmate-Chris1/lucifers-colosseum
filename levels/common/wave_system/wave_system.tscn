@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bg6eql8hktwp5"]
 
-[ext_resource type="Script" path="res://levels/common/wave_system/wave_system.gd" id="1_qv822"]
+[ext_resource type="Script" uid="uid://beqoeyeyebp6e" path="res://levels/common/wave_system/wave_system.gd" id="1_qv822"]
 [ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="2_dojko"]
 [ext_resource type="Script" path="res://levels/common/wave_system/enemy_spawner.gd" id="2_qv822"]
 

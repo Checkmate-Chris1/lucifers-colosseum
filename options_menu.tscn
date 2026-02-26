@@ -158,6 +158,10 @@ toggle_mode = true
 texture_normal = ExtResource("2_ogda5")
 texture_pressed = ExtResource("3_6bffs")
 
+[connection signal="pressed" from="MasterToggle" to="." method="_on_master_toggle_pressed"]
+[connection signal="toggled" from="MasterToggle" to="." method="_on_master_toggle_toggled"]
 [connection signal="value_changed" from="MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="toggled" from="SFXToggle" to="." method="_on_sfx_toggle_toggled"]
 [connection signal="value_changed" from="SfxSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="toggled" from="MusicToggle" to="." method="_on_music_toggle_toggled"]

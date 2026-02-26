@@ -9,7 +9,8 @@ func _ready() -> void:
 	Events.change_sound_volume.connect(_update_volume)
 
 func _update_volume():
-	if GameState.master_volume == 0 or GameState.sfx_volume == 0:
+	if (GameState.master_volume_muted or GameState.master_volume == 0 or 
+		GameState.sfx_volume_muted or GameState.sfx_volume == 0):
 		volume_db = -80
 	else:
 		volume_db = volume_range * GameState.master_volume * GameState.sfx_volume + min_volume

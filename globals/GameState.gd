@@ -14,8 +14,11 @@ var dash_speed: float = 5.0
 const dash_cd = 1 ## Dash cooldown in seconds
 
 var master_volume := 1.0
+var master_volume_muted := false
 var music_volume := 1.0
+var music_volume_muted := false
 var sfx_volume := 1.0
+var sfx_volume_muted := false
 
 # Game Functions
 func reset():

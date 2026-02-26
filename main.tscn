@@ -2,18 +2,49 @@
 
 [ext_resource type="PackedScene" uid="uid://jqam3rbvna36" path="res://levels/lucifers_colosseum/lucifers_colosseum.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bhh0cvchsg71t" path="res://entities/player/player.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://h58h742lvij0" path="res://pause_menu.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bgtmdx5abm42x" path="res://weapon_ui.tscn" id="5_weapon"]
+[ext_resource type="PackedScene" uid="uid://bnxi7tiugqvn3" path="res://health_bar.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ck62axfgme6gy" path="res://stamina_bar.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://bd22n50kq6152" path="res://upgrade_menu.tscn" id="8_5vw27"]
+
+[sub_resource type="GDScript" id="GDScript_7mycd"]
+script/source = "extends Node3D
+
+@onready var player = $Player
+@onready var health_bar = $HealthBar
+
+func _ready():
+	health_bar.init_health(player.current_health, player.HEALTH)
+	player.health_changed.connect(health_bar._set_health)
+"
 
 [node name="Main" type="Node3D" unique_id=139922012]
+script = SubResource("GDScript_7mycd")
 
 [node name="LucifersColosseum" parent="." unique_id=2142896154 instance=ExtResource("1_ig7tw")]
 
 [node name="Player" parent="." unique_id=2001822429 instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="TormentedSoul" parent="." unique_id=1835965304 instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10507059, 1.176698, -9.535203)
-
 [node name="PauseMenu" parent="." unique_id=141766413 instance=ExtResource("4_1bvp3")]
 layer = 4
+visible = false
+
+[node name="WeaponUI" parent="." unique_id=377507122 instance=ExtResource("5_weapon")]
+
+[node name="HealthBar" parent="." unique_id=573624656 instance=ExtResource("5_lquwl")]
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 300.0
+offset_bottom = 21.0
+
+[node name="StaminaBar" parent="." unique_id=877077493 instance=ExtResource("7_272bh")]
+visible = false
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 310.0
+offset_bottom = 39.0
+
+[node name="UpgradeMenu" parent="." unique_id=600466742 instance=ExtResource("8_5vw27")]
+visible = false

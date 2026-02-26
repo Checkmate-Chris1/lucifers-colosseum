@@ -8,12 +8,17 @@
 [ext_resource type="Resource" uid="uid://wvgqppbwkf12" path="res://entities/weapons/pistol.tres" id="5_qiwj3"]
 [ext_resource type="Resource" uid="uid://ce2yo3b5dwvyx" path="res://entities/weapons/railgun.tres" id="6_26q78"]
 [ext_resource type="Script" uid="uid://dh7h5cwlavqkg" path="res://entities/player/walking_sfx.gd" id="8_26q78"]
+[ext_resource type="Resource" path="res://entities/weapons/spine_whip.tres" id="7_bectd"]
+[ext_resource type="Resource" path="res://entities/weapons/flamethrower.tres" id="8_wvtmh"]
+[ext_resource type="Material" uid="uid://rgpxjjicd0vi" path="res://entities/weapons/tracerMaterial.tres" id="7_26q78"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_symyc"]
 radius = 0.15
 height = 1.0
 
 [node name="Player" type="CharacterBody3D" unique_id=1894104191 node_paths=PackedStringArray("CAMERA_CONTROLLER") groups=["player"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_symyc")
 CAMERA_CONTROLLER = NodePath("CameraController")
 slam_vfx = ExtResource("2_bls4j")
@@ -37,9 +42,12 @@ update_mode = 1
 
 [node name="Gun" type="Node3D" parent="." unique_id=671131631]
 script = ExtResource("2_abrql")
-weapons = Array[ExtResource("4_8fjmc")]([ExtResource("5_qiwj3"), ExtResource("6_26q78")])
+weapons = Array[ExtResource("4_8fjmc")]([ExtResource("5_qiwj3"), ExtResource("6_26q78"), ExtResource("7_bectd"), ExtResource("8_wvtmh")])
+tracerMaterial = ExtResource("7_26q78")
 
 [node name="WalkingSFX" type="AudioStreamPlayer" parent="." unique_id=700354145]
 stream = ExtResource("5_fkugw")
 volume_db = -30.0
 script = ExtResource("8_26q78")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1285364294]

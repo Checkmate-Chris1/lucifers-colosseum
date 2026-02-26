@@ -1,6 +1,11 @@
 extends Node3D
 
+signal weapon_changed(weapon: Weapon)
+signal ammo_changed(current_ammo: int, max_ammo: int)
+signal reload_started(duration: float)
+
 @export var weapons: Array[Weapon] = []
+@export var tracerMaterial: StandardMaterial3D
 var current_weapon_index := 0
 var current_weapon: Weapon
 
@@ -48,13 +53,18 @@ func _process(delta: float) -> void:
 		switch_to_weapon_by_type("projectile")
 	elif Input.is_action_just_pressed("switch_ray"):
 		switch_to_weapon_by_type("raycast")
+	elif Input.is_action_just_pressed("switch_aoe"):
+		switch_to_weapon_by_type("aoe")
+	elif Input.is_action_just_pressed("switch_melee"):
+		switch_to_weapon_by_type("melee")
 	elif Input.is_action_just_pressed("scroll_weapon_up"):
 		cycle_weapon_backward()
 	elif Input.is_action_just_pressed("scroll_weapon_down"):
 		cycle_weapon_forward()
 	elif Input.is_action_just_pressed("reload_weapon"):
 		reload()
-	elif Input.is_action_pressed("fire_weapon"):
+	
+	if Input.is_action_pressed("fire_weapon"):
 		fire()
 
 func fire() -> void:
@@ -69,8 +79,15 @@ func fire() -> void:
 		shoot_bullet()
 	elif current_weapon.weapon_type == "raycast":
 		shoot_ray()
-	
-	current_weapon.ammo -= 1
+	elif current_weapon.weapon_type == "aoe":
+		shoot_aoe()
+	elif current_weapon.weapon_type == "melee":
+		shoot_melee()
+		
+	if current_weapon.weapon_type != "melee":
+		current_weapon.ammo -= 1
+		ammo_changed.emit(current_weapon.ammo, current_weapon.max_ammo)
+	print(current_weapon.weapon_name, ' ', current_weapon.ammo,'/', current_weapon.max_ammo)
 	ready_to_shoot = false
 	fire_timer.wait_time = current_weapon.fire_delay
 	fire_timer.start()
@@ -84,11 +101,12 @@ func reload() -> void:
 	fire_timer.stop()  # optional but correct
 	reload_timer.wait_time = current_weapon.reload_delay
 	reload_timer.start()
+	reload_started.emit(current_weapon.reload_delay)
 
 func _on_reload_timer_end() -> void:
 	if current_weapon:
 		current_weapon.ammo = current_weapon.max_ammo
-	
+		ammo_changed.emit(current_weapon.ammo, current_weapon.max_ammo)
 	reloading = false
 	ready_to_shoot = true
 
@@ -112,6 +130,9 @@ func switch_to_weapon(index: int) -> void:
 	current_weapon = weapons[current_weapon_index]
 	reloading = false
 	ready_to_shoot = true
+	
+	weapon_changed.emit(current_weapon)
+	ammo_changed.emit(current_weapon.ammo, current_weapon.max_ammo)
 	
 	print("Switched to %s" % current_weapon.weapon_name)
 	
@@ -160,12 +181,98 @@ func shoot_ray() -> void:
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
 	query.collide_with_bodies = true
 	
+	# Create temporary cylindrical bullet tracer
+	var tracer = CSGCylinder3D.new()
+	var tracer_start = weapon_models[current_weapon.weapon_name].global_position
+	get_parent().add_sibling(tracer)
+	tracer.position = tracer_start + (end-tracer_start)/2
+	tracer.material = tracerMaterial
+	tracer.radius = 0.2
+	get_tree().create_tween().tween_callback(tracer.queue_free).set_delay(0.35)
+	tracer.look_at(tracer_start, Vector3.FORWARD)
+	tracer.rotate_object_local(Vector3.RIGHT, PI/2)
+	tracer.height = tracer_start.distance_to(end)
+	
 	var result = space_state.intersect_ray(query)
 	if result:
 		var collider = result.get("collider")
 		if collider is Enemy:
 			collider.damage(current_weapon.bullet_damage)
 		print("Hit: %s" % collider)
+
+
+func shoot_aoe() -> void:
+	# AOE attack works similarly to melee but is automatic and uses cone/range
+	if not current_weapon is AOEWeapon:
+		return
+	
+	var aoe_w: AOEWeapon = current_weapon
+	var cam = player.get_node('CameraController/Camera')
+	var origin = cam.global_position
+	var direction = -cam.global_transform.basis.z
+	
+	# sphere around midpoint of the cone
+	var space_state = get_world_3d().direct_space_state
+	var shape_query = PhysicsShapeQueryParameters3D.new()
+	var sphere = SphereShape3D.new()
+	sphere.radius = aoe_w.aoe_range
+	shape_query.shape = sphere
+
+	var hit_position = origin + direction * (aoe_w.aoe_range * 0.5)
+	shape_query.transform.origin = hit_position
+
+	var results = space_state.intersect_shape(shape_query)
+	# precompute cosine of half-angle for cone check
+	var cos_threshold = cos(deg_to_rad(aoe_w.cone_angle * 0.5))
+	
+	# debug visualization
+	#DebugDraw.draw_cone(origin, direction, aoe_w.aoe_range, aoe_w.cone_angle, Color(1, 0.5, 0, 0.3), fire_timer.wait_time)
+
+	for result in results:
+		var collider = result.collider
+		var direction_to_enemy = (collider.global_position - origin).normalized()
+		var forward_dot = direction.dot(direction_to_enemy)
+		if forward_dot >= cos_threshold:
+			if collider is Enemy:
+				# apply damage scaled by how often this function is called
+				collider.damage(aoe_w.bullet_damage * fire_timer.wait_time)
+				collider.apply_burn(aoe_w.burn_damage_per_second, aoe_w.burn_duration)
+
+func shoot_melee() -> void:
+	if not current_weapon is MeleeWeapon:
+		return
+	
+	var melee_w: MeleeWeapon = current_weapon
+	var cam = player.get_node('CameraController/Camera')
+	var origin = cam.global_position
+	var direction = -cam.global_transform.basis.z
+	
+	# use sphere to find colliders in melee range
+	var space_state = get_world_3d().direct_space_state
+	var shape_query = PhysicsShapeQueryParameters3D.new()
+	var sphere = SphereShape3D.new()
+	sphere.radius = melee_w.melee_range
+	shape_query.shape = sphere
+	
+	var hit_position = origin + direction * (melee_w.melee_range * 0.5)
+	shape_query.transform.origin = hit_position
+	
+	#DebugDraw.draw_cone(origin, direction, melee_w.melee_range, 90.0, Color(1, 0, 0, 0.3), 0.5)
+
+	var results = space_state.intersect_shape(shape_query)
+	
+	for result in results:
+		var collider = result.collider
+		#cone math
+		var direction_to_enemy = (collider.global_position - origin).normalized()
+		var forward_dot = direction.dot(direction_to_enemy)
+		# increase 0.0 to narrow cone
+		if forward_dot > 0.0:
+			if collider is Enemy:
+				collider.damage(melee_w.bullet_damage)
+				var knockback_dir = (collider.global_position - origin).normalized()
+				collider.apply_knockback(knockback_dir, melee_w.knockback_distance)
+				print("Melee hit: %s" % collider)
 
 
 func _on_fire_timer_end() -> void:

@@ -23,6 +23,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 Events="*res://globals/Events.gd"
 GameState="*res://globals/GameState.gd"
 BackgroundMusicPlayer="*uid://b5i6xgo21g4l5"
+DebugDraw="*uid://drhqwd43ce17l"
 
 [filesystem]
 
@@ -119,3 +120,8 @@ change_music={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":39,"key_label":0,"unicode":39,"location":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="Main"
+3d_physics/layer_2="Player Only"

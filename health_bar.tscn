@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bnxi7tiugqvn3"]
+
+[ext_resource type="Script" uid="uid://qojvpr4cdb15" path="res://buttons/scripts/healthbar.gd" id="1_m7ell"]
+[ext_resource type="FontFile" uid="uid://cttsowmyoxsyt" path="res://art/fonts/altar-gothic-demo/AltarGothicDemo-Regular.otf" id="2_kdjhy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdjhy"]
+bg_color = Color(0.84313726, 0.56078434, 0.12156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srckl"]
+bg_color = Color(0.288518, 0.288518, 0.2885179, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1r8bn"]
+bg_color = Color(0.88235295, 0, 0, 1)
+
+[node name="HealthBar" type="ProgressBar" unique_id=573624656]
+z_index = 1
+offset_right = 400.0
+offset_bottom = 5.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_kdjhy")
+value = 60.0
+show_percentage = false
+script = ExtResource("1_m7ell")
+
+[node name="DamageBar" type="ProgressBar" parent="." unique_id=1425141498]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_srckl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1r8bn")
+value = 89.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="." unique_id=1109875516]
+wait_time = 0.5
+one_shot = true
+
+[node name="HPLabel" type="Label" parent="." unique_id=1673177522]
+layout_mode = 0
+offset_left = 392.0
+offset_top = -5.0
+offset_right = 432.0
+offset_bottom = 18.0
+theme_override_fonts/font = ExtResource("2_kdjhy")
+text = "dsfsf"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

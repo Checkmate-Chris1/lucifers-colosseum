@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://y7yysrj2w6tc"]
+
+[ext_resource type="PackedScene" uid="uid://c3sd5twct7c5f" path="res://art/models/lucifersColosseum/lucifersColosseum.glb" id="1_4teej"]
+
+[node name="Map" unique_id=1120192782 instance=ExtResource("1_4teej")]
+
+[node name="PlayerCollider" parent="." index="1" unique_id=1989016184]
+collision_layer = 2
+collision_mask = 2

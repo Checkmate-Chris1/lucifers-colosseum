@@ -8,6 +8,7 @@ const player_fov = 75.0 ## Player's field of view in degrees
 
 var mouse_sensitivity := 0.2
 var player_inventory = ['Spine Whip']
+var wave_number := 1 ## The current wave number the player is at
 var slam_multiplier = 20 ## A multiplier for the player's slam damage
 var slam_size = 1 ## A multiplier from the default slam area diameter
 var dash_speed: float = 5.0

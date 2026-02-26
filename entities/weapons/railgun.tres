@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://ce2yo3b5dwvyx"]
 
+[ext_resource type="Texture2D" uid="uid://benctt3sg0h30" path="res://buttons/assets/RAILGUN.PNG" id="1_2nouc"]
 [ext_resource type="PackedScene" uid="uid://dobb620b3esy1" path="res://art/models/railgun/railgun.tscn" id="1_8fkru"]
 [ext_resource type="Script" uid="uid://c48goajbacw35" path="res://entities/weapons/weapon.gd" id="1_script"]
 
@@ -14,3 +15,4 @@ reload_delay = 2.5
 weapon_type = "raycast"
 model = ExtResource("1_8fkru")
 range = 30.0
+icon = ExtResource("1_2nouc")

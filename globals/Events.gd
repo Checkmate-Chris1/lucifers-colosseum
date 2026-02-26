@@ -22,3 +22,5 @@ signal UPGR_spine_whip_dmg_up(percentage : int)
 signal UPGR_spine_whip_range_up(percentage : int)
 signal UPGR_flamethrower_dmg_up(percentage : int)
 signal UPGR_flamethrower_range_up(percentage : int)
+
+signal upgrade_chosen

@@ -40,9 +40,13 @@ var upgrade_pool = [
 ]
 
 func _ready():
-	pass
+	Events.wave_end.connect(open_upgrade_menu)
+	Events.upgrade_chosen.connect(func(): self.hide())
 
-func open_upgrade_menu(is_perfect_wave: bool):	
+
+
+func open_upgrade_menu(is_perfect_wave: bool):
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	for child in slot_container.get_children():
 		child.queue_free()
 		

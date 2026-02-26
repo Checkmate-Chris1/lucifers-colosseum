@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://h58h742lvij0" path="res://pause_menu.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" path="res://health_bar.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" path="res://stamina_bar.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://bd22m50kq6152" path="res://upgrade_menu.tscn" id="8_5vw27"]
 
 [node name="Main" type="Node3D" unique_id=139922012]
 script = ExtResource("1_7mycd")
@@ -35,3 +36,6 @@ offset_left = 6.0
 offset_top = 27.0
 offset_right = 310.0
 offset_bottom = 39.0
+
+[node name="UpgradeMenu" parent="." unique_id=600466742 instance=ExtResource("8_5vw27")]
+visible = false

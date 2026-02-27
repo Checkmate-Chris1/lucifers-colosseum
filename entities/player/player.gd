@@ -21,6 +21,13 @@ var input_lock := false # use this variable when the player shouldnt have contro
 var deceleration_lock := false # use this to temporarily stop the character from decelerating
 
 var speed_multiplier := SPEED
+var speed_boost := 0.0
+
+# percent trackers
+var health_total_percent := 0
+var gp_radius_total_percent := 0
+var gp_dmg_total_percent := 0
+var speed_total_percent := 0
 var is_dashing := false
 
 var mouse_input := false
@@ -30,10 +37,24 @@ var tilt_input: float
 
 @onready var walking_audio_player: AudioStreamPlayer = $WalkingSFX
 
+signal max_health_changed(new_max : float)
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Events.respawn.connect(_respawn)
 	died.connect(Events.game_over.emit) # Relays player death as game over
+
+	# upgrade listeners
+	Events.UPGR_p_max_health_up.connect(_on_max_health_up)
+	Events.UPGR_p_gp_radius_up.connect(_on_gp_radius_up)
+	Events.UPGR_p_gp_dmg_up.connect(_on_gp_dmg_up)
+	Events.UPGR_p_speed_up.connect(_on_speed_up)
+
+	# cumulative percent trackers
+	health_total_percent = 0
+	gp_radius_total_percent = 0
+	gp_dmg_total_percent = 0
+	speed_total_percent = 0
 
 func _physics_process(delta: float) -> void:
 	# DEBUG: Quit
@@ -145,8 +166,37 @@ func _update_camera(delta: float) -> void:
 func _respawn() -> void:
 	get_tree().reload_current_scene()
 
+func _on_max_health_up(percent: int) -> void:
+	# increase base HEALTH and current health by percentage
+	health_total_percent += percent
+	var increase = HEALTH * percent / 100.0
+	HEALTH += increase
+	current_health += increase
+	print("Health Boost: increased by %d, total: %d" % [percent, health_total_percent])
+	# notify UI
+	max_health_changed.emit(HEALTH)
+	health_changed.emit(current_health)
+
+func _on_gp_radius_up(percent: int) -> void:
+	gp_radius_total_percent += percent
+	GameState.slam_size *= (1.0 + percent/100.0)
+	print("Ground Pound Radius: increased by %d, total: %d" % [percent, gp_radius_total_percent])
+
+func _on_gp_dmg_up(percent: int) -> void:
+	gp_dmg_total_percent += percent
+	GameState.slam_multiplier *= (1.0 + percent/100.0)
+	print("Ground Pound Damage: increased by %d, total: %d" % [percent, gp_dmg_total_percent])
+
+func _on_speed_up(percent: int) -> void:
+	speed_total_percent += percent
+	var inc = SPEED * percent / 100.0
+	speed_boost += inc
+	speed_multiplier = SPEED + speed_boost
+	print("Speed Boost: increased by %d, total: %d" % [percent, speed_total_percent])
+
 func is_walking():
+	var base = SPEED + speed_boost
 	return ((velocity.x != 0 or velocity.z != 0) and is_on_floor() and 
-			speed_multiplier == SPEED)
+			speed_multiplier == base)
 			# the last statement is to check if the player is not dashing
 			# is_dashing is not a reliable variable for this

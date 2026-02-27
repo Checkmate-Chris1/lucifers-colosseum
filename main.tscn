@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://jqam3rbvna36" path="res://levels/lucifers_colosseum/lucifers_colosseum.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bhh0cvchsg71t" path="res://entities/player/player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dk6u7bw72uc0i" path="res://ui/deathScreen.tscn" id="2_5vw27"]
 [ext_resource type="PackedScene" uid="uid://h58h742lvij0" path="res://pause_menu.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bnxi7tiugqvn3" path="res://health_bar.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bgtmdx5abm42x" path="res://weapon_ui.tscn" id="5_weapon"]
@@ -64,3 +65,4 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("8_kek77")
+[node name="DeathUI" parent="." unique_id=1939787248 instance=ExtResource("2_5vw27")]

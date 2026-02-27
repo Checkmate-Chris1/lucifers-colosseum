@@ -239,7 +239,7 @@ func shoot_aoe() -> void:
 	var cos_threshold = cos(deg_to_rad(aoe_w.cone_angle * 0.5))
 	
 	# debug visualization
-	DebugDraw.draw_cone(origin, direction, aoe_w.aoe_range, aoe_w.cone_angle, Color(1, 0.5, 0, 0.3), fire_timer.wait_time)
+	DebugDraw.draw_cone(origin, direction, aoe_w.aoe_range, aoe_w.cone_angle, Color(1, 0.5, 0, 0.2), fire_timer.wait_time+0.1)
 
 	for result in results:
 		var collider = result.collider

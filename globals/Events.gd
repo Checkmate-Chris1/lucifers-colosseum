@@ -27,3 +27,5 @@ signal UPGR_flamethrower_range_up(percentage : int)
 signal upgrade_chosen
 
 signal enemy_died
+
+signal player_dashed

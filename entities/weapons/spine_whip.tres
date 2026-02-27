@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dra4laymmuf0k" path="res://buttons/assets/WHIP.png" id="1_ofydp"]
 [ext_resource type="Script" path="res://entities/weapons/melee_weapon.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://cgjxlpxnldtvt" path="res://art/models/spineWhip/spineWhip.tscn" id="2_i55n7"]
 
 [resource]
 script = ExtResource("1_script")
@@ -11,4 +12,5 @@ ammo = 1
 max_ammo = 1
 fire_delay = 1.5
 weapon_type = "melee"
+model = ExtResource("2_i55n7")
 icon = ExtResource("1_ofydp")

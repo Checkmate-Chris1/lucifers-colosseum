@@ -40,7 +40,6 @@ func _on_wave_end() -> void:
 		
 func _spawn_enemy() -> void:
 	print('spawn_enemy')
-	print(get_children())
 	await _update_spawners()
 	print(enemy_spawners)
 	var spawner_index = randi() % len(enemy_spawners)

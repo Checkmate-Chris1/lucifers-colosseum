@@ -3,9 +3,13 @@ extends AudioStreamPlayer
 @export var streams = [load('res://audio/musicPlaceholder2.mp3'), load('res://audio/musicPlaceholder.mp3')]
 var i = 0
 
+var volume_range := 30
+var min_volume := -30
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	stream = streams[i]
+	Events.change_sound_volume.connect(_on_volume_changed)
 	play()
 
 
@@ -19,3 +23,10 @@ func _change_song():
 		i = 0
 	stream = streams[i]
 	play()
+
+func _on_volume_changed():
+	if (GameState.master_volume_muted or GameState.master_volume <= 0 or 
+			GameState.music_volume_muted or GameState.music_volume <= 0):
+		volume_db = -80
+	else:
+		volume_db = volume_range * GameState.master_volume * GameState.music_volume + min_volume

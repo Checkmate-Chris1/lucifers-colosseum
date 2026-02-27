@@ -25,6 +25,8 @@ var flame_range_total := 0
 # weapon model instances
 var weapon_models: Dictionary = {}  # weapon_name -> model_node
 
+var debug_pistol_toggle := false # allows the existence of the debugging pistol
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_parent()
@@ -48,7 +50,7 @@ func _ready() -> void:
 			model.visible = false
 	
 	# Set initial weapon
-	current_weapon = weapons[0]
+	current_weapon = weapons[1]
 	set_weapon_visibility()
 	
 	add_child(fire_timer)
@@ -62,7 +64,7 @@ func _ready() -> void:
 	update_fire_rate()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("switch_proj"):
+	if Input.is_action_just_pressed("switch_proj") and debug_pistol_toggle:
 		switch_to_weapon_by_type("projectile")
 	elif Input.is_action_just_pressed("switch_ray"):
 		switch_to_weapon_by_type("raycast")
@@ -88,9 +90,10 @@ func fire() -> void:
 		print("Out of ammo")
 		return
 	
+	
 	if current_weapon.weapon_type == "projectile":
 		shoot_bullet()
-	elif current_weapon.weapon_type == "raycast":
+	if current_weapon.weapon_type == "raycast":
 		shoot_ray()
 	elif current_weapon.weapon_type == "aoe":
 		shoot_aoe()
@@ -138,6 +141,8 @@ func switch_to_weapon(index: int) -> void:
 	
 	if index == current_weapon_index:
 		return
+		
+	
 	
 	current_weapon_index = index
 	current_weapon = weapons[current_weapon_index]
@@ -260,7 +265,7 @@ func shoot_aoe() -> void:
 	var cos_threshold = cos(deg_to_rad(aoe_w.cone_angle * 0.5))
 	
 	# debug visualization
-	DebugDraw.draw_cone(origin, direction, aoe_w.aoe_range, aoe_w.cone_angle, Color(1, 0.5, 0, 0.2), fire_timer.wait_time+0.1)
+	#DebugDraw.draw_cone(origin, direction, aoe_w.aoe_range, aoe_w.cone_angle, Color(1, 0.5, 0, 0.2), fire_timer.wait_time+0.1)
 
 	for result in results:
 		var collider = result.collider
@@ -291,7 +296,7 @@ func shoot_melee() -> void:
 	var hit_position = origin + direction * (melee_w.melee_range * 0.5)
 	shape_query.transform.origin = hit_position
 	
-	DebugDraw.draw_cone(origin, direction, melee_w.melee_range, 90.0, Color(1, 0, 0, 0.3), 0.5)
+	#DebugDraw.draw_cone(origin, direction, melee_w.melee_range, 90.0, Color(1, 0, 0, 0.3), 0.5)
 
 	var results = space_state.intersect_shape(shape_query)
 	

@@ -7,6 +7,7 @@ extends Enemy
 @export var DAMPING := 6.0
 
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var animation_tree: AnimationTree = $"Model/AnimationTree"
 
 func _physics_process(delta: float) -> void:
 	if player == null:
@@ -35,3 +36,14 @@ func _physics_process(delta: float) -> void:
 	velocity.y = height_error * HOVER_FORCE
 
 	move_and_slide()
+
+# Fully overriding attack because demon uses AnimationTree
+func attack():
+	if attack_ready:
+		var within_attack = attack_collision_box.get_overlapping_bodies()
+		for entity in within_attack:
+			if entity is Player:
+				entity.damage(ATTACK_DAMAGE)
+				animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+				attack_ready = false
+				get_tree().create_timer(ATTACK_DELAY).timeout.connect(func(): attack_ready = true)

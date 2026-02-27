@@ -274,6 +274,11 @@ func shoot_melee() -> void:
 
 	var results = space_state.intersect_shape(shape_query)
 	
+	# add animation here
+	var w_model = weapon_models[current_weapon.weapon_name]
+	w_model.get_node("spineWhip2").get_node("AnimationPlayer").play("Armature")
+	
+	
 	for result in results:
 		var collider = result.collider
 		#cone math

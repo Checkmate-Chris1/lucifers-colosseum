@@ -4,13 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bhh0cvchsg71t" path="res://entities/player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dk6u7bw72uc0i" path="res://ui/deathScreen.tscn" id="2_5vw27"]
 [ext_resource type="PackedScene" uid="uid://h58h742lvij0" path="res://pause_menu.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://bnxi7tiugqvn3" path="res://health_bar.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bgtmdx5abm42x" path="res://weapon_ui.tscn" id="5_weapon"]
-[ext_resource type="PackedScene" uid="uid://b2d81b41656kk" path="res://stamina_bar.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" path="res://health_bar.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" path="res://weapon_ui.tscn" id="5_weapon"]
+[ext_resource type="PackedScene" path="res://stamina_bar.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://colskv5gfdw7y" path="res://upgrade_menu.tscn" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://04xujdjspevb" path="res://buttons/assets/crosshair.png" id="8_kek77"]
-
-[ext_resource type="Script" uid="uid://mainscript" path="res://buttons/scripts/main.gd" id="9_main"]
+[ext_resource type="Script" uid="uid://cgwkugpxg01el" path="res://buttons/scripts/main.gd" id="9_main"]
 
 [node name="Main" type="Node3D" unique_id=139922012]
 script = ExtResource("9_main")
@@ -56,4 +55,5 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("8_kek77")
+
 [node name="DeathUI" parent="." unique_id=1939787248 instance=ExtResource("2_5vw27")]

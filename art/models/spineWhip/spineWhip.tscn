@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cgjxlpxnldtvt"]
+
+[ext_resource type="PackedScene" uid="uid://bi38u8bm86oks" path="res://art/models/spineWhip/spineWhip.glb" id="1_qllwf"]
+
+[node name="SpineWhip" type="Node3D" unique_id=280928727]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1924005797]
+
+[node name="spineWhip2" parent="." unique_id=247575409 instance=ExtResource("1_qllwf")]
+transform = Transform3D(0.01, 0, 0, 0, -0.0034202011, 0.009396926, 0, -0.009396926, -0.0034202011, 0.2, 0.3, -0.1)

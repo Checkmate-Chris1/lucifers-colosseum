@@ -13,7 +13,7 @@ class_name Enemy
 var attack_ready := true ## If another attack is ready
 
 func _ready() -> void:
-	animation_player.play("Idle") # idle
+	animation_player.play("idle") # idle
 
 func _init() -> void:
 	died.connect(queue_free) # All enemies should be removed from the scene upon death

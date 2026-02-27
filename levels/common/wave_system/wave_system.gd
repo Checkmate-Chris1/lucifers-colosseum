@@ -40,6 +40,8 @@ func _on_wave_end() -> void:
 		
 func _spawn_enemy() -> void:
 	print('spawn_enemy')
+	await _update_spawners()
+	print(enemy_spawners)
 	var spawner_index = randi() % len(enemy_spawners)
 	var selected_enemy = _get_from_weighted_values(enemy_weights)
 	enemy_spawners[spawner_index].spawn_enemy(selected_enemy)
@@ -60,7 +62,7 @@ func _update_spawners() -> void:
 	print('update spawners')
 	enemy_spawners = []
 	for child in get_children():
-		if child is EnemySpawner:
+		if child is EnemySpawner or child is Marker3D:
 			enemy_spawners.append(child)
 
 func _sum(array: Array):

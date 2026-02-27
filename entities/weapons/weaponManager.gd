@@ -207,11 +207,11 @@ func shoot_ray() -> void:
 	tracer.height = tracer_start.distance_to(end)
 	
 	var collisions = _get_all_enemy_collisions(query, space_state)
-	if current_weapon.penetration and len(collisions) >= 1:
+	if current_weapon.penetration:
 		for collider in collisions:
 			collider.damage(current_weapon.bullet_damage)
 			print("Hit: %s" % collider)
-	else:
+	elif len(collisions) >= 1:
 		collisions[0].damage(current_weapon.bullet_damage)
 		print("Hit: %s" % collisions[0])
 
@@ -219,13 +219,19 @@ func _get_all_enemy_collisions(query: PhysicsRayQueryParameters3D, space_state: 
 	query.exclude = []
 	var collisions = []
 	var ray_result = space_state.intersect_ray(query)
-	while ray_result and ray_result.get("collider") is Enemy:
+
+	while ray_result:
 		var collider = ray_result.get("collider")
 		if collider is Enemy:
 			collisions.append(collider)
 			print(collider)
 			query.exclude.append(collider.get_rid())
-		ray_result = space_state.intersect_ray(query)
+			var hit_position = ray_result.get("position")
+			var direction = (query.to - query.from).normalized()
+			query.from = hit_position + direction * 0.01
+			ray_result = space_state.intersect_ray(query)
+		else:
+			break
 	return collisions
 
 

@@ -10,19 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://colskv5gfdw7y" path="res://upgrade_menu.tscn" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://04xujdjspevb" path="res://buttons/assets/crosshair.png" id="8_kek77"]
 
-[sub_resource type="GDScript" id="GDScript_7mycd"]
-script/source = "extends Node3D
-
-@onready var player = $Player
-@onready var health_bar = $HealthBar
-
-func _ready():
-	health_bar.init_health(player.current_health, player.HEALTH)
-	player.health_changed.connect(health_bar._set_health)
-"
+[ext_resource type="Script" uid="uid://mainscript" path="res://buttons/scripts/main.gd" id="9_main"]
 
 [node name="Main" type="Node3D" unique_id=139922012]
-script = SubResource("GDScript_7mycd")
+script = ExtResource("9_main")
 
 [node name="LucifersColosseum" parent="." unique_id=2142896154 instance=ExtResource("1_ig7tw")]
 

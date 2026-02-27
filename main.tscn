@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://jqam3rbvna36" path="res://levels/lucifers_colosseum/lucifers_colosseum.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bhh0cvchsg71t" path="res://entities/player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://h58h742lvij0" path="res://pause_menu.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://bgtmdx5abm42x" path="res://weapon_ui.tscn" id="5_weapon"]
 [ext_resource type="PackedScene" uid="uid://bnxi7tiugqvn3" path="res://health_bar.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://ck62axfgme6gy" path="res://stamina_bar.tscn" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://bd22n50kq6152" path="res://upgrade_menu.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bgtmdx5abm42x" path="res://weapon_ui.tscn" id="5_weapon"]
+[ext_resource type="PackedScene" uid="uid://b2d81b41656kk" path="res://stamina_bar.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://colskv5gfdw7y" path="res://upgrade_menu.tscn" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://04xujdjspevb" path="res://buttons/assets/crosshair.png" id="8_kek77"]
 
 [sub_resource type="GDScript" id="GDScript_7mycd"]
 script/source = "extends Node3D
@@ -48,3 +49,18 @@ offset_bottom = 39.0
 
 [node name="UpgradeMenu" parent="." unique_id=600466742 instance=ExtResource("8_5vw27")]
 visible = false
+
+[node name="Crosshair" type="TextureRect" parent="." unique_id=152143785]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.999939
+offset_top = -12.9999695
+offset_right = 499.0
+offset_bottom = 499.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_kek77")

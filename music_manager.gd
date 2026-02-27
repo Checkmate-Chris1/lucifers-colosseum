@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-@export var streams = [load('res://audio/musicPlaceholder.mp3'), load('res://audio/musicPlaceholder2.mp3')]
+@export var streams = [load('res://audio/musicPlaceholder2.mp3'), load('res://audio/musicPlaceholder.mp3')]
 var i = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -11,10 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause_music"):
-		stream_paused = not stream_paused
-	elif Input.is_action_just_pressed("change_music"):
-		_change_song()
+	pass
 
 func _change_song():
 	i += 1

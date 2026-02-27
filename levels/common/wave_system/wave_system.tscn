@@ -3,11 +3,14 @@
 [ext_resource type="Script" uid="uid://beqoeyeyebp6e" path="res://levels/common/wave_system/wave_system.gd" id="1_qv822"]
 [ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="2_dojko"]
 [ext_resource type="Script" uid="uid://cfxoojnkwb8ug" path="res://levels/common/wave_system/enemy_spawner.gd" id="2_qv822"]
+[ext_resource type="PackedScene" uid="uid://cl1nrs3coa0m0" path="res://entities/enemies/demon/demon.tscn" id="3_xsmqx"]
 
 [node name="WaveSystem" type="Node3D" unique_id=2122809065]
 script = ExtResource("1_qv822")
 enemy_weights = Dictionary[PackedScene, float]({
-ExtResource("2_dojko"): 1.0
+ExtResource("2_dojko"): 6.0,
+null: 0.0,
+ExtResource("3_xsmqx"): 3.0
 })
 
 [node name="EnemySpawner" type="Marker3D" parent="." unique_id=609764301]

@@ -9,6 +9,7 @@ class_name Weapon extends Resource
 @export var weapon_type: String  # "projectile" or "raycast"
 @export var model: PackedScene
 @export var bullet_scene: PackedScene
+@export var penetration: bool = false
 @export var range: float = 99.0
 @export var icon: Texture2D
 

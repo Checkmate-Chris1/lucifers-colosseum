@@ -15,13 +15,26 @@ var reload_timer := Timer.new()
 var ready_to_shoot := true
 var reloading := false
 
+var railgun_dmg_total := 0
+var railgun_range_total := 0
+var spine_dmg_total := 0
+var spine_range_total := 0
+var flame_dmg_total := 0
+var flame_range_total := 0
+
 # weapon model instances
 var weapon_models: Dictionary = {}  # weapon_name -> model_node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_parent()
-	
+	Events.UPGR_railgun_dmg_up.connect(_on_railgun_dmg_up)
+	Events.UPGR_railgun_range_up.connect(_on_railgun_range_up)
+	Events.UPGR_spine_whip_dmg_up.connect(_on_spine_dmg_up)
+	Events.UPGR_spine_whip_range_up.connect(_on_spine_range_up)
+	Events.UPGR_flamethrower_dmg_up.connect(_on_flame_dmg_up)
+	Events.UPGR_flamethrower_range_up.connect(_on_flame_range_up)
+
 	if weapons.is_empty():
 		push_error("No weapons configured!")
 		return
@@ -277,3 +290,45 @@ func shoot_melee() -> void:
 
 func _on_fire_timer_end() -> void:
 	ready_to_shoot = true
+
+func _on_railgun_dmg_up(percent: int) -> void:
+	railgun_dmg_total += percent
+	for w in weapons:
+		if w.weapon_name == "Railgun":
+			w.bullet_damage *= (1.0 + percent/100.0)
+	print("Railgun Damage: increased by %d, total: %d" % [percent, railgun_dmg_total])
+
+func _on_railgun_range_up(percent: int) -> void:
+	railgun_range_total += percent
+	for w in weapons:
+		if w.weapon_name == "Railgun":
+			w.range *= (1.0 + percent/100.0)
+	print("Railgun Range: increased by %d, total: %d" % [percent, railgun_range_total])
+
+func _on_spine_dmg_up(percent: int) -> void:
+	spine_dmg_total += percent
+	for w in weapons:
+		if w.weapon_name == "Spine Whip":
+			w.bullet_damage *= (1.0 + percent/100.0)
+	print("Spine Whip Damage: increased by %d, total: %d" % [percent, spine_dmg_total])
+
+func _on_spine_range_up(percent: int) -> void:
+	spine_range_total += percent
+	for w in weapons:
+		if w.weapon_name == "Spine Whip" and w is MeleeWeapon:
+			w.melee_range *= (1.0 + percent/100.0)
+	print("Spine Whip Range: increased by %d, total: %d" % [percent, spine_range_total])
+
+func _on_flame_dmg_up(percent: int) -> void:
+	flame_dmg_total += percent
+	for w in weapons:
+		if w.weapon_name == "Flamethrower":
+			w.bullet_damage *= (1.0 + percent/100.0)
+	print("Flamethrower Damage: increased by %d, total: %d" % [percent, flame_dmg_total])
+
+func _on_flame_range_up(percent: int) -> void:
+	flame_range_total += percent
+	for w in weapons:
+		if w.weapon_name == "Flamethrower" and w is AOEWeapon:
+			w.aoe_range *= (1.0 + percent/100.0)
+	print("Flamethrower Range: increased by %d, total: %d" % [percent, flame_range_total])

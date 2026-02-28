@@ -12,6 +12,7 @@ size = Vector3(1, 1.2755127, 2.6795654)
 
 [node name="Demon" type="CharacterBody3D" unique_id=1910989201 node_paths=PackedStringArray("attack_collision_box", "enemy_model") groups=["entity"]]
 script = ExtResource("1_bgi78")
+SPEED = 3.0
 ATTACK_DAMAGE = 25.0
 ATTACK_DELAY = 1.5
 attack_collision_box = NodePath("AttackArea")

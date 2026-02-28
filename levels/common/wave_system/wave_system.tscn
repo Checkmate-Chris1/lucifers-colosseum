@@ -8,8 +8,8 @@
 [node name="WaveSystem" type="Node3D" unique_id=2122809065]
 script = ExtResource("1_qv822")
 enemy_weights = Dictionary[PackedScene, float]({
-ExtResource("2_dojko"): 6.0,
 null: 0.0,
+ExtResource("2_dojko"): 6.0,
 ExtResource("3_xsmqx"): 3.0
 })
 

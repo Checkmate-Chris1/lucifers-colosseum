@@ -4,10 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://604rwwxdjfyr" path="res://prefabs/oob_hitbox/oob_hitbox.tscn" id="2_jd8mx"]
 [ext_resource type="PackedScene" uid="uid://bpv3ny1j8yewk" path="res://art/models/entranceGate/entranceGate.glb" id="3_ddk8s"]
 [ext_resource type="PackedScene" uid="uid://bg6eql8hktwp5" path="res://levels/common/wave_system/wave_system.tscn" id="4_jbjv4"]
-[ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="5_q3l1j"]
-[ext_resource type="PackedScene" uid="uid://cl1nrs3coa0m0" path="res://entities/enemies/demon/demon.tscn" id="6_5gke3"]
-[ext_resource type="Script" uid="uid://bey5yuknwbkjc" path="res://levels/lucifers_colosseum/crowd_spawner.gd" id="6_crowd"]
-[ext_resource type="PackedScene" uid="uid://21aaik3h3qle" path="res://entities/enemies/fallenAngel/fallenAngel.tscn" id="7_rxjyu"]
+[ext_resource type="AudioStream" uid="uid://ddu7ohicnji11" path="res://audio/Void Ambience SFX (1).mp3" id="4_s14bh"]
+[ext_resource type="Script" uid="uid://ojju17btcojk" path="res://globals/musicManager/gate_sound.gd" id="5_4hr70"]
+[ext_resource type="Script" path="res://levels/lucifers_colosseum/crowd_spawner.gd" id="6_crowd"]
 
 [sub_resource type="Environment" id="Environment_vwxo2"]
 background_mode = 1
@@ -29,7 +28,7 @@ environment = SubResource("Environment_vwxo2")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1924202595]
 navigation_mesh = SubResource("NavigationMesh_jd8mx")
 
-[node name="Map" parent="NavigationRegion3D" unique_id=1280467127 instance=ExtResource("1_jbjv4")]
+[node name="Map" parent="NavigationRegion3D" unique_id=1120192782 instance=ExtResource("1_jbjv4")]
 
 [node name="CenterLights" type="OmniLight3D" parent="NavigationRegion3D/Map" unique_id=1391462308]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.955338, 21.836254, 0)
@@ -203,35 +202,62 @@ spot_angle_attenuation = 1.2333336
 [node name="entranceGate" parent="." unique_id=515331649 instance=ExtResource("3_ddk8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11283749, -28.048834)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="entranceGate" unique_id=753214549]
+stream = ExtResource("4_s14bh")
+script = ExtResource("5_4hr70")
+
 [node name="entranceGate2" parent="." unique_id=1755280660 instance=ExtResource("3_ddk8s")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -19.83352, 0.11283749, -19.83352)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="entranceGate2" unique_id=2105072053]
+stream = ExtResource("4_s14bh")
+script = ExtResource("5_4hr70")
 
 [node name="entranceGate3" parent="." unique_id=57166084 instance=ExtResource("3_ddk8s")]
 transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -28.048832, 0.11283749, 0)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="entranceGate3" unique_id=1683764544]
+stream = ExtResource("4_s14bh")
+script = ExtResource("5_4hr70")
+
 [node name="entranceGate4" parent="." unique_id=676631179 instance=ExtResource("3_ddk8s")]
 transform = Transform3D(-0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071067, -19.833519, 0.11283749, 19.833519)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="entranceGate4" unique_id=2124067974]
+stream = ExtResource("4_s14bh")
+script = ExtResource("5_4hr70")
 
 [node name="entranceGate5" parent="." unique_id=2130400287 instance=ExtResource("3_ddk8s")]
 transform = Transform3D(-0.9999999, 0, 0, 0, 1, 0, 0, 0, -0.9999999, 0, 0.11283749, 28.04883)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="entranceGate5" unique_id=542937779]
+stream = ExtResource("4_s14bh")
+script = ExtResource("5_4hr70")
+
 [node name="entranceGate6" parent="." unique_id=2032594633 instance=ExtResource("3_ddk8s")]
 transform = Transform3D(-0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071067, 19.833519, 0.11283749, 19.833519)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="entranceGate6" unique_id=1961995616]
+stream = ExtResource("4_s14bh")
+script = ExtResource("5_4hr70")
 
 [node name="entranceGate7" parent="." unique_id=1267859688 instance=ExtResource("3_ddk8s")]
 transform = Transform3D(0, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 0, 28.04883, 0.11283749, 0)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="entranceGate7" unique_id=1371073768]
+stream = ExtResource("4_s14bh")
+script = ExtResource("5_4hr70")
+
 [node name="entranceGate8" parent="." unique_id=222380549 instance=ExtResource("3_ddk8s")]
 transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 19.833519, 0.11283749, -19.833519)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="entranceGate8" unique_id=1454400061]
+stream = ExtResource("4_s14bh")
+script = ExtResource("5_4hr70")
+
 [node name="WaveSystem" parent="." unique_id=2122809065 instance=ExtResource("4_jbjv4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.148, 0.855, -0.173)
-enemy_weights = Dictionary[PackedScene, float]({
-null: 0.0,
-ExtResource("5_q3l1j"): 6.0,
-ExtResource("6_5gke3"): 3.0,
-ExtResource("7_rxjyu"): 1.0
-})
+script = null
 
 [node name="CrowdSpawner" type="Node3D" parent="." unique_id=474279312]
 script = ExtResource("6_crowd")

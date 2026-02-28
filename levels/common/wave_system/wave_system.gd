@@ -12,7 +12,7 @@ var enemy_count : int
 func _ready() -> void:
 	Events.enemy_died.connect(_enemy_death_process)
 	_update_spawners()
-	spawn_wave(3)
+	spawn_wave(10)
 	print('ready')
 
 func _enemy_death_process():
@@ -35,8 +35,8 @@ func _on_wave_end() -> void:
 	print('wave end')
 	Events.wave_end.emit(false)
 	await get_tree().create_timer(wave_grace_period, false).timeout
-	# Enemy count goes 3, 5, 6, 7, 8, etc.
-	spawn_wave(3+GameState.wave_number)
+	# Enemy count goes 10, 14, 16, 18 etc.
+	spawn_wave(10+2*GameState.wave_number)
 		
 func _spawn_enemy() -> void:
 	print('spawn_enemy')

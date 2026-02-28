@@ -14,7 +14,6 @@ size = Vector3(2.4899902, 8.770943, 10.294922)
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_y23fj")
 chasing_distance = 8.0
-SPEED = 1.2
 ATTACK_DAMAGE = 40.0
 ATTACK_DELAY = 2.3
 attack_collision_box = NodePath("AttackArea")

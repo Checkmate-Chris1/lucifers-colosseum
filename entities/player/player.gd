@@ -106,7 +106,6 @@ func _physics_process(delta: float) -> void:
 	_update_camera(delta)
 
 func _dash():
-	# TODO: ADD FOV adjustments during the dash
 	var _camera := get_viewport().get_camera_3d()
 	var zoom_out_speed := 0.1   # Adjusts how QUICKLY fov zooms in when dashing
 	var zoom_in_speed  := 0.25  # Adjusts how QUICKLY fov zooms out when dashing
@@ -118,6 +117,8 @@ func _dash():
 	input_lock = true
 	deceleration_lock = true
 	speed_multiplier *= speed_increase
+	
+	Events.player_dashed.emit()
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(_camera, "fov", GameState.player_fov + fov_increase, zoom_out_speed)

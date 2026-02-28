@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://tk2nniq0q3ju"]
+
+[ext_resource type="AudioStream" uid="uid://6yqj5dr2lcp7" path="res://audio/Dashing SFX.mp3" id="1_arh7n"]
+[ext_resource type="Script" uid="uid://bgabaw7xj07kb" path="res://entities/player/dash_sfx.gd" id="1_gmow6"]
+
+[node name="DashSfx" type="Node2D" unique_id=1579273942]
+script = ExtResource("1_gmow6")
+
+[node name="dashSFX" type="AudioStreamPlayer" parent="." unique_id=932159687]
+stream = ExtResource("1_arh7n")

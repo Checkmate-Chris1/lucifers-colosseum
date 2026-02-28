@@ -25,6 +25,11 @@ GameState="*res://globals/GameState.gd"
 BackgroundMusicPlayer="*uid://b5i6xgo21g4l5"
 DebugDraw="*uid://co7vry81vysiq"
 
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
+
 [filesystem]
 
 import/blender/enabled=false

@@ -118,7 +118,7 @@ texture_hover = ExtResource("9_xfn3p")
 stretch_mode = 3
 
 [node name="Options" parent="." unique_id=642966782 instance=ExtResource("11_rhgbh")]
-visible = false
+layer = 4
 
 [node name="ExitOptions" type="TextureButton" parent="Options" unique_id=1047039580]
 z_index = 3

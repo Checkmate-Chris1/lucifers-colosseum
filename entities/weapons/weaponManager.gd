@@ -191,11 +191,12 @@ func shoot_bullet() -> void:
 
 func shoot_ray() -> void:
 	var space_state = get_world_3d().direct_space_state
-	var cam = player.get_node('CameraController/Camera')
-	var mouse_pos = get_viewport().size / 2  # center of screen
+	var cam: Camera3D = player.get_node('CameraController/Camera')
+	var mouse_pos = get_viewport().get_mouse_position()  # center of screen
 	
 	var origin = cam.global_position
-	var end = origin + cam.project_ray_normal(mouse_pos) * current_weapon.range
+	var ray_normal = cam.project_ray_normal(mouse_pos)
+	var end = origin + ray_normal * current_weapon.range
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
 	query.collide_with_bodies = true
 	

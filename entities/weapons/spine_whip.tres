@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://bkdeyr4501poi"]
 
 [ext_resource type="Texture2D" uid="uid://dra4laymmuf0k" path="res://buttons/assets/WHIP.png" id="1_ofydp"]
-[ext_resource type="Script" path="res://entities/weapons/melee_weapon.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dcdjx6x65rgey" path="res://entities/weapons/melee_weapon.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://cgjxlpxnldtvt" path="res://art/models/spineWhip/spineWhip.tscn" id="2_i55n7"]
 
 [resource]

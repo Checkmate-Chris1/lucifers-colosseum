@@ -5,8 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://bpv3ny1j8yewk" path="res://art/models/entranceGate/entranceGate.glb" id="3_ddk8s"]
 [ext_resource type="PackedScene" uid="uid://bg6eql8hktwp5" path="res://levels/common/wave_system/wave_system.tscn" id="4_jbjv4"]
 [ext_resource type="AudioStream" uid="uid://ddu7ohicnji11" path="res://audio/Void Ambience SFX (1).mp3" id="4_s14bh"]
-[ext_resource type="Script" uid="uid://ojju17btcojk" path="res://globals/musicManager/gate_sound.gd" id="5_4hr70"]
-[ext_resource type="Script" path="res://levels/lucifers_colosseum/crowd_spawner.gd" id="6_crowd"]
+[ext_resource type="Script" path="res://globals/musicManager/gate_sound.gd" id="5_4hr70"]
+[ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="5_q3l1j"]
+[ext_resource type="PackedScene" uid="uid://cl1nrs3coa0m0" path="res://entities/enemies/demon/demon.tscn" id="6_5gke3"]
+[ext_resource type="Script" uid="uid://bey5yuknwbkjc" path="res://levels/lucifers_colosseum/crowd_spawner.gd" id="6_crowd"]
+[ext_resource type="PackedScene" uid="uid://21aaik3h3qle" path="res://entities/enemies/fallenAngel/fallenAngel.tscn" id="7_rxjyu"]
 
 [sub_resource type="Environment" id="Environment_vwxo2"]
 background_mode = 1
@@ -257,7 +260,11 @@ script = ExtResource("5_4hr70")
 
 [node name="WaveSystem" parent="." unique_id=2122809065 instance=ExtResource("4_jbjv4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.148, 0.855, -0.173)
-script = null
+enemy_weights = Dictionary[PackedScene, float]({
+ExtResource("6_5gke3"): 3.0,
+ExtResource("5_q3l1j"): 6.0,
+ExtResource("7_rxjyu"): 1.0
+})
 
 [node name="CrowdSpawner" type="Node3D" parent="." unique_id=474279312]
 script = ExtResource("6_crowd")

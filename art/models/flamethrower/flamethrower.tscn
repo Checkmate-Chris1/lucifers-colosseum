@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dxogymsrb4wfr" path="res://art/models/flamethrower/flamethrower.glb" id="1_yhx44"]
 
 [node name="Flamethrower" type="Node3D" unique_id=785109621]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15468413, 0, 0)
 
 [node name="flamethrower" parent="." unique_id=436683792 instance=ExtResource("1_yhx44")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.32729656, 0.1694473, -0.25237608)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.482, 0.169, -0.252)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqwf7yn7ed2uv" path="res://entities/weapons/aoe_weapon.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://bbcyudaeydy24" path="res://buttons/assets/FLAMETHROWER.PNG" id="1_wy1mp"]
+[ext_resource type="PackedScene" uid="uid://418ha312fcbu" path="res://art/models/flamethrower/flamethrower.tscn" id="2_nvck7"]
 
 [resource]
 script = ExtResource("1_script")
@@ -13,4 +14,5 @@ ammo = 50
 max_ammo = 50
 fire_delay = 0.1
 weapon_type = "aoe"
+model = ExtResource("2_nvck7")
 icon = ExtResource("1_wy1mp")

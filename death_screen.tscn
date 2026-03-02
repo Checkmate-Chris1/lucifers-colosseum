@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://27w5yjnk5jfs"]
+
+[ext_resource type="Script" uid="uid://cfltrd8rb6mnu" path="res://ui/death_screen.gd" id="1_hhlqb"]
+[ext_resource type="Texture2D" uid="uid://b8ojv8vphqqy7" path="res://buttons/assets/respawn.png" id="2_f562y"]
+[ext_resource type="Texture2D" uid="uid://6kxpgxpkc3b6" path="res://buttons/assets/respawn_pressed.png" id="3_s44ck"]
+[ext_resource type="Texture2D" uid="uid://clr28ekgvpeuh" path="res://buttons/assets/exit.png" id="4_nus4h"]
+[ext_resource type="Texture2D" uid="uid://dqnu6ewaiplwl" path="res://buttons/assets/exit_pressed.png" id="5_b1ui3"]
+[ext_resource type="FontFile" uid="uid://cttsowmyoxsyt" path="res://art/fonts/altar-gothic-demo/AltarGothicDemo-Regular.otf" id="6_f562y"]
+
+[node name="DeathScreen" type="Control" unique_id=1577054742]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hhlqb")
+
+[node name="Respawn" type="TextureButton" parent="." unique_id=1950778118]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 322.0
+offset_right = 2138.0
+offset_bottom = 1003.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("2_f562y")
+texture_hover = ExtResource("3_s44ck")
+
+[node name="Exit" type="TextureButton" parent="." unique_id=826483517]
+layout_mode = 0
+offset_left = 634.9998
+offset_top = 322.0
+offset_right = 2430.0
+offset_bottom = 1005.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("4_nus4h")
+texture_hover = ExtResource("5_b1ui3")
+
+[node name="DeathLabel" type="Label" parent="." unique_id=1822295905]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 97.0
+offset_bottom = 234.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_f562y")
+theme_override_font_sizes/font_size = 48
+text = "You died.
+A disappointment for Lucifer..."
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Respawn" to="." method="_on_respawn_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

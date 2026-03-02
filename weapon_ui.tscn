@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://goe5cf234fj4" path="res://buttons/scripts/weapon_ui.gd" id="1_rnt7u"]
 [ext_resource type="Texture2D" uid="uid://cu7t2pahlxjms" path="res://buttons/assets/BACKTEXT.PNG" id="2_ck0ca"]
 [ext_resource type="Texture2D" uid="uid://ulqgpctalcxb" path="res://buttons/assets/reloadring.png" id="2_j7wgc"]
-[ext_resource type="FontFile" uid="uid://buulv1csu28yn" path="res://art/fonts/PickysideRegular-vn7w4.otf" id="4_ck0ca"]
+[ext_resource type="FontFile" uid="uid://c6vorhhwivooq" path="res://art/fonts/RoomachRegular-6Rpx6.ttf" id="4_ck0ca"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ck0ca"]
 bg_color = Color(0.25882354, 0.11764706, 0.09803922, 1)
@@ -32,10 +32,10 @@ anchor_left = -0.8
 anchor_top = -0.73200005
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 68.0
-offset_top = 56.80001
-offset_right = -52.0
-offset_bottom = -53.0
+offset_left = 62.0
+offset_top = 53.80001
+offset_right = -58.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.35, 1.35)
@@ -74,18 +74,16 @@ expand_mode = 1
 
 [node name="ReloadRing" type="TextureProgressBar" parent="." unique_id=1664052760]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -207.0
-offset_top = -207.0
-offset_right = 305.0
-offset_bottom = 305.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -163.0
+offset_top = -164.0
+offset_right = 659.0
+offset_bottom = 656.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.22, 0.22)
 pivot_offset = Vector2(128, 128)
 step = 0.01
 value = 100.0
@@ -96,9 +94,9 @@ tint_under = Color(0.6165797, 0.59558564, 0.55221885, 1)
 
 [node name="AmmoLabel" type="Label" parent="." unique_id=1413589319]
 layout_mode = 0
-offset_left = -89.0
-offset_top = 117.0
-offset_right = -49.0
-offset_bottom = 148.0
+offset_left = -93.0
+offset_top = 87.0
+offset_right = -53.0
+offset_bottom = 174.0
 theme_override_fonts/font = ExtResource("4_ck0ca")
 theme_override_font_sizes/font_size = 30

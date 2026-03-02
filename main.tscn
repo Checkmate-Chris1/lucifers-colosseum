@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://gj71rcdkmeub"]
 
 [ext_resource type="PackedScene" uid="uid://jqam3rbvna36" path="res://levels/lucifers_colosseum/lucifers_colosseum.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://cgwkugpxg01el" path="res://buttons/scripts/main.gd" id="1_w48qg"]
 [ext_resource type="PackedScene" uid="uid://bhh0cvchsg71t" path="res://entities/player/player.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://dk6u7bw72uc0i" path="res://ui/deathScreen.tscn" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://27w5yjnk5jfs" path="res://death_screen.tscn" id="2_w48qg"]
 [ext_resource type="PackedScene" uid="uid://21aaik3h3qle" path="res://entities/enemies/fallenAngel/fallenAngel.tscn" id="2_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://h58h742lvij0" path="res://pause_menu.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bnxi7tiugqvn3" path="res://health_bar.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bgtmdx5abm42x" path="res://weapon_ui.tscn" id="5_weapon"]
-[ext_resource type="PackedScene" uid="uid://ck62axfgne6gy" path="res://stamina_bar.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://b2d81b41656kk" path="res://stamina_bar.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://c0p636vy5q673" path="res://upgrade_menu.tscn" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://04xujdjspevb" path="res://buttons/assets/crosshair.png" id="8_kek77"]
 [ext_resource type="PackedScene" uid="uid://bg6eql8hktwp5" path="res://levels/common/wave_system/wave_system.tscn" id="11_w48qg"]
@@ -15,8 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cl1nrs3coa0m0" path="res://entities/enemies/demon/demon.tscn" id="13_vivmo"]
 
 [node name="Main" type="Node3D" unique_id=139922012]
-
-[node name="DeathUI" parent="." unique_id=1939787248 instance=ExtResource("2_5vw27")]
+script = ExtResource("1_w48qg")
 
 [node name="LucifersColosseum" parent="." unique_id=2142896154 instance=ExtResource("1_ig7tw")]
 
@@ -67,3 +67,9 @@ ExtResource("13_vivmo"): 3.0,
 ExtResource("12_w48qg"): 6.0,
 ExtResource("2_ycdy4"): 1.0
 })
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=749659755]
+layer = 4
+
+[node name="DeathScreen" parent="CanvasLayer" unique_id=1577054742 instance=ExtResource("2_w48qg")]
+z_index = 11

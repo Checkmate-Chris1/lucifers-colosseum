@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-const min_volume := -30
+const min_volume := -45
 const volume_range := 30
 
 # Called when the node enters the scene tree for the first time.

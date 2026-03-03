@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://b5i6xgo21g4l5"]
 
-[ext_resource type="AudioStream" uid="uid://dl4pjuncmew5u" path="res://audio/Hell's Fury.wav" id="1_6bkm0"]
+[ext_resource type="AudioStream" uid="uid://85itejbj0fl" path="res://audio/Hell's Fury.wav" id="1_6bkm0"]
 [ext_resource type="Script" uid="uid://c4uk0n40ogi6h" path="res://globals/musicManager/music_manager.gd" id="2_brqrv"]
+[ext_resource type="AudioStream" uid="uid://ogni64cx08jj" path="res://audio/Hell's Fury 2.wav" id="3_brqrv"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=404836238]
 process_mode = 3
 stream = ExtResource("1_6bkm0")
 autoplay = true
 script = ExtResource("2_brqrv")
+streams = [ExtResource("1_6bkm0"), ExtResource("3_brqrv")]
+
+[node name="Transitioner" type="AudioStreamPlayer" parent="." unique_id=1510370253]

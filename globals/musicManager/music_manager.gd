@@ -13,6 +13,14 @@ func _ready() -> void:
 	Events.change_sound_volume.connect(_update_volume)
 	Events.wave_start.connect(_on_wave_start)
 	play()
+	await get_tree().create_timer(1).timeout
+	_change_song()
+
+
+func _on_wave_start():
+	print(GameState.wave_number)
+	if GameState.wave_number == 10:
+		_change_song()
 
 
 func _on_wave_start():

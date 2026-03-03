@@ -10,7 +10,15 @@ var i = 0
 func _ready() -> void:
 	stream = streams[i]
 	Events.change_sound_volume.connect(_update_volume)
+	Events.wave_start.connect(_on_wave_start)
 	play()
+
+
+func _on_wave_start():
+	print(GameState.wave_number)
+	if GameState.wave_number == 10:
+		volume_db = -10 # Lvl. 2 wave music is kinda loud
+		_change_song()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

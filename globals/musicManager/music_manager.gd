@@ -3,7 +3,7 @@ extends AudioStreamPlayer
 const min_volume := -30
 const volume_range := 30
 
-@export var streams = [load('res://audio/Hell\'s Fury.wav')]
+@export var streams = [load('res://audio/Hell\'s Fury.wav'), load('res://audio/Hell\'s Fury 2.wav')]
 var i = 0
 
 # Called when the node enters the scene tree for the first time.

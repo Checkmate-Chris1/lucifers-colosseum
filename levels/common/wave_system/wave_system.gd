@@ -7,7 +7,7 @@ extends Node3D
 
 var enemy_spawners: Array[EnemySpawner] = []
 
-var enemy_count : int
+var enemy_count := 0
 
 func _ready() -> void:
 	Events.enemy_died.connect(_enemy_death_process)
@@ -16,8 +16,10 @@ func _ready() -> void:
 	#print('ready')
 
 func _enemy_death_process():
-	#print('e_death')
+	print('e_death')
+	print(enemy_count)
 	enemy_count -= 1
+	print(enemy_count)
 	if enemy_count == 0:
 		_on_wave_end()
 	
@@ -30,9 +32,11 @@ func spawn_wave(enemy_count: int) -> void:
 	for __ in range(enemy_count):
 		_spawn_enemy()
 		await get_tree().create_timer(5.0/enemy_count, false).timeout
+	print(enemy_count)
 		
 func _on_wave_end() -> void:
-	#print('wave end')
+	print('wave end')
+	enemy_count = 0
 	Events.wave_end.emit(false)
 	await get_tree().create_timer(wave_grace_period, false).timeout
 	# Enemy count goes 10, 14, 16, 18 etc.

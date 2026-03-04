@@ -13,10 +13,8 @@ func _ready() -> void:
 	Events.enemy_died.connect(_enemy_death_process)
 	_update_spawners()
 	spawn_wave(10)
-	print('ready')
 
 func _enemy_death_process():
-	print('e_death')
 	enemy_count -= 1
 	if enemy_count == 0:
 		_on_wave_end()

@@ -10,10 +10,12 @@ extends Enemy
 @onready var animation_tree: AnimationTree = $"Model/AnimationTree"
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
+		
 	if player == null:
 		queue_free()
 		return
-
 
 	var look_pos = Vector3(player.global_position.x, global_position.y, player.global_position.z)
 	look_at(look_pos, Vector3.UP)

@@ -356,6 +356,7 @@ func _on_flame_dmg_up(percent: int) -> void:
 	for w in weapons:
 		if w.weapon_name == "Flamethrower":
 			w.bullet_damage *= (1.0 + percent/100.0)
+			w.burn_damage_per_second *= (1.0 + percent/100.0)
 	print("Flamethrower Damage: increased by %d, total: %d" % [percent, flame_dmg_total])
 
 func _on_flame_range_up(percent: int) -> void:

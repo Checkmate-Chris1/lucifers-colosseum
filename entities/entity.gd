@@ -10,6 +10,14 @@ signal health_changed(new_health)
 
 @export var HEALTH: float = 100.0
 
+# damage numvber
+@export var damage_text_height: float = 1.0
+
+var damage_label: Label3D
+var accumulated_damage: float = 0.0
+var damage_tween: Tween
+
+# hit material
 var hit_flash_material = preload("res://entities/enemies/hit_flash.tres")
 var meshes: Array[MeshInstance3D] = []
 
@@ -35,6 +43,14 @@ func _gather_meshes(node: Node):
 func _ready() -> void:
 	if model_root:
 		_gather_meshes(model_root)
+	damage_label = Label3D.new()
+	add_child(damage_label)
+	damage_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	damage_label.no_depth_test = true
+	damage_label.font_size = 64
+	damage_label.modulate.a = 0.0
+	damage_label.modulate = Color(1,0,0)
+	damage_label.position.y = damage_text_height
 		
 func flash_red():
 	for mesh in meshes:
@@ -44,10 +60,30 @@ func flash_red():
 	
 	for mesh in meshes:
 		mesh.material_overlay = null		
+
+func show_damage_number(amount: float):
+	accumulated_damage += amount
+	if damage_label:
+		damage_label.text = "-" + str(round(accumulated_damage))
 		
+		if damage_tween and damage_tween.is_valid():
+			damage_tween.kill()
+			
+		damage_tween = create_tween()
+		
+		damage_label.modulate.a = 1.0
+		damage_label.position.y = damage_text_height
+		
+		var target_height = damage_text_height
+		damage_tween.tween_property(damage_label, "position:y", target_height, 1.5).set_ease(Tween.EASE_OUT)
+		damage_tween.parallel().tween_property(damage_label, "modulate:a", 0.0, 0.5).set_delay(1.0)
+		damage_tween.tween_callback(func(): accumulated_damage = 0.0)
+	
 func damage(health: float, source: String = "weapon"):
-	current_health -= health
 	flash_red()
+	show_damage_number(health)
+	current_health -= health
+
 	if source == "burn" or source == "enemy":
 		return
 	

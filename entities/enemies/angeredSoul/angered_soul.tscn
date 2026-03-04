@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ng1uhst2o1fo"]
+
+[ext_resource type="Script" uid="uid://cde14jqdp4wpg" path="res://entities/enemies/angeredSoul/angeredSoul.gd" id="1_l40nb"]
+[ext_resource type="PackedScene" uid="uid://6cgve4n67xvk" path="res://art/models/angeredSoul/angeredSoul.glb" id="2_l40nb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
+height = 1.5008545
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ikfqx"]
+size = Vector3(0.5070801, 1, 0.628479)
+
+[node name="AngeredSoul" type="CharacterBody3D" unique_id=956846808 groups=["entity"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_l40nb")
+SPEED = 6.0
+
+[node name="angeredSoul" parent="." unique_id=634608340 instance=ExtResource("2_l40nb")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1529124182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24512684, 0)
+shape = SubResource("CapsuleShape3D_0xm2m")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1890351466]
+avoidance_enabled = true
+
+[node name="AttackArea" type="Area3D" parent="." unique_id=458214622]
+collision_layer = 2
+
+[node name="AttackShape" type="CollisionShape3D" parent="AttackArea" unique_id=781876274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.167, -0.287)
+shape = SubResource("BoxShape3D_ikfqx")

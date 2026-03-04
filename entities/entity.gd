@@ -6,14 +6,17 @@ class_name Entity
 signal died
 signal health_changed(new_health)
 
+
+var death_emitted = false
 @export var HEALTH: float = 100.0
 @onready var current_health: float = HEALTH:
 	set(value):
 		current_health = clamp(value, 0, HEALTH)
 		health_changed.emit(current_health)
-		if current_health <= 0:
+		if current_health <= 0 and not death_emitted:
 			died.emit()
 			Events.enemy_died.emit()
+			death_emitted = true
 
 # burn effect state
 var burn_time: float = 0.0
@@ -22,7 +25,7 @@ var burn_dps: float = 0.0
 func damage(health: float):
 	current_health -= health
 	#TODO: remove debug health counter
-	print(current_health)
+	#print(current_health)
 
 func apply_burn(dps: float, duration: float) -> void:
 	# reset timer when re-applied

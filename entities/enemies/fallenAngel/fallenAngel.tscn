@@ -37,6 +37,7 @@ avoidance_enabled = true
 [node name="AttackArea" type="Area3D" parent="." unique_id=458214622]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 2.3606994e-08, 3.6477022, -0.54006505)
 collision_layer = 2
+collision_mask = 5
 
 [node name="AttackShape2" type="CollisionShape3D" parent="AttackArea" unique_id=653958902]
 transform = Transform3D(1, 1.2802769e-08, 3.090862e-08, -3.0908623e-08, 0.70710677, 0.70710677, -1.2802758e-08, -0.70710677, 0.70710677, -1.9079033e-08, -0.08199072, -4.6550727)

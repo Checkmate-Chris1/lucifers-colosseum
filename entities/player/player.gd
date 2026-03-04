@@ -72,6 +72,8 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("slam") and not is_on_floor() and not is_ground_slamming:
 		is_ground_slamming = true
+		if is_ground_slamming == true:
+			invincible = true
 		start_y = global_position.y
 		velocity.y = 2 * -JUMP_VELOCITY
 	
@@ -106,6 +108,7 @@ func _physics_process(delta: float) -> void:
 		add_sibling(vfx)
 		# TODO: calculate damage using fall_height
 		_apply_slam_damage(vfx, fall_height * GameState.slam_multiplier)
+		invincible = false
 	_update_camera(delta)
 
 func _dash():

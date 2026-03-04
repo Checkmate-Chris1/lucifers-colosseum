@@ -27,6 +27,7 @@ func spawn_wave(enemy_count: int) -> void:
 	print('spawn wave')
 	GameState.wave_number += 1
 	Events.wave_start.emit()
+	Events.round_changed.emit(GameState.wave_number)
 	for __ in range(enemy_count):
 		_spawn_enemy()
 		await get_tree().create_timer(5.0/enemy_count, false).timeout

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://crboa1ac4oald"]
+
+[ext_resource type="Script" uid="uid://c1l8qtqdh0den" path="res://buttons/scripts/round_counter.gd" id="1_giao7"]
+[ext_resource type="FontFile" uid="uid://buulv1csu28yn" path="res://art/fonts/PickysideRegular-vn7w4.otf" id="2_1s7sa"]
+
+[node name="RoundCounter" type="Control" unique_id=1121128931]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 200.0
+offset_bottom = 50.0
+grow_vertical = 0
+script = ExtResource("1_giao7")
+
+[node name="Label" type="Label" parent="." unique_id=961302273]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -85.0
+offset_right = 225.0
+offset_bottom = -5.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 14
+theme_override_fonts/font = ExtResource("2_1s7sa")
+theme_override_font_sizes/font_size = 80
+text = "Wave "

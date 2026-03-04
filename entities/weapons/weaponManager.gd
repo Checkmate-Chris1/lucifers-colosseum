@@ -47,6 +47,7 @@ func _ready() -> void:
 			var model = weapon.model.instantiate()
 			add_child(model)
 			weapon_models[weapon.weapon_name] = model
+			
 			model.visible = false
 	
 	# Set initial weapon
@@ -61,6 +62,7 @@ func _ready() -> void:
 	reload_timer.one_shot = true
 	reload_timer.timeout.connect(_on_reload_timer_end)
 	
+	reload_on_start()
 	update_fire_rate()
 
 func _process(delta: float) -> void:
@@ -107,6 +109,11 @@ func fire() -> void:
 	ready_to_shoot = false
 	fire_timer.wait_time = current_weapon.fire_delay
 	fire_timer.start()
+
+func reload_on_start() -> void:
+	'''will reload all weapons once very quickly'''
+	for weapon in weapons:
+		weapon.ammo = weapon.max_ammo
 
 func reload() -> void:
 	if not current_weapon or reloading:

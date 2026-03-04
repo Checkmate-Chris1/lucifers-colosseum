@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://21aaik3h3qle"]
 
 [ext_resource type="Script" uid="uid://dnjwpqahula3n" path="res://entities/enemies/fallenAngel/fallenAngel.gd" id="1_y23fj"]
-[ext_resource type="PackedScene" uid="uid://co7vscs5trp82" path="res://art/models/fallenAngel/fallenAngel.glb" id="2_tnygl"]
+[ext_resource type="PackedScene" uid="uid://bj6tpuar1nisl" path="res://art/models/fallenAngel/fallenAngelLoop.glb" id="2_tnygl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
 radius = 1.699707
@@ -22,7 +22,7 @@ model_root = NodePath("Model")
 HEALTH = 240.0
 damage_text_height = 5.0
 
-[node name="Model" parent="." unique_id=1881994376 instance=ExtResource("2_tnygl")]
+[node name="Model" parent="." unique_id=2023568507 instance=ExtResource("2_tnygl")]
 transform = Transform3D(-0.25, -5.65667e-09, -2.111098e-08, 0, 0.24148145, -0.06470476, 2.1855694e-08, -0.06470476, -0.24148145, 0, 5, 0)
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1529124182]

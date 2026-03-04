@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://co7vscs5trp82"
-path="res://.godot/imported/fallenAngel.glb-ec7fe1be0a2f37dc3256427b48f15267.scn"
+uid="uid://bj6tpuar1nisl"
+path="res://.godot/imported/fallenAngelLoop.glb-d0f24be0486a5da2ce817e8c38bdfee2.scn"
 
 [deps]
 
-source_file="res://art/models/fallenAngel/fallenAngel.glb"
-dest_files=["res://.godot/imported/fallenAngel.glb-ec7fe1be0a2f37dc3256427b48f15267.scn"]
+source_file="res://art/models/fallenAngel/fallenAngelLoop.glb"
+dest_files=["res://.godot/imported/fallenAngelLoop.glb-d0f24be0486a5da2ce817e8c38bdfee2.scn"]
 
 [params]
 

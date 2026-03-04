@@ -7,7 +7,13 @@ signal died
 signal health_changed(new_health)
 
 
-var death_emitted = false
+var death_emitted := false
+
+# creating iframes for the player
+var invincible := false
+var is_player := false
+var player_hit_invincibility_time := 0.5
+
 @export var HEALTH: float = 100.0
 @onready var current_health: float = HEALTH:
 	set(value):
@@ -23,9 +29,20 @@ var burn_time: float = 0.0
 var burn_dps: float = 0.0
 
 func damage(health: float):
-	current_health -= health
+	if not invincible:
+		current_health -= health
+		momentary_invincibility()
 	#TODO: remove debug health counter
 	#print(current_health)
+
+func momentary_invincibility():
+	if is_player:
+		invincible = true
+		print(invincible)
+		await get_tree().create_timer(player_hit_invincibility_time).timeout
+		invincible = false
+		print(invincible)
+		
 
 func apply_burn(dps: float, duration: float) -> void:
 	# reset timer when re-applied

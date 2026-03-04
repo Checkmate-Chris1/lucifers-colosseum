@@ -87,7 +87,7 @@ func fire() -> void:
 		return
 	
 	if current_weapon.ammo <= 0:
-		print("Out of ammo")
+		#print("Out of ammo")
 		return
 	
 	
@@ -103,7 +103,7 @@ func fire() -> void:
 	if current_weapon.weapon_type != "melee":
 		current_weapon.ammo -= 1
 		ammo_changed.emit(current_weapon.ammo, current_weapon.max_ammo)
-	print(current_weapon.weapon_name, ' ', current_weapon.ammo,'/', current_weapon.max_ammo)
+	#print(current_weapon.weapon_name, ' ', current_weapon.ammo,'/', current_weapon.max_ammo)
 	ready_to_shoot = false
 	fire_timer.wait_time = current_weapon.fire_delay
 	fire_timer.start()
@@ -152,7 +152,7 @@ func switch_to_weapon(index: int) -> void:
 	weapon_changed.emit(current_weapon)
 	ammo_changed.emit(current_weapon.ammo, current_weapon.max_ammo)
 	
-	print("Switched to %s" % current_weapon.weapon_name)
+	#print("Switched to %s" % current_weapon.weapon_name)
 	
 	set_weapon_visibility()
 	update_fire_rate()
@@ -216,10 +216,10 @@ func shoot_ray() -> void:
 	if current_weapon.penetration:
 		for collider in collisions:
 			collider.damage(current_weapon.bullet_damage)
-			print("Hit: %s" % collider)
+			#print("Hit: %s" % collider)
 	elif len(collisions) >= 1:
 		collisions[0].damage(current_weapon.bullet_damage)
-		print("Hit: %s" % collisions[0])
+		#print("Hit: %s" % collisions[0])
 
 func _get_all_enemy_collisions(query: PhysicsRayQueryParameters3D, space_state: PhysicsDirectSpaceState3D) -> Array:
 	query.exclude = []
@@ -230,7 +230,7 @@ func _get_all_enemy_collisions(query: PhysicsRayQueryParameters3D, space_state: 
 		var collider = ray_result.get("collider")
 		if collider is Enemy:
 			collisions.append(collider)
-			print(collider)
+			#print(collider)
 			query.exclude.append(collider.get_rid())
 			var hit_position = ray_result.get("position")
 			var direction = (query.to - query.from).normalized()
@@ -317,7 +317,7 @@ func shoot_melee() -> void:
 				collider.damage(melee_w.bullet_damage)
 				var knockback_dir = (collider.global_position - origin).normalized()
 				collider.apply_knockback(knockback_dir, melee_w.knockback_distance)
-				print("Melee hit: %s" % collider)
+				#print("Melee hit: %s" % collider)
 
 
 func _on_fire_timer_end() -> void:
@@ -328,28 +328,28 @@ func _on_railgun_dmg_up(percent: int) -> void:
 	for w in weapons:
 		if w.weapon_name == "Railgun":
 			w.bullet_damage *= (1.0 + percent/100.0)
-	print("Railgun Damage: increased by %d, total: %d" % [percent, railgun_dmg_total])
+	#print("Railgun Damage: increased by %d, total: %d" % [percent, railgun_dmg_total])
 
 func _on_railgun_range_up(percent: int) -> void:
 	railgun_range_total += percent
 	for w in weapons:
 		if w.weapon_name == "Railgun":
 			w.range *= (1.0 + percent/100.0)
-	print("Railgun Range: increased by %d, total: %d" % [percent, railgun_range_total])
+	#print("Railgun Range: increased by %d, total: %d" % [percent, railgun_range_total])
 
 func _on_spine_dmg_up(percent: int) -> void:
 	spine_dmg_total += percent
 	for w in weapons:
 		if w.weapon_name == "Spine Whip":
 			w.bullet_damage *= (1.0 + percent/100.0)
-	print("Spine Whip Damage: increased by %d, total: %d" % [percent, spine_dmg_total])
+	#print("Spine Whip Damage: increased by %d, total: %d" % [percent, spine_dmg_total])
 
 func _on_spine_range_up(percent: int) -> void:
 	spine_range_total += percent
 	for w in weapons:
 		if w.weapon_name == "Spine Whip" and w is MeleeWeapon:
 			w.melee_range *= (1.0 + percent/100.0)
-	print("Spine Whip Range: increased by %d, total: %d" % [percent, spine_range_total])
+	#print("Spine Whip Range: increased by %d, total: %d" % [percent, spine_range_total])
 
 func _on_flame_dmg_up(percent: int) -> void:
 	flame_dmg_total += percent
@@ -357,11 +357,11 @@ func _on_flame_dmg_up(percent: int) -> void:
 		if w.weapon_name == "Flamethrower":
 			w.bullet_damage *= (1.0 + percent/100.0)
 			w.burn_damage_per_second *= (1.0 + percent/100.0)
-	print("Flamethrower Damage: increased by %d, total: %d" % [percent, flame_dmg_total])
+	#print("Flamethrower Damage: increased by %d, total: %d" % [percent, flame_dmg_total])
 
 func _on_flame_range_up(percent: int) -> void:
 	flame_range_total += percent
 	for w in weapons:
 		if w.weapon_name == "Flamethrower" and w is AOEWeapon:
 			w.aoe_range *= (1.0 + percent/100.0)
-	print("Flamethrower Range: increased by %d, total: %d" % [percent, flame_range_total])
+	#print("Flamethrower Range: increased by %d, total: %d" % [percent, flame_range_total])

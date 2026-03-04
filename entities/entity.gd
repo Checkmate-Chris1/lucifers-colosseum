@@ -8,6 +8,8 @@ signal health_changed(new_health)
 
 @export var model_root: Node3D
 
+
+var death_emitted = false
 @export var HEALTH: float = 100.0
 
 # damage numvber
@@ -25,9 +27,10 @@ var meshes: Array[MeshInstance3D] = []
 	set(value):
 		current_health = clamp(value, 0, HEALTH)
 		health_changed.emit(current_health)
-		if current_health <= 0:
+		if current_health <= 0 and not death_emitted:
 			died.emit()
 			Events.enemy_died.emit()
+			death_emitted = true
 
 # burn effect state
 var burn_time: float = 0.0

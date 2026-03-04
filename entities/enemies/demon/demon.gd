@@ -43,7 +43,7 @@ func attack():
 		var within_attack = attack_collision_box.get_overlapping_bodies()
 		for entity in within_attack:
 			if entity is Player:
-				entity.damage(ATTACK_DAMAGE)
+				entity.damage(ATTACK_DAMAGE, "enemy")
 				animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 				attack_ready = false
 				get_tree().create_timer(ATTACK_DELAY).timeout.connect(func(): attack_ready = true)

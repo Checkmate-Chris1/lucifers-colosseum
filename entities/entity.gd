@@ -19,10 +19,13 @@ signal health_changed(new_health)
 var burn_time: float = 0.0
 var burn_dps: float = 0.0
 
-func damage(health: float):
+func damage(health: float, source: String = "weapon"):
 	current_health -= health
-	#TODO: remove debug health counter
-	print(current_health)
+	
+	if source == "burn" or source == "enemy":
+		return
+	
+	Events.damaged.emit()
 
 func apply_burn(dps: float, duration: float) -> void:
 	# reset timer when re-applied
@@ -31,7 +34,7 @@ func apply_burn(dps: float, duration: float) -> void:
 
 func _process(delta: float) -> void:
 	if burn_time > 0.0:
-		damage(burn_dps * delta)
+		damage(burn_dps * delta, "burn")
 		burn_time -= delta
 	
 func heal(health: float):

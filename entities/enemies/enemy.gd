@@ -23,7 +23,7 @@ func attack():
 		var within_attack = attack_collision_box.get_overlapping_bodies()
 		for entity in within_attack:
 			if entity is Player:
-				entity.damage(ATTACK_DAMAGE)
+				entity.damage(ATTACK_DAMAGE, "enemy")
 				# animation_player.play("attack")
 				# Add this when all enemies actually have an attack animation
 				attack_ready = false

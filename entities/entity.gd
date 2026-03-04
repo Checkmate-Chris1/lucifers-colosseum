@@ -9,7 +9,13 @@ signal health_changed(new_health)
 @export var model_root: Node3D
 
 
-var death_emitted = false
+var death_emitted := false
+
+# creating iframes for the player
+var invincible := false
+var is_player := false
+var player_hit_invincibility_time := 0.5
+
 @export var HEALTH: float = 100.0
 
 # damage numvber
@@ -91,6 +97,15 @@ func damage(health: float, source: String = "weapon"):
 		return
 	
 	Events.damaged.emit()
+
+func momentary_invincibility():
+	if is_player:
+		invincible = true
+		print(invincible)
+		await get_tree().create_timer(player_hit_invincibility_time).timeout
+		invincible = false
+		print(invincible)
+		
 
 func apply_burn(dps: float, duration: float) -> void:
 	# reset timer when re-applied

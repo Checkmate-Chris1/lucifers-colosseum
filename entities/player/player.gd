@@ -55,6 +55,9 @@ func _ready() -> void:
 	gp_radius_total_percent = 0
 	gp_dmg_total_percent = 0
 	speed_total_percent = 0
+	
+	# update some entity variables
+	is_player = true
 
 func _physics_process(delta: float) -> void:
 	# DEBUG: Quit
@@ -113,10 +116,12 @@ func _dash():
 	var dash_time      := 0.25  # Adjusts how LONG the player dashes for
 	var speed_increase := 5     # Adjusts how FAST the player dashes
 	
-	is_dashing = true
-	input_lock = true
-	deceleration_lock = true
-	speed_multiplier *= speed_increase
+	is_dashing          = true
+	input_lock          = true
+	deceleration_lock   = true
+	speed_multiplier   *= speed_increase
+	invincible          = true
+	#$Collision.
 	
 	Events.player_dashed.emit()
 	
@@ -128,9 +133,12 @@ func _dash():
 	tween = get_tree().create_tween()
 	tween.tween_property(_camera, "fov", GameState.player_fov, zoom_in_speed)
 	
-	speed_multiplier = SPEED
-	deceleration_lock = false
-	input_lock = false
+	#$Collision.disabled = true
+	invincible          = false
+	speed_multiplier    = SPEED
+	deceleration_lock   = false
+	input_lock          = false
+	
 	
 	await get_tree().create_timer(GameState.dash_cd).timeout
 	is_dashing = false

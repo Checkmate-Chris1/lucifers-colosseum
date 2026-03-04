@@ -16,8 +16,10 @@ func _ready() -> void:
 	#print('ready')
 
 func _enemy_death_process():
-	#print('e_death')
+	print('e_death')
+	print(enemy_count)
 	enemy_count -= 1
+	print(enemy_count)
 	if enemy_count == 0:
 		_on_wave_end()
 	

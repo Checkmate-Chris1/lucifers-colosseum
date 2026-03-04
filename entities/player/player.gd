@@ -124,7 +124,7 @@ func _dash():
 	deceleration_lock   = true
 	speed_multiplier   *= speed_increase
 	invincible          = true
-	#$Collision.
+	set_collision_mask_value(4, false)
 	
 	Events.player_dashed.emit()
 	
@@ -136,7 +136,7 @@ func _dash():
 	tween = get_tree().create_tween()
 	tween.tween_property(_camera, "fov", GameState.player_fov, zoom_in_speed)
 	
-	#$Collision.disabled = true
+	set_collision_mask_value(4, true)
 	invincible          = false
 	speed_multiplier    = SPEED
 	deceleration_lock   = false

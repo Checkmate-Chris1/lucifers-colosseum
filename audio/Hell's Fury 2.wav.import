@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://85itejbj0fl"
-path="res://.godot/imported/Hell's Fury.wav-c4a17eb8565e98febbad15235fbc77bd.sample"
+uid="uid://ogni64cx08jj"
+path="res://.godot/imported/Hell's Fury 2.wav-6be2dd5c13a281ac67cf422557e39fb8.sample"
 
 [deps]
 
-source_file="res://audio/Hell's Fury.wav"
-dest_files=["res://.godot/imported/Hell's Fury.wav-c4a17eb8565e98febbad15235fbc77bd.sample"]
+source_file="res://audio/Hell's Fury 2.wav"
+dest_files=["res://.godot/imported/Hell's Fury 2.wav-6be2dd5c13a281ac67cf422557e39fb8.sample"]
 
 [params]
 

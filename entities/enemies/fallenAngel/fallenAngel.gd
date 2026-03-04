@@ -5,6 +5,9 @@ extends Enemy
 @onready var nav_agent = $NavigationAgent3D
 @onready var player = get_tree().get_first_node_in_group('player')
 
+func _ready():
+	super()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	velocity = Vector3.ZERO

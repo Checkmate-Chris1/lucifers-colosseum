@@ -9,13 +9,14 @@ height = 1.5008545
 [sub_resource type="BoxShape3D" id="BoxShape3D_ikfqx"]
 size = Vector3(0.5070801, 1, 0.628479)
 
-[node name="TormentedSoul" type="CharacterBody3D" unique_id=956846808 node_paths=PackedStringArray("attack_collision_box", "enemy_model") groups=["entity"]]
+[node name="TormentedSoul" type="CharacterBody3D" unique_id=956846808 node_paths=PackedStringArray("attack_collision_box", "enemy_model", "model_root") groups=["entity"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_nobi8")
 SPEED = 4.0
 ATTACK_DAMAGE = 10.0
 attack_collision_box = NodePath("AttackArea")
 enemy_model = NodePath("Model")
+model_root = NodePath("Model")
 HEALTH = 60.0
 
 [node name="Model" parent="." unique_id=2100466426 instance=ExtResource("2_wcugd")]

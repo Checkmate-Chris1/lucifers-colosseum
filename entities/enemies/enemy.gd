@@ -13,6 +13,7 @@ class_name Enemy
 var attack_ready := true ## If another attack is ready
 
 func _ready() -> void:
+	super()
 	animation_player.play("idle") # idle
 
 func _init() -> void:

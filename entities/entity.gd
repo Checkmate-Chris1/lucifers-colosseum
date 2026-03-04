@@ -6,7 +6,13 @@ class_name Entity
 signal died
 signal health_changed(new_health)
 
+@export var model_root: Node3D
+
 @export var HEALTH: float = 100.0
+
+var hit_flash_material = preload("res://entities/enemies/hit_flash.tres")
+var meshes: Array[MeshInstance3D] = []
+
 @onready var current_health: float = HEALTH:
 	set(value):
 		current_health = clamp(value, 0, HEALTH)
@@ -19,9 +25,28 @@ signal health_changed(new_health)
 var burn_time: float = 0.0
 var burn_dps: float = 0.0
 
+func _gather_meshes(node: Node):
+	if node is MeshInstance3D:
+		meshes.append(node)
+	for child in node.get_children():
+		_gather_meshes(child)
+		
+func _ready() -> void:
+	if model_root:
+		_gather_meshes(model_root)
+		
+func flash_red():
+	for mesh in meshes:
+		mesh.material_overlay = hit_flash_material
+		
+	await get_tree().create_timer(0.1).timeout
+	
+	for mesh in meshes:
+		mesh.material_overlay = null		
+		
 func damage(health: float, source: String = "weapon"):
 	current_health -= health
-	
+	flash_red()
 	if source == "burn" or source == "enemy":
 		return
 	

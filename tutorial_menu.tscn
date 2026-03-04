@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://cwypkhlk2pg3n"]
+
+[ext_resource type="FontFile" uid="uid://buulv1csu28yn" path="res://art/fonts/PickysideRegular-vn7w4.otf" id="1_w2y4n"]
+[ext_resource type="FontFile" uid="uid://lovhmeh2ak0g" path="res://PickysideRegular-vn7w4.otf" id="2_1y1va"]
+[ext_resource type="FontFile" uid="uid://cttsowmyoxsyt" path="res://art/fonts/altar-gothic-demo/AltarGothicDemo-Regular.otf" id="2_w2y4n"]
+
+[node name="TutorialMenu" type="CanvasLayer" unique_id=816386300]
+
+[node name="Background" type="ColorRect" parent="." unique_id=1224293047]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="MenuBoard" type="Panel" parent="." unique_id=511051205]
+custom_minimum_size = Vector2(600, 600)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="MenuBoard" unique_id=1705554413]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(10, 10)
+pivot_offset_ratio = Vector2(10, 10)
+theme_override_constants/side_margin = 10
+theme_override_fonts/font = ExtResource("1_w2y4n")
+theme_override_font_sizes/font_size = 32
+current_tab = 0
+
+[node name="How to Play" type="MarginContainer" parent="MenuBoard/TabContainer" unique_id=704253182]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuBoard/TabContainer/How to Play" unique_id=1426354091]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_1y1va")
+theme_override_fonts/bold_font = ExtResource("2_w2y4n")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[center][b]THE RULES OF THE COLOSSEUM[/b][/center]
+
+[center]You are a sinner sent out to battle for Lucifer's entertainment. 
+
+[center]When you kill all living enemies, you finish the wave and pick a reward. 
+
+[center]Choose quickly—you have limited time to select a reward before the next wave of torment begins once again."
+
+[node name="Controls" type="MarginContainer" parent="MenuBoard/TabContainer" unique_id=655085577]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuBoard/TabContainer/Controls" unique_id=643747600]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_w2y4n")
+theme_override_fonts/bold_font = ExtResource("2_w2y4n")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 27
+bbcode_enabled = true
+text = "[center][b]CONTROLS[/b][/center]
+
+• [b]Move:[/b] W, A, S, D
+• [b]Jump:[/b] Spacebar
+• [b]Ground Pound:[/b] Spacebar + Ctrl
+• [b]Dash:[/b] Shift
+• [b]Shoot:[/b] Left Mouse Button
+• [b]Reload:[/b] R
+• [b]Switch Weapons:[/b] Scroll Wheel or 1, 2, 3"

@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bg6eql8hktwp5" path="res://levels/common/wave_system/wave_system.tscn" id="11_w48qg"]
 [ext_resource type="PackedScene" uid="uid://c5aeg80a2dlv5" path="res://entities/enemies/tormentedSoul/tormentedSoul.tscn" id="12_w48qg"]
 [ext_resource type="PackedScene" uid="uid://cl1nrs3coa0m0" path="res://entities/enemies/demon/demon.tscn" id="13_vivmo"]
+[ext_resource type="PackedScene" uid="uid://crboa1ac4oald" path="res://round_counter.tscn" id="15_vivmo"]
 
 [node name="Main" type="Node3D" unique_id=139922012]
 script = ExtResource("1_w48qg")
@@ -73,3 +74,5 @@ layer = 4
 
 [node name="DeathScreen" parent="CanvasLayer" unique_id=1577054742 instance=ExtResource("2_w48qg")]
 z_index = 11
+
+[node name="RoundCounter" parent="." unique_id=1121128931 instance=ExtResource("15_vivmo")]

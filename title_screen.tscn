@@ -131,7 +131,6 @@ texture_normal = ExtResource("12_n1yhu")
 texture_hover = ExtResource("13_q7w76")
 
 [node name="TutorialMenu" parent="Menu" unique_id=816386300 instance=ExtResource("5_q7w76")]
-visible = false
 
 [node name="ExitTutorial" type="TextureButton" parent="Menu/TutorialMenu" unique_id=627795045]
 z_index = 3

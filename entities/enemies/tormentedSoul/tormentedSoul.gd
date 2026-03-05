@@ -6,6 +6,8 @@ extends Enemy
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
 	if player != null:
 		velocity = Vector3.ZERO
 		nav_agent.target_position = player.global_position

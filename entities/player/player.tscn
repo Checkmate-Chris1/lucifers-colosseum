@@ -13,6 +13,8 @@
 [ext_resource type="Resource" uid="uid://cvl0o5ot4ujhy" path="res://entities/weapons/flamethrower.tres" id="8_wvtmh"]
 [ext_resource type="AudioStream" uid="uid://6yqj5dr2lcp7" path="res://audio/Dashing SFX.mp3" id="13_afbqv"]
 [ext_resource type="Script" uid="uid://dejtxmf3ewe7a" path="res://entities/player/dash_sfx.gd" id="14_gx6sm"]
+[ext_resource type="AudioStream" uid="uid://bqbc0udrtucpm" path="res://audio/hitmarker.mp3" id="14_yqrof"]
+[ext_resource type="Script" uid="uid://gtrr4xeuthub" path="res://entities/player/hitmarker_sfx.gd" id="15_3wlsy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_symyc"]
 radius = 0.15
@@ -57,3 +59,7 @@ script = ExtResource("8_26q78")
 [node name="DashSFX" type="AudioStreamPlayer" parent="." unique_id=2139620360]
 stream = ExtResource("13_afbqv")
 script = ExtResource("14_gx6sm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1270783347]
+stream = ExtResource("14_yqrof")
+script = ExtResource("15_3wlsy")

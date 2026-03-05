@@ -10,7 +10,7 @@ signal wave_end ## Triggered when all enemies die or wave timer ends, whichever 
 signal toggle_pause ## Triggered by pause UI
 signal game_over ## Signal when the game is over by death
 signal change_sound_volume ## Signal when the volume sliders are moved
-
+signal round_changed(new_round: int)
 
 # CARD UPGRADE EVENTS
 signal UPGR_p_max_health_up(percentage : int)
@@ -26,6 +26,8 @@ signal UPGR_flamethrower_range_up(percentage : int)
 
 signal upgrade_chosen
 
+# ENEMIES
 signal enemy_died
+signal damaged
 
 signal player_dashed

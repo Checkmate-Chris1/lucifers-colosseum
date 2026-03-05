@@ -10,13 +10,14 @@ height = 1.6
 [sub_resource type="BoxShape3D" id="BoxShape3D_bgi78"]
 size = Vector3(1, 1.2755127, 2.6795654)
 
-[node name="Demon" type="CharacterBody3D" unique_id=1910989201 node_paths=PackedStringArray("attack_collision_box", "enemy_model") groups=["entity"]]
+[node name="Demon" type="CharacterBody3D" unique_id=1910989201 node_paths=PackedStringArray("attack_collision_box", "enemy_model", "model_root") groups=["entity"]]
 script = ExtResource("1_bgi78")
 SPEED = 3.0
 ATTACK_DAMAGE = 25.0
 ATTACK_DELAY = 1.5
 attack_collision_box = NodePath("AttackArea")
 enemy_model = NodePath("Model")
+model_root = NodePath("Model")
 HEALTH = 120.0
 
 [node name="Model" parent="." unique_id=1098098221 instance=ExtResource("1_6b1gw")]

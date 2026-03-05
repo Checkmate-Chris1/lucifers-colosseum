@@ -10,10 +10,12 @@ extends Enemy
 @onready var animation_tree: AnimationTree = $"Model/AnimationTree"
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
+		
 	if player == null:
 		queue_free()
 		return
-
 
 	var look_pos = Vector3(player.global_position.x, global_position.y, player.global_position.z)
 	look_at(look_pos, Vector3.UP)
@@ -43,7 +45,7 @@ func attack():
 		var within_attack = attack_collision_box.get_overlapping_bodies()
 		for entity in within_attack:
 			if entity is Player:
-				entity.damage(ATTACK_DAMAGE)
+				entity.damage(ATTACK_DAMAGE, "enemy")
 				animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 				attack_ready = false
 				get_tree().create_timer(ATTACK_DELAY).timeout.connect(func(): attack_ready = true)

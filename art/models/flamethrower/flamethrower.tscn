@@ -2,7 +2,39 @@
 
 [ext_resource type="PackedScene" uid="uid://dxogymsrb4wfr" path="res://art/models/flamethrower/flamethrower.glb" id="1_yhx44"]
 
-[node name="Flamethrower" type="Node3D" unique_id=785109621]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhx44"]
+transparency = 1
+albedo_color = Color(0, 0.39717394, 0.768113, 0.5764706)
 
-[node name="flamethrower" parent="." unique_id=436683792 instance=ExtResource("1_yhx44")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.482, 0.169, -0.252)
+[sub_resource type="Curve" id="Curve_xd82j"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6283784, 0.43820232), -3.0090954, -3.0090954, 0, 0, Vector2(0.95270276, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xnkt3"]
+curve = SubResource("Curve_xd82j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xnkt3"]
+emission_shape_scale = Vector3(2.72, 0.255, 2.125)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_xnkt3")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l3g5l"]
+radius = 0.2
+height = 0.4
+radial_segments = 4
+rings = 4
+
+[node name="Flamethrower" unique_id=954772471 instance=ExtResource("1_yhx44")]
+transform = Transform3D(0.45391256, 0, -0.100937545, 0, 0.465, 0, 0.100937545, 0, 0.45391256, 0.5947449, 0.07398486, -0.07771158)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Barrel/Fuel Line/Flame Tube" parent_id_path=PackedInt32Array(315914592) index="1" unique_id=1508966417]
+transform = Transform3D(4.677024, 0.025273988, -0.7995209, 0.0049367915, -0.00085718086, 0.027143583, -2.6880434e-08, -4.4618535, -0.15019234, -0.7919874, -0.23611009, -0.5868168)
+material_override = SubResource("StandardMaterial3D_yhx44")
+amount = 50
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_xnkt3")
+draw_pass_1 = SubResource("CapsuleMesh_l3g5l")

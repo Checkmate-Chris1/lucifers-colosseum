@@ -2,6 +2,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	$Options.visible = false
+	$Menu/TutorialMenu.visible = false
 
 func _on_options_pressed() -> void:
 	$Menu.visible = false

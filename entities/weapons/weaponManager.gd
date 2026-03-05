@@ -47,6 +47,7 @@ func _ready() -> void:
 			var model = weapon.model.instantiate()
 			add_child(model)
 			weapon_models[weapon.weapon_name] = model
+			
 			model.visible = false
 	
 	# Set initial weapon
@@ -61,9 +62,30 @@ func _ready() -> void:
 	reload_timer.one_shot = true
 	reload_timer.timeout.connect(_on_reload_timer_end)
 	
+	reload_on_start()
+	_safe_play_animation(weapon_models[current_weapon.weapon_name], 'idle')
 	update_fire_rate()
+	
+func _safe_play_animation(node: Object, animation: String):
+	"""
+	Plays an animation in all discovered AnimationPlayers within a node only if that animation exists
+	"""
+	if node is AnimationPlayer and node.has_animation(animation):
+		node.play(animation)
+	for child in node.get_children():
+		_safe_play_animation(child, animation)
+		
+func _safe_queue_animation(node: Object, animation: String):
+	"""
+	Queues an animation in all discovered AnimationPlayers within a node only if that animation exists
+	"""
+	if node is AnimationPlayer and node.has_animation(animation):
+		node.queue(animation)
+	for child in node.get_children():
+		_safe_queue_animation(child, animation)
 
 func _process(delta: float) -> void:
+	
 	if Input.is_action_just_pressed("switch_proj") and debug_pistol_toggle:
 		switch_to_weapon_by_type("projectile")
 	elif Input.is_action_just_pressed("switch_ray"):
@@ -90,6 +112,8 @@ func fire() -> void:
 		#print("Out of ammo")
 		return
 	
+	_safe_play_animation(weapon_models[current_weapon.weapon_name], 'attack')
+	_safe_queue_animation(weapon_models[current_weapon.weapon_name], 'idle')
 	
 	if current_weapon.weapon_type == "projectile":
 		shoot_bullet()
@@ -108,9 +132,16 @@ func fire() -> void:
 	fire_timer.wait_time = current_weapon.fire_delay
 	fire_timer.start()
 
+func reload_on_start() -> void:
+	'''will reload all weapons once very quickly'''
+	for weapon in weapons:
+		weapon.ammo = weapon.max_ammo
+
 func reload() -> void:
 	if not current_weapon or reloading:
 		return
+	
+	_safe_play_animation(weapon_models[current_weapon.weapon_name], 'reload')
 	
 	reloading = true
 	ready_to_shoot = false
@@ -123,6 +154,9 @@ func _on_reload_timer_end() -> void:
 	if current_weapon:
 		current_weapon.ammo = current_weapon.max_ammo
 		ammo_changed.emit(current_weapon.ammo, current_weapon.max_ammo)
+		
+	_safe_play_animation(weapon_models[current_weapon.weapon_name], 'idle')
+	
 	reloading = false
 	ready_to_shoot = true
 
@@ -153,6 +187,7 @@ func switch_to_weapon(index: int) -> void:
 	ammo_changed.emit(current_weapon.ammo, current_weapon.max_ammo)
 	
 	#print("Switched to %s" % current_weapon.weapon_name)
+	_safe_play_animation(weapon_models[current_weapon.weapon_name], 'idle')
 	
 	set_weapon_visibility()
 	update_fire_rate()
@@ -356,6 +391,7 @@ func _on_flame_dmg_up(percent: int) -> void:
 	for w in weapons:
 		if w.weapon_name == "Flamethrower":
 			w.bullet_damage *= (1.0 + percent/100.0)
+			w.burn_damage_per_second *= (1.0 + percent/100.0)
 	#print("Flamethrower Damage: increased by %d, total: %d" % [percent, flame_dmg_total])
 
 func _on_flame_range_up(percent: int) -> void:

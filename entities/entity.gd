@@ -26,7 +26,7 @@ var damage_tween: Tween
 # hit material
 var hit_flash_material = preload("res://entities/enemies/hit_flash.tres")
 var meshes: Array[MeshInstance3D] = []
-
+var custom_font = preload("res://art/fonts/PickysideRegular-vn7w4.otf")
 @onready var current_health: float = HEALTH:
 	set(value):
 		current_health = clamp(value, 0, HEALTH)
@@ -58,6 +58,7 @@ func _ready() -> void:
 	damage_label.modulate.a = 0.0
 	damage_label.modulate = Color(1,0,0)
 	damage_label.position.y = damage_text_height
+	damage_label.font = custom_font
 		
 func flash_red():
 	for mesh in meshes:

@@ -193,12 +193,17 @@ func switch_to_weapon(index: int) -> void:
 
 
 func cycle_weapon_forward() -> void:
-	var next = (current_weapon_index + 1) % weapons.size()
+	var next = current_weapon_index + 1
+	if next >= weapons.size():
+		next = 0 if debug_pistol_toggle else 1	
 	switch_to_weapon(next)
 
 
 func cycle_weapon_backward() -> void:
-	var prev = (current_weapon_index - 1 + weapons.size()) % weapons.size()
+	var prev = current_weapon_index - 1
+	var min_index = 0 if debug_pistol_toggle else 1
+	if prev < min_index:
+		prev = weapons.size() - 1
 	switch_to_weapon(prev)
 
 

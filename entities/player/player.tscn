@@ -21,8 +21,8 @@ radius = 0.15
 height = 1.0
 
 [node name="Player" type="CharacterBody3D" unique_id=1894104191 node_paths=PackedStringArray("CAMERA_CONTROLLER") groups=["player"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 4
+collision_mask = 15
 script = ExtResource("1_symyc")
 CAMERA_CONTROLLER = NodePath("CameraController")
 slam_vfx = ExtResource("2_bls4j")

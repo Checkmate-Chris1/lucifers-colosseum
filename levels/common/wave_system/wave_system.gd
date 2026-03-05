@@ -13,6 +13,7 @@ func _ready() -> void:
 	Events.enemy_died.connect(_enemy_death_process)
 	_update_spawners()
 	spawn_wave(10)
+	#print('ready')
 
 func _enemy_death_process():
 	enemy_count -= 1
@@ -32,7 +33,7 @@ func spawn_wave(enemy_count: int) -> void:
 	print(enemy_count)
 		
 func _on_wave_end() -> void:
-	print('wave end')
+	#print('wave end')
 	enemy_count = 0
 	Events.wave_end.emit(false)
 	await get_tree().create_timer(wave_grace_period, false).timeout

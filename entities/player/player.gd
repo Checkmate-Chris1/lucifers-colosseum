@@ -69,6 +69,8 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("slam") and not is_on_floor() and not is_ground_slamming:
 		is_ground_slamming = true
+		if is_ground_slamming == true:
+			invincible = true
 		start_y = global_position.y
 		velocity.y = 2 * -JUMP_VELOCITY
 	
@@ -103,6 +105,7 @@ func _physics_process(delta: float) -> void:
 		add_sibling(vfx)
 		# TODO: calculate damage using fall_height
 		_apply_slam_damage(vfx, fall_height * GameState.slam_multiplier)
+		invincible = false
 	_update_camera(delta)
 
 func _dash():
@@ -113,10 +116,12 @@ func _dash():
 	var dash_time      := 0.25  # Adjusts how LONG the player dashes for
 	var speed_increase := 5     # Adjusts how FAST the player dashes
 	
-	is_dashing = true
-	input_lock = true
-	deceleration_lock = true
-	speed_multiplier *= speed_increase
+	is_dashing          = true
+	input_lock          = true
+	deceleration_lock   = true
+	speed_multiplier   *= speed_increase
+	invincible          = true
+	set_collision_mask_value(4, false)
 	
 	Events.player_dashed.emit()
 	
@@ -128,9 +133,12 @@ func _dash():
 	tween = get_tree().create_tween()
 	tween.tween_property(_camera, "fov", GameState.player_fov, zoom_in_speed)
 	
-	speed_multiplier = SPEED
-	deceleration_lock = false
-	input_lock = false
+	set_collision_mask_value(4, true)
+	invincible          = false
+	speed_multiplier    = SPEED
+	deceleration_lock   = false
+	input_lock          = false
+	
 	
 	await get_tree().create_timer(GameState.dash_cd).timeout
 	is_dashing = false

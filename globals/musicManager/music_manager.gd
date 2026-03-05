@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func _on_wave_start():
-	print(GameState.wave_number)
+	#print(GameState.wave_number)
 	if GameState.wave_number == 10:
 		_change_song()
 	else:

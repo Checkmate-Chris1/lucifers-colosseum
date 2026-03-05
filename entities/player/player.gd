@@ -55,9 +55,6 @@ func _ready() -> void:
 	gp_radius_total_percent = 0
 	gp_dmg_total_percent = 0
 	speed_total_percent = 0
-	
-	# update some entity variables
-	is_player = true
 
 func _physics_process(delta: float) -> void:
 	# DEBUG: Quit

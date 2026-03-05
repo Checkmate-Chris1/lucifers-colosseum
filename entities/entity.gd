@@ -91,7 +91,8 @@ func show_damage_number(amount: float):
 func damage(health: float, source: String = "weapon"):
 	flash_red()
 	show_damage_number(health)
-	current_health -= health
+	if not invincible:
+		current_health -= health
 
 	if source == "burn" or source == "enemy":
 		return
@@ -101,10 +102,8 @@ func damage(health: float, source: String = "weapon"):
 func momentary_invincibility():
 	if is_player:
 		invincible = true
-		print(invincible)
 		await get_tree().create_timer(player_hit_invincibility_time).timeout
 		invincible = false
-		print(invincible)
 		
 
 func apply_burn(dps: float, duration: float) -> void:

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://h58h742lvij0" path="res://pause_menu.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bnxi7tiugqvn3" path="res://health_bar.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bgtmdx5abm42x" path="res://weapon_ui.tscn" id="5_weapon"]
-[ext_resource type="PackedScene" uid="uid://b2d81b41656kk" path="res://stamina_bar.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://ck62axfgne6gy" path="res://stamina_bar.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://c0p636vy5q673" path="res://upgrade_menu.tscn" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://04xujdjspevb" path="res://buttons/assets/crosshair.png" id="8_kek77"]
 [ext_resource type="PackedScene" uid="uid://bg6eql8hktwp5" path="res://levels/common/wave_system/wave_system.tscn" id="11_w48qg"]

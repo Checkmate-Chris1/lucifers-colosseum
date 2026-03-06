@@ -68,3 +68,7 @@ script = ExtResource("14_gx6sm")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1270783347]
 stream = ExtResource("14_yqrof")
 script = ExtResource("15_3wlsy")
+
+[node name="groundSlamSFX" type="AudioStreamPlayer" parent="." unique_id=2128549589]
+stream = ExtResource("16_yqrof")
+script = ExtResource("17_3wlsy")

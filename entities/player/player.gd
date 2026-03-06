@@ -109,6 +109,7 @@ func _ground_pound():
 	vfx.position = position # Offsets to player's feet
 	add_sibling(vfx)
 	Events.player_ground_pound.emit()
+	_camera_shake()
 	# TODO: calculate damage using fall_height
 	_apply_slam_damage(vfx, fall_height * GameState.slam_multiplier)
 	invincible = false
@@ -147,6 +148,23 @@ func _dash():
 	
 	await get_tree().create_timer(GameState.dash_cd).timeout
 	is_dashing = false
+
+func _camera_shake():
+	#var flash_tween = create_tween()
+	#var camera = $CameraController
+	var camera = get_node("CameraController/Camera")
+	if camera:
+		var shake_tween = create_tween()
+		var shake_strength = 0.15
+		var shake_speed = 0.04
+	
+		for i in range(5):
+			var rand_offset = Vector2(randf_range(-shake_strength, shake_strength), randf_range(-shake_strength, shake_strength))
+			shake_tween.tween_property(camera, "h_offset", rand_offset.x, shake_speed)
+			shake_tween.parallel().tween_property(camera, "v_offset", rand_offset.y, shake_speed)
+		
+		shake_tween.tween_property(camera, "h_offset", 0.0, shake_speed)
+		shake_tween.parallel().tween_property(camera, "v_offset", 0.0, shake_speed)
 	
 # Damages all entities within a collider's area by damage
 func _apply_slam_damage(collider: Area3D, damage: float) -> void:

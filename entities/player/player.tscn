@@ -15,8 +15,6 @@
 [ext_resource type="Script" uid="uid://dejtxmf3ewe7a" path="res://entities/player/dash_sfx.gd" id="14_gx6sm"]
 [ext_resource type="AudioStream" uid="uid://bqbc0udrtucpm" path="res://audio/hitmarker.mp3" id="14_yqrof"]
 [ext_resource type="Script" uid="uid://gtrr4xeuthub" path="res://entities/player/hitmarker_sfx.gd" id="15_3wlsy"]
-[ext_resource type="AudioStream" uid="uid://b7urvqpqy1qg4" path="res://audio/Ground Slam SFX.mp3" id="16_yqrof"]
-[ext_resource type="Script" path="res://entities/player/ground_slam_sfx.gd" id="17_3wlsy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_symyc"]
 radius = 0.15
@@ -66,7 +64,3 @@ script = ExtResource("14_gx6sm")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1270783347]
 stream = ExtResource("14_yqrof")
 script = ExtResource("15_3wlsy")
-
-[node name="groundSlamSFX" type="AudioStreamPlayer" parent="." unique_id=2128549589]
-stream = ExtResource("16_yqrof")
-script = ExtResource("17_3wlsy")

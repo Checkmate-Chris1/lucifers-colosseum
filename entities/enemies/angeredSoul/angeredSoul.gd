@@ -20,3 +20,23 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 	
 	
+func _get_dash_direction() -> Vector3:
+	velocity = velocity * 5
+	var rotate_range = randf_range(-30, 30)
+	var target_var = "x" if randi_range(0, 1) == 1 else "z"
+	var ret_val : Vector3
+	if target_var == "x":
+		ret_val = Vector3(player.global_position.x + rotate_range, player.global_position.y, player.global_position.z)
+	elif target_var == "z":
+		ret_val = Vector3(player.global_position.x, player.global_position.y, player.global_position.z + rotate_range)
+
+	return ret_val
+		
+	
+func _dash():
+	var dash_direction : Vector3 = _get_dash_direction()
+	
+	
+	
+	
+	

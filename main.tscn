@@ -23,7 +23,6 @@ script = ExtResource("1_w48qg")
 
 [node name="Player" parent="." unique_id=2001822429 instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
 
 [node name="PauseMenu" parent="." unique_id=141766413 instance=ExtResource("4_1bvp3")]
 layer = 4

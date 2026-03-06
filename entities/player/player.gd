@@ -97,22 +97,16 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	# slam damage logic
 	if is_ground_slamming and is_on_floor():
-		_ground_pound()
+		var fall_height = start_y - global_position.y
+		fall_height = max(fall_height, 0)
+		is_ground_slamming = false
+		var vfx = slam_vfx.instantiate()
+		vfx.position = position # Offsets to player's feet
+		add_sibling(vfx)
+		# TODO: calculate damage using fall_height
+		_apply_slam_damage(vfx, fall_height * GameState.slam_multiplier)
+		invincible = false
 	_update_camera(delta)
-	
-func _ground_pound():
-	'''does ground pound things'''
-	var fall_height = start_y - global_position.y
-	fall_height = max(fall_height, 0)
-	is_ground_slamming = false
-	var vfx = slam_vfx.instantiate()
-	vfx.position = position # Offsets to player's feet
-	add_sibling(vfx)
-	Events.player_ground_pound.emit()
-	_camera_shake()
-	# TODO: calculate damage using fall_height
-	_apply_slam_damage(vfx, fall_height * GameState.slam_multiplier)
-	invincible = false
 
 func _dash():
 	var _camera := get_viewport().get_camera_3d()
@@ -148,23 +142,6 @@ func _dash():
 	
 	await get_tree().create_timer(GameState.dash_cd).timeout
 	is_dashing = false
-
-func _camera_shake():
-	#var flash_tween = create_tween()
-	#var camera = $CameraController
-	var camera = get_node("CameraController/Camera")
-	if camera:
-		var shake_tween = create_tween()
-		var shake_strength = 0.15
-		var shake_speed = 0.04
-	
-		for i in range(5):
-			var rand_offset = Vector2(randf_range(-shake_strength, shake_strength), randf_range(-shake_strength, shake_strength))
-			shake_tween.tween_property(camera, "h_offset", rand_offset.x, shake_speed)
-			shake_tween.parallel().tween_property(camera, "v_offset", rand_offset.y, shake_speed)
-		
-		shake_tween.tween_property(camera, "h_offset", 0.0, shake_speed)
-		shake_tween.parallel().tween_property(camera, "v_offset", 0.0, shake_speed)
 	
 # Damages all entities within a collider's area by damage
 func _apply_slam_damage(collider: Area3D, damage: float) -> void:

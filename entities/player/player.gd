@@ -97,16 +97,21 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	# slam damage logic
 	if is_ground_slamming and is_on_floor():
-		var fall_height = start_y - global_position.y
-		fall_height = max(fall_height, 0)
-		is_ground_slamming = false
-		var vfx = slam_vfx.instantiate()
-		vfx.position = position # Offsets to player's feet
-		add_sibling(vfx)
-		# TODO: calculate damage using fall_height
-		_apply_slam_damage(vfx, fall_height * GameState.slam_multiplier)
-		invincible = false
+		_ground_pound()
 	_update_camera(delta)
+	
+func _ground_pound():
+	'''does ground pound things'''
+	var fall_height = start_y - global_position.y
+	fall_height = max(fall_height, 0)
+	is_ground_slamming = false
+	var vfx = slam_vfx.instantiate()
+	vfx.position = position # Offsets to player's feet
+	add_sibling(vfx)
+	Events.player_ground_pound.emit()
+	# TODO: calculate damage using fall_height
+	_apply_slam_damage(vfx, fall_height * GameState.slam_multiplier)
+	invincible = false
 
 func _dash():
 	var _camera := get_viewport().get_camera_3d()

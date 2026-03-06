@@ -29,7 +29,7 @@ func attack():
 		return
 	if attack_ready:
 		var within_attack = attack_collision_box.get_overlapping_bodies()
-		#print(within_attack)
+		print(within_attack)
 		for entity in within_attack:
 			if entity is Player:
 				entity.damage(ATTACK_DAMAGE, "enemy")

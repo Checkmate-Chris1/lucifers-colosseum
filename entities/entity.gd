@@ -9,7 +9,11 @@ signal health_changed(new_health)
 @export var model_root: Node3D
 
 
-var death_emitted = false
+var death_emitted := false
+
+# creating iframes for the player
+var invincible := false
+
 @export var HEALTH: float = 100.0
 
 # damage numvber
@@ -85,7 +89,8 @@ func show_damage_number(amount: float):
 func damage(health: float, source: String = "weapon"):
 	flash_red()
 	show_damage_number(health)
-	current_health -= health
+	if not invincible:
+		current_health -= health
 
 	if source == "burn" or source == "enemy":
 		return

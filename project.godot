@@ -138,5 +138,7 @@ switch_melee={
 
 [layer_names]
 
-3d_physics/layer_1="Main"
-3d_physics/layer_2="Player Only"
+3d_physics/layer_1="Floor"
+3d_physics/layer_2="Gates"
+3d_physics/layer_3="Player"
+3d_physics/layer_4="Enemies"

@@ -17,7 +17,9 @@
 [ext_resource type="Script" uid="uid://gtrr4xeuthub" path="res://entities/player/hitmarker_sfx.gd" id="15_3wlsy"]
 [ext_resource type="AudioStream" uid="uid://b7urvqpqy1qg4" path="res://audio/Ground Slam SFX.mp3" id="16_yqrof"]
 [ext_resource type="Script" path="res://entities/player/ground_slam_sfx.gd" id="17_3wlsy"]
-[ext_resource type="Script" uid="uid://delv25o1i5rmb" path="res://entities/player/fireParticles.gd" id="18_b2kln"]
+[ext_resource type="Script" path="res://entities/player/fireParticles.gd" id="18_b2kln"]
+[ext_resource type="AudioStream" uid="uid://dftsxasqv3qk2" path="res://audio/crit.mp3" id="18_we0b7"]
+[ext_resource type="Script" path="res://entities/player/crit_sfx.gd" id="20_mtric"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_symyc"]
 radius = 0.15
@@ -112,10 +114,14 @@ script = ExtResource("8_26q78")
 stream = ExtResource("13_afbqv")
 script = ExtResource("14_gx6sm")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1270783347]
+[node name="HitmarkerSFX" type="AudioStreamPlayer" parent="." unique_id=1270783347]
 stream = ExtResource("14_yqrof")
 script = ExtResource("15_3wlsy")
 
 [node name="groundSlamSFX" type="AudioStreamPlayer" parent="." unique_id=2128549589]
 stream = ExtResource("16_yqrof")
 script = ExtResource("17_3wlsy")
+
+[node name="CritSFX" type="AudioStreamPlayer" parent="." unique_id=1195047260]
+stream = ExtResource("18_we0b7")
+script = ExtResource("20_mtric")

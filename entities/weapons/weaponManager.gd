@@ -193,12 +193,17 @@ func switch_to_weapon(index: int) -> void:
 
 
 func cycle_weapon_forward() -> void:
-	var next = (current_weapon_index + 1) % weapons.size()
+	var next = current_weapon_index + 1
+	if next >= weapons.size():
+		next = 0 if debug_pistol_toggle else 1	
 	switch_to_weapon(next)
 
 
 func cycle_weapon_backward() -> void:
-	var prev = (current_weapon_index - 1 + weapons.size()) % weapons.size()
+	var prev = current_weapon_index - 1
+	var min_index = 0 if debug_pistol_toggle else 1
+	if prev < min_index:
+		prev = weapons.size() - 1
 	switch_to_weapon(prev)
 
 
@@ -233,6 +238,8 @@ func shoot_ray() -> void:
 	var end = origin + ray_normal * current_weapon.range
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
 	query.collide_with_bodies = true
+	query.collide_with_areas = true
+	query.collision_mask = 19
 	
 	# Create temporary cylindrical bullet tracer
 	var tracer = CSGCylinder3D.new()
@@ -247,13 +254,23 @@ func shoot_ray() -> void:
 	tracer.height = tracer_start.distance_to(end)
 	
 	var collisions = _get_all_enemy_collisions(query, space_state)
-	if current_weapon.penetration:
-		for collider in collisions:
-			collider.damage(current_weapon.bullet_damage)
-			#print("Hit: %s" % collider)
-	elif len(collisions) >= 1:
-		collisions[0].damage(current_weapon.bullet_damage)
-		#print("Hit: %s" % collisions[0])
+	
+	if collisions.size() > 0:
+		var processed_entities = []
+		for hitbox in collisions:
+			var target_entity = hitbox.entity
+			if not target_entity: 
+				continue
+			if target_entity in processed_entities:
+				continue
+			var best_hitbox = hitbox
+			for check_hitbox in collisions:
+				if check_hitbox.entity == target_entity and check_hitbox.damage_multiplier > best_hitbox.damage_multiplier:
+					best_hitbox = check_hitbox
+			best_hitbox.hit(current_weapon.bullet_damage)
+			processed_entities.append(target_entity)
+			if not current_weapon.penetration:
+				break
 
 func _get_all_enemy_collisions(query: PhysicsRayQueryParameters3D, space_state: PhysicsDirectSpaceState3D) -> Array:
 	query.exclude = []
@@ -262,10 +279,10 @@ func _get_all_enemy_collisions(query: PhysicsRayQueryParameters3D, space_state: 
 
 	while ray_result:
 		var collider = ray_result.get("collider")
-		if collider is Enemy:
+		if collider is Hitbox:
 			collisions.append(collider)
-			#print(collider)
 			query.exclude.append(collider.get_rid())
+			
 			var hit_position = ray_result.get("position")
 			var direction = (query.to - query.from).normalized()
 			query.from = hit_position + direction * 0.01
@@ -300,7 +317,8 @@ func shoot_aoe() -> void:
 	var cos_threshold = cos(deg_to_rad(aoe_w.cone_angle * 0.5))
 	
 	# debug visualization
-	DebugDraw.draw_cone(origin, direction, aoe_w.aoe_range, aoe_w.cone_angle, Color(1, 0.5, 0, 0.2), fire_timer.wait_time+0.1)
+	player.get_child(2).get_child(0).get_child(0).fire_on()
+	
 
 	for result in results:
 		var collider = result.collider

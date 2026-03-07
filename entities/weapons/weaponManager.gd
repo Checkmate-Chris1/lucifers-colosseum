@@ -279,7 +279,6 @@ func _get_all_enemy_collisions(query: PhysicsRayQueryParameters3D, space_state: 
 
 	while ray_result:
 		var collider = ray_result.get("collider")
-		print(collider)
 		if collider is Hitbox:
 			collisions.append(collider)
 			query.exclude.append(collider.get_rid())

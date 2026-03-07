@@ -8,13 +8,13 @@ class_name Enemy
 @export var attack_collision_box: Area3D
 @export var enemy_model: Node3D
 
-#@onready var animation_player: AnimationPlayer = enemy_model.get_node("AnimationPlayer")
+@onready var animation_player: AnimationPlayer = enemy_model.get_node("AnimationPlayer")
 var attack_ready := true ## If another attack is ready
 var is_dead := false
 
 func _ready() -> void:
 	super()
-	#animation_player.play("idle") # idle
+	animation_player.play("idle") # idle
 	died.connect(_on_death)
 
 func _on_death() -> void:

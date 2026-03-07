@@ -2,12 +2,20 @@
 
 [ext_resource type="Script" uid="uid://dih6yncrgp34v" path="res://entities/enemies/tormentedSoul/tormentedSoul.gd" id="1_nobi8"]
 [ext_resource type="PackedScene" uid="uid://bpdn65gcisvg1" path="res://art/models/tormentedSoul/tormentedSoul.glb" id="2_wcugd"]
+[ext_resource type="Script" uid="uid://v2gy5dbc1x0f" path="res://entities/weapons/hitbox.gd" id="3_ikfqx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
 height = 1.5008545
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ikfqx"]
 size = Vector3(0.5070801, 1, 0.628479)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ml03v"]
+radius = 0.25146484
+height = 0.81170654
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fat5f"]
+radius = 0.26278186
 
 [node name="TormentedSoul" type="CharacterBody3D" unique_id=956846808 node_paths=PackedStringArray("attack_collision_box", "enemy_model", "model_root") groups=["entity"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -26,15 +34,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2631723e-09, -0.37615314, 
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1529124182]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24512684, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_0xm2m")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1890351466]
 avoidance_enabled = true
 
 [node name="AttackArea" type="Area3D" parent="." unique_id=458214622]
-collision_layer = 2
+visible = false
+collision_layer = 4
 collision_mask = 5
 
 [node name="AttackShape" type="CollisionShape3D" parent="AttackArea" unique_id=781876274]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.167, -0.287)
+visible = false
 shape = SubResource("BoxShape3D_ikfqx")
+
+[node name="BodyHitbox" type="Area3D" parent="." unique_id=689038946]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 1.4901161e-08, 0, -1.4901161e-08, 1, -7.436893e-09, 0.1868121, 0.17013627)
+collision_layer = 16
+script = ExtResource("3_ikfqx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyHitbox" unique_id=132186298]
+transform = Transform3D(1.4300015, -2.646978e-23, 0, 0, 1.43, -2.9802322e-08, 0, 2.9802322e-08, 1.43, 1.3322676e-15, -0.38896453, 0)
+shape = SubResource("CapsuleShape3D_ml03v")
+
+[node name="HeadHitbox" type="Area3D" parent="." unique_id=656699655]
+transform = Transform3D(1.0000001, 0, -1.7763568e-15, 3.708986e-17, 0.6332935, 0.77391136, 0, -0.77391136, 0.6332935, 0, 1.3278376, -0.5125897)
+collision_layer = 16
+script = ExtResource("3_ikfqx")
+damage_multiplier = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadHitbox" unique_id=1790839869]
+transform = Transform3D(0.915, -3.5527137e-14, 1.7763568e-14, -4.6185278e-14, 0.9150001, -2.9802322e-08, -1.7763568e-15, 2.9802322e-08, 0.9150001, -8.16263e-09, -0.9375843, -0.6236915)
+shape = SubResource("SphereShape3D_fat5f")

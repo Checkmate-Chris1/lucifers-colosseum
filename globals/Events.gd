@@ -29,6 +29,7 @@ signal upgrade_chosen
 # ENEMIES
 signal enemy_died
 signal damaged
+signal headshot
 
 signal player_dashed
 signal player_ground_pound

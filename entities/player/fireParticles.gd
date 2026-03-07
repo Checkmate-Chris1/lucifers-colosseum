@@ -10,7 +10,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	frames_since_last += 1
-	visible = frames_since_last < 5
+	emitting = frames_since_last < 5
 
 func fire_on():
 	frames_since_last = 0

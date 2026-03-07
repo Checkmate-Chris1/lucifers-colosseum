@@ -85,6 +85,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -
 amount = 500
 lifetime = 0.5
 randomness = 1.0
+local_coords = true
 draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_we0b7")
 draw_pass_1 = SubResource("QuadMesh_eyb6c")

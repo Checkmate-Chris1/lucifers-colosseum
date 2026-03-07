@@ -1,13 +1,25 @@
 [gd_scene format=3 uid="uid://yii422p2boc8"]
 
 [ext_resource type="Script" uid="uid://3reifwpluiyg" path="res://buttons/scripts/slot_container.gd" id="1_74flw"]
-[ext_resource type="Texture2D" uid="uid://yewm8uau0547" path="res://art/upgrade_cards/testcard.png" id="2_gswbp"]
+[ext_resource type="Texture2D" uid="uid://yewm8uau0547" path="res://art/upgrade_cards/dmg.png" id="2_gswbp"]
+[ext_resource type="Texture2D" uid="uid://dr5v03uaq6wst" path="res://art/upgrade_cards/health.png" id="3_22lli"]
+[ext_resource type="Texture2D" uid="uid://dlxfqokdwrn2p" path="res://art/upgrade_cards/flamethrower.png" id="4_7qa4o"]
+[ext_resource type="Texture2D" uid="uid://ddcyo7pywsa0t" path="res://art/upgrade_cards/railgun.png" id="5_r8dah"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_brtks"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("2_gswbp")
+}, {
+"duration": 5.0,
+"texture": ExtResource("4_7qa4o")
+}, {
+"duration": 5.0,
+"texture": ExtResource("3_22lli")
+}, {
+"duration": 5.0,
+"texture": ExtResource("5_r8dah")
 }, {
 "duration": 1.0,
 "texture": null

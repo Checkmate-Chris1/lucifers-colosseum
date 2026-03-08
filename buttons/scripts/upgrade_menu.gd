@@ -40,10 +40,14 @@ func open_upgrade_menu(is_perfect_wave: bool):
 		
 	var count = 5 if is_perfect_wave else 3
 	title_label.text = "PERFECT WAVE! CHOOSE 1" if is_perfect_wave else "PICK AN UPGRADE"
+	
+	var upgr_list_duplicate = upgrade_pool.duplicate()
+	
 	for i in range(count):
 		var new_slot = slot_scene.instantiate()
 		slot_container.add_child(new_slot)
-		var random_data = upgrade_pool.pick_random()
+		var random_data = upgr_list_duplicate.pick_random()
+		upgr_list_duplicate.erase(random_data)
 		random_data = _get_upgr_value(random_data)
 		new_slot.init_slot(random_data, i * 0.5)
 	self.show()

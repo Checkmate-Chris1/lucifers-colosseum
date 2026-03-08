@@ -40,7 +40,7 @@ func _get_dash_direction() -> Vector3:
 func _dash():
 	dash_ready = false
 	is_dashing = true
-
+	invincible = true
 	dash_direction = _get_dash_direction()
 	dash_speed = BASE_VELOCITY * DASH_MULTIPLIER
 	look_at(global_position + dash_direction, Vector3.UP)
@@ -48,6 +48,7 @@ func _dash():
 	# Dash lasts 0.25 seconds
 	await get_tree().create_timer(0.25).timeout
 	is_dashing = false
+	invincible = false
 	set_collision_mask_value(4, true)
 	
 	var cooldown = randf_range(3.0, 6.0)

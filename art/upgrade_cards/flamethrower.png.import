@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yewm8uau0547"
-path="res://.godot/imported/testcard.png-5bb9cb53db41ecdaf5a2e6574051d101.ctex"
+uid="uid://dlxfqokdwrn2p"
+path="res://.godot/imported/flamethrower.png-33c2203a9063abf07c54a9e19ed1d0f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/upgrade_cards/testcard.png"
-dest_files=["res://.godot/imported/testcard.png-5bb9cb53db41ecdaf5a2e6574051d101.ctex"]
+source_file="res://art/upgrade_cards/flamethrower.png"
+dest_files=["res://.godot/imported/flamethrower.png-33c2203a9063abf07c54a9e19ed1d0f7.ctex"]
 
 [params]
 

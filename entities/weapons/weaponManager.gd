@@ -316,8 +316,7 @@ func shoot_aoe() -> void:
 	# precompute cosine of half-angle for cone check
 	var cos_threshold = cos(deg_to_rad(aoe_w.cone_angle * 0.5))
 	
-	# debug visualization
-	player.get_child(2).get_child(0).get_child(0).fire_on()
+	player.get_node('CameraController/Camera/FireParticles').fire_on()
 	
 
 	for result in results:

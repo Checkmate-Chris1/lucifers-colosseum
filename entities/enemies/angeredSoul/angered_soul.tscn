@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cde14jqdp4wpg" path="res://entities/enemies/angeredSoul/angeredSoul.gd" id="1_l40nb"]
 [ext_resource type="PackedScene" uid="uid://6cgve4n67xvk" path="res://art/models/angeredSoul/angeredSoul.glb" id="2_l40nb"]
+[ext_resource type="Script" path="res://entities/weapons/hitbox.gd" id="3_o7in3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
 height = 1.5008545
@@ -9,27 +10,50 @@ height = 1.5008545
 [sub_resource type="BoxShape3D" id="BoxShape3D_ikfqx"]
 size = Vector3(0.5070801, 1, 0.628479)
 
-[node name="AngeredSoul" type="CharacterBody3D" unique_id=956846808 node_paths=PackedStringArray("attack_collision_box") groups=["entity"]]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wig7n"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jbcog"]
+
+[node name="AngeredSoul" type="CharacterBody3D" unique_id=956846808 node_paths=PackedStringArray("attack_collision_box", "enemy_model") groups=["entity"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 collision_layer = 8
 collision_mask = 13
 script = ExtResource("1_l40nb")
 SPEED = 6.0
 attack_collision_box = NodePath("AttackArea")
+enemy_model = NodePath("angeredSoul")
 
 [node name="angeredSoul" parent="." unique_id=634608340 instance=ExtResource("2_l40nb")]
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1529124182]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24512684, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4471395e-09, 0.17706734, -0.10173869)
+visible = false
 shape = SubResource("CapsuleShape3D_0xm2m")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1890351466]
 avoidance_enabled = true
 
 [node name="AttackArea" type="Area3D" parent="." unique_id=458214622]
+visible = false
 collision_layer = 4
 collision_mask = 5
 
 [node name="AttackShape" type="CollisionShape3D" parent="AttackArea" unique_id=781876274]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.167, -0.287)
 shape = SubResource("BoxShape3D_ikfqx")
+
+[node name="BodyHitbox" type="Area3D" parent="." unique_id=1169406679]
+script = ExtResource("3_o7in3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyHitbox" unique_id=86534187]
+transform = Transform3D(0.6998934, -0.0021214047, 0.012031085, 0, 0.6893654, 0.12155373, -0.0122166835, -0.12153521, 0.6892604, 1.6091639e-09, 0.06396842, -0.03681338)
+shape = SubResource("CapsuleShape3D_wig7n")
+debug_color = Color(0.9792041, 0, 0.3938092, 0.41960785)
+
+[node name="HeadHitbox" type="Area3D" parent="." unique_id=1598725357]
+script = ExtResource("3_o7in3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadHitbox" unique_id=1177977174]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.4900069e-08, 0.6225867, -0.34087384)
+shape = SubResource("SphereShape3D_jbcog")
+debug_color = Color(0.6373697, 0.5265817, 1.92523e-07, 0.41960785)

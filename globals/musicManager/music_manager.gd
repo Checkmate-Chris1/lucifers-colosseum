@@ -31,23 +31,9 @@ func _change_song():
 	if i >= len(streams):
 		i = 0
 	
-	# Transitioning between songs
-	transition_player.stream = streams[i]
-	transition_player.volume_linear = 0
-	transition_player.play()
-	var t = 0
-	while t < 1:
-		t += 0.01
-		volume_linear = 1-t
-		transition_player.volume_linear = t
-		await get_tree().create_timer(0.02).timeout
-	stream = streams[i]
-	volume_linear = 1
-	play(2)
-	transition_player.stop()
 	
-	_update_volume()
 	stream = streams[i]
+	_update_volume()
 	play()
 
 

@@ -4,7 +4,7 @@ extends Entity
 class_name Player
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 5
 
 var input_dir : Vector2
 var direction : Vector3

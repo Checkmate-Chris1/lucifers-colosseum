@@ -6,11 +6,12 @@
 
 [resource]
 script = ExtResource("1_script")
+melee_range = 7.0
 weapon_name = "Spine Whip"
-bullet_damage = 35.0
+bullet_damage = 15.0
 ammo = 1
 max_ammo = 1
-fire_delay = 1.5
+fire_delay = 0.75
 weapon_type = "melee"
 model = ExtResource("2_i55n7")
 icon = ExtResource("1_ofydp")

@@ -355,6 +355,7 @@ func shoot_melee() -> void:
 	# add animation here
 	var w_model = weapon_models[current_weapon.weapon_name]
 	w_model.get_node("spineWhip2").get_node("AnimationPlayer").play("Armature")
+	w_model.get_node("spineWhip2").get_node("AnimationPlayer").advance(0.5)
 	
 	
 	for result in results:

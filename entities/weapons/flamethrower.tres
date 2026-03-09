@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_script")
+aoe_range = 5.0
 burn_damage_per_second = 20.0
 burn_duration = 3.0
 weapon_name = "Flamethrower"

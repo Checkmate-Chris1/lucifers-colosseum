@@ -10,7 +10,7 @@ var mouse_sensitivity := 0.2
 var player_inventory = ['Spine Whip']
 var wave_number := 0 ## The current wave number the player is at
 var slam_multiplier = 20 ## A multiplier for the player's slam damage
-var slam_size = 1 ## A multiplier from the default slam area diameter
+var slam_size = 2.5 ## A multiplier from the default slam area diameter
 var dash_speed: float = 5.0
 const dash_cd = 1 ## Dash cooldown in seconds
 

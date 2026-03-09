@@ -18,13 +18,14 @@ const ft_size_boost := [10, 15]
 var upgrade_pool = [
 	{"name": "Health Boost",            "stats": "+123 health",             "desc": "Take more punnishment",              "event": Events.UPGR_p_max_health_up,  'value' : 0,      "icon": load("res://art/upgrade_cards/health.png")},
 	{"name": "Ground Pound Size Boost", "stats": "+123 ground pound size",  "desc": "larger poundings",                   "event": Events.UPGR_p_gp_radius_up,   'value' : 0,      "icon": load("res://art/upgrade_cards/dmg.png")},
-	{"name": "Ground Pound DMG Boost",  "stats": "+123 ground pound dmg",   "desc": "harder poundings",                   "event": Events.UPGR_p_gp_dmg_up,      'value' : 0,      "icon": load("res://art/upgrade_cards/dmg.png")},
-	{"name": "Speed Boost",             "stats": "+123 speed",              "desc": "Zotting around fast",                "event": Events.UPGR_p_speed_up,       'value' : 0,      "icon": load("res://art/upgrade_cards/dmg.png")},
+	{"name": "Ground Pound DMG Boost",  "stats": "+123 ground pound dmg",   "desc": "harder poundings",                   "event": Events.UPGR_p_gp_dmg_up,      'value' : 0,      "icon": load("res://art/upgrade_cards/ground_pound_dmg.png")},
+	{"name": "Speed Boost",             "stats": "+123 speed",              "desc": "Zotting around fast",                "event": Events.UPGR_p_speed_up,       'value' : 0,      "icon": load("res://art/upgrade_cards/movement_speed.png")},
 	{"name": "Railgun DMG Boost",       "stats": "+123 railgun dmg",        "desc": "Railgun Thermal Core Improved",      "event": Events.UPGR_railgun_dmg_up,    'value' : 0,     "icon": load("res://art/upgrade_cards/railgun.png")},
 	{"name": "Railgun Range Boost",     "stats": "+123 railgun range",      "desc": "Railgun System Effeciency Improved", "event": Events.UPGR_railgun_range_up, 'value' : 0,      "icon": load("res://art/upgrade_cards/railgun.png")},
-	{"name": "Spine Whip DMG Boost",    "stats": "+123 spine whip dmg",     "desc": "Sharpened Vertebrae",                "event": Events.UPGR_spine_whip_dmg_up,  'value' : 0,    "icon": load("res://art/upgrade_cards/spine_whip.png")},
+	{"name": "Spine Whip DMG Boost",    "stats": "+123 spine whip dmg",     "desc": "Sharpened Vertebrae",                "event": Events.UPGR_spine_whip_dmg_up,  'value' : 0,    "icon": load("res://art/upgrade_cards/whip_dmg.png")},
 	{"name": "Spine Whip Range Boost",  "stats": "+123 spine whip range",   "desc": "More Vertebrae",                     "event": Events.UPGR_spine_whip_range_up, 'value' : 0,   "icon": load("res://art/upgrade_cards/spine_whip.png")},
 	{"name": "Flamethrower DMG Boost",  "stats": "+123 flamethrower dmg",   "desc": "Hotter flames",                      "event": Events.UPGR_flamethrower_dmg_up, 'value' : 0,   "icon": load("res://art/upgrade_cards/flamethrower.png")},
+	{"name": "Flamethrower Range Boost",  "stats": "+123 flamethrower range",   "desc": "Longer flames",                      "event": Events.UPGR_flamethrower_range_up, 'value' : 0,   "icon": load("res://art/upgrade_cards/flamethrower_range.png")},
 ]
 
 func _ready():

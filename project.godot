@@ -147,3 +147,7 @@ toggle_fire={
 3d_physics/layer_3="Player"
 3d_physics/layer_4="Enemies"
 3d_physics/layer_5="EnemyHitboxes"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

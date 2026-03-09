@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ew4s21xs1utf"
 path.s3tc="res://.godot/imported/fallenAngelLoop_creepy eye2.png-c0f063837aa3c5be5743f20aed2f7c63.s3tc.ctex"
+path.etc2="res://.godot/imported/fallenAngelLoop_creepy eye2.png-c0f063837aa3c5be5743f20aed2f7c63.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/models/fallenAngel/fallenAngelLoop_creepy eye2.png"
-dest_files=["res://.godot/imported/fallenAngelLoop_creepy eye2.png-c0f063837aa3c5be5743f20aed2f7c63.s3tc.ctex"]
+dest_files=["res://.godot/imported/fallenAngelLoop_creepy eye2.png-c0f063837aa3c5be5743f20aed2f7c63.s3tc.ctex", "res://.godot/imported/fallenAngelLoop_creepy eye2.png-c0f063837aa3c5be5743f20aed2f7c63.etc2.ctex"]
 
 [params]
 

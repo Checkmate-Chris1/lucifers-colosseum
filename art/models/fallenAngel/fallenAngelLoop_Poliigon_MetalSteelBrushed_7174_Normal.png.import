@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm1i3rk51bdlf"
 path.s3tc="res://.godot/imported/fallenAngelLoop_Poliigon_MetalSteelBrushed_7174_Normal.png-b458e137c52e4bb08b4604c96ac7e3ea.s3tc.ctex"
+path.etc2="res://.godot/imported/fallenAngelLoop_Poliigon_MetalSteelBrushed_7174_Normal.png-b458e137c52e4bb08b4604c96ac7e3ea.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/models/fallenAngel/fallenAngelLoop_Poliigon_MetalSteelBrushed_7174_Normal.png"
-dest_files=["res://.godot/imported/fallenAngelLoop_Poliigon_MetalSteelBrushed_7174_Normal.png-b458e137c52e4bb08b4604c96ac7e3ea.s3tc.ctex"]
+dest_files=["res://.godot/imported/fallenAngelLoop_Poliigon_MetalSteelBrushed_7174_Normal.png-b458e137c52e4bb08b4604c96ac7e3ea.s3tc.ctex", "res://.godot/imported/fallenAngelLoop_Poliigon_MetalSteelBrushed_7174_Normal.png-b458e137c52e4bb08b4604c96ac7e3ea.etc2.ctex"]
 
 [params]
 

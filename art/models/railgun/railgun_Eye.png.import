@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dqfhsbw2xyjr6"
 path.s3tc="res://.godot/imported/railgun_Eye.png-6b800842cf9d657bebf4dd72f2cfbcea.s3tc.ctex"
+path.etc2="res://.godot/imported/railgun_Eye.png-6b800842cf9d657bebf4dd72f2cfbcea.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/models/railgun/railgun_Eye.png"
-dest_files=["res://.godot/imported/railgun_Eye.png-6b800842cf9d657bebf4dd72f2cfbcea.s3tc.ctex"]
+dest_files=["res://.godot/imported/railgun_Eye.png-6b800842cf9d657bebf4dd72f2cfbcea.s3tc.ctex", "res://.godot/imported/railgun_Eye.png-6b800842cf9d657bebf4dd72f2cfbcea.etc2.ctex"]
 
 [params]
 

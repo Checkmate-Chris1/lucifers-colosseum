@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://iuu281vi1q58"
 path.s3tc="res://.godot/imported/fallenAngelLoop_Poliigon_MetalSteelBrushed_7174_Metallic_2K_jpg-Poliigon_MetalSteelBrushed_7174_Roughness_2K_jpg.png-5bba502c26b57de12a5d3cab3123ddc2.s3tc.ctex"
+path.etc2="res://.godot/imported/fallenAngelLoop_Poliigon_MetalSteelBrushed_7174_Metallic_2K_jpg-Poliigon_MetalSteelBrushed_7174_Roughness_2K_jpg.png-5bba502c26b57de12a5d3cab3123ddc2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/models/fallenAngel/fallenAngelLoop_Poliigon_MetalSteelBrushed_7174_Metallic_2K_jpg-Poliigon_MetalSteelBrushed_7174_Roughness_2K_jpg.png"
-dest_files=["res://.godot/imported/fallenAngelLoop_Poliigon_MetalSteelBrushed_7174_Metallic_2K_jpg-Poliigon_MetalSteelBrushed_7174_Roughness_2K_jpg.png-5bba502c26b57de12a5d3cab3123ddc2.s3tc.ctex"]
+dest_files=["res://.godot/imported/fallenAngelLoop_Poliigon_MetalSteelBrushed_7174_Metallic_2K_jpg-Poliigon_MetalSteelBrushed_7174_Roughness_2K_jpg.png-5bba502c26b57de12a5d3cab3123ddc2.s3tc.ctex", "res://.godot/imported/fallenAngelLoop_Poliigon_MetalSteelBrushed_7174_Metallic_2K_jpg-Poliigon_MetalSteelBrushed_7174_Roughness_2K_jpg.png-5bba502c26b57de12a5d3cab3123ddc2.etc2.ctex"]
 
 [params]
 

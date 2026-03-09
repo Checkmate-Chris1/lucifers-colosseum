@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://18xputy2fo71"
 path.s3tc="res://.godot/imported/lucifersColosseum_albedo.jpg-5e17c78ac5853af508e3da35a5b19da8.s3tc.ctex"
+path.etc2="res://.godot/imported/lucifersColosseum_albedo.jpg-5e17c78ac5853af508e3da35a5b19da8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/models/lucifersColosseum/lucifersColosseum_albedo.jpg"
-dest_files=["res://.godot/imported/lucifersColosseum_albedo.jpg-5e17c78ac5853af508e3da35a5b19da8.s3tc.ctex"]
+dest_files=["res://.godot/imported/lucifersColosseum_albedo.jpg-5e17c78ac5853af508e3da35a5b19da8.s3tc.ctex", "res://.godot/imported/lucifersColosseum_albedo.jpg-5e17c78ac5853af508e3da35a5b19da8.etc2.ctex"]
 
 [params]
 

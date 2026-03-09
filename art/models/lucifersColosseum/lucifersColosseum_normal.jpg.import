@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cns2xocjylmj3"
 path.s3tc="res://.godot/imported/lucifersColosseum_normal.jpg-72d3a4b385098dd2383e84c5374225a3.s3tc.ctex"
+path.etc2="res://.godot/imported/lucifersColosseum_normal.jpg-72d3a4b385098dd2383e84c5374225a3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/models/lucifersColosseum/lucifersColosseum_normal.jpg"
-dest_files=["res://.godot/imported/lucifersColosseum_normal.jpg-72d3a4b385098dd2383e84c5374225a3.s3tc.ctex"]
+dest_files=["res://.godot/imported/lucifersColosseum_normal.jpg-72d3a4b385098dd2383e84c5374225a3.s3tc.ctex", "res://.godot/imported/lucifersColosseum_normal.jpg-72d3a4b385098dd2383e84c5374225a3.etc2.ctex"]
 
 [params]
 

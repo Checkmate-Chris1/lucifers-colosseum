@@ -16,11 +16,7 @@ func _ready() -> void:
 
 
 func _on_wave_start():
-	#print(GameState.wave_number)
 	if GameState.wave_number == 10:
-		_change_song()
-	else:
-		i = -1
 		_change_song()
 
 
@@ -32,25 +28,12 @@ func _process(delta: float) -> void:
 
 func _change_song():
 	i += 1
-	
-	# Transitioning between songs
-	transition_player.stream = streams[i]
-	transition_player.volume_linear = 0
-	transition_player.play()
-	var t = 0
-	while t < 1:
-		t += 0.01
-		volume_linear = 1-t
-		transition_player.volume_linear = t
-		await get_tree().create_timer(0.02).timeout
-	stream = streams[i]
-	volume_linear = 1
-	play(2)
-	transition_player.stop()
-		
 	if i >= len(streams):
 		i = 0
+	
+	
 	stream = streams[i]
+	_update_volume()
 	play()
 
 

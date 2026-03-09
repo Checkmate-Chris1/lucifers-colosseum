@@ -16,11 +16,7 @@ func _ready() -> void:
 
 
 func _on_wave_start():
-	#print(GameState.wave_number)
 	if GameState.wave_number == 10:
-		_change_song()
-	else:
-		i = -1
 		_change_song()
 
 
@@ -32,6 +28,8 @@ func _process(delta: float) -> void:
 
 func _change_song():
 	i += 1
+	if i >= len(streams):
+		i = 0
 	
 	# Transitioning between songs
 	transition_player.stream = streams[i]
@@ -47,9 +45,8 @@ func _change_song():
 	volume_linear = 1
 	play(2)
 	transition_player.stop()
-		
-	if i >= len(streams):
-		i = 0
+	
+	_update_volume()
 	stream = streams[i]
 	play()
 
